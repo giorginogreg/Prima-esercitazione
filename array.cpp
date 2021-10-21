@@ -138,7 +138,6 @@ void reverse(vector<T> &v)
     for (left = v.begin(), right = v.end() - 1; left != right || left > right;
          left++, right--)
     {
-
         tmp = *left;
         *left = *right;
         *right = tmp;
