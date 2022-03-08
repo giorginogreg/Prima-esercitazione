@@ -1,3 +1,9 @@
 **.out
+**/.vscode
 *.dSYM
 ComplexNumbers/ComplexNumbers
+.DS_Store
+**.o
+hello_world/hello_world
+cpp
+tester
