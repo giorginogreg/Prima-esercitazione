@@ -3,15 +3,9 @@
 
 using namespace std;
 
-void set_matricola(Studente &s)
+void set_matricola(Studente &s, int matricola)
 {
-    int matricola;
-    cout << "Inserisci la matricola dello studente" << endl;
-    cin >> matricola;
-    if (matricola >= 255312 && matricola <= 499999)
-        s.matricola = matricola;
-    else
-        cout << "La matricola inserita non è valida." << endl;
+    s.matricola = matricola;
 }
 
 int get_matricola(Studente &s)

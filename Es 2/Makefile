@@ -1,11 +1,19 @@
 CC=g++
-CFLAGS=-c -Wall
+C_FLAGS=-c -Wall
+.PHONY: clean
 
-studente: studente.o
-	$(CC) $(CFLAGS) studente.o -o studente
+test_studente: Studente_Class.o provastudente.o
+	$(CC) Studente_Class.o provastudente.o -o test_studente
+	clear
+	@echo "Program built successfully!"
+	@make clean
 
-studente.o: Studente.cpp Studente.h
-	$(CC) $(CFLAGS) Studente.cpp
+provastudente.o: Studente_Class.o
+	$(CC) $(C_FLAGS) provastudente.cpp
+
+Studente_Class.o: 
+	$(CC) $(C_FLAGS) Studente_Class.cpp
 	
-clean: 
-	rm -f progetto *.o *~ *#
+clean:
+	@rm -f *.o *.out *~ *#
+	@echo "Not necessaries files deleted"

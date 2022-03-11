@@ -1,5 +1,3 @@
-#pragma once
-
 #include <string>
 using namespace std;
 
@@ -13,3 +11,4 @@ struct Studente
 
 typedef struct Studente s;
 void set_matricola(Studente &s);
+
