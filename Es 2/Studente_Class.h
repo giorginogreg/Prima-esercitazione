@@ -6,16 +6,16 @@ using namespace std;
 class Studente_Class
 {
     public:
-        int get_matricola();
+        int get_matricola() const;
         void set_matricola(int);
 
-        string get_nome();
+        string get_nome() const;
         void set_nome(string);
 
-        string get_cognome();
+        string get_cognome() const;
         void set_cognome(string);
         
-        int get_eta();
+        int get_eta() const;
         void set_eta(int);
 
         friend ostream &operator <<(ostream&, Studente_Class&);

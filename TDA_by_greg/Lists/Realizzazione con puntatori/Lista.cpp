@@ -4,14 +4,14 @@
 #include <stdio.h>  /* printf, scanf, NULL */
 #include <stdlib.h> /* malloc, free, rand */
 template <typename T>
-Lista<T>::Lista()
+List<T>::List()
 {
     numNodi = 0;
     nodi = NULL;
 }
 
 template <typename T>
-Lista<T>::Lista(int numElem)
+List<T>::List(int numElem)
 {
     if (numElem > 0)
     {
@@ -20,14 +20,19 @@ Lista<T>::Lista(int numElem)
     }
 }
 
+template <typename T>
+List<T>::~List() {
 //Lista &Lista::operator=(const &Lista l);
+}
+
+//List &List::operator=(const &List l);
 /* 
-Lista::addNodo(Nodo n)
+List::addNodo(Nodo n)
 {
     this->nodi[] = n;
 }
 
-Lista::isEmpty()
+List::isEmpty()
 {
     return this->numNodi == 0;
 }

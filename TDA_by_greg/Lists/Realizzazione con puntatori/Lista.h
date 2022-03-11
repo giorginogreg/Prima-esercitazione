@@ -2,6 +2,9 @@
 #ifndef List_H_
 #define List_H_
 
+#include "../Nodo.h"
+using namespace TDA_Greg;
+
 // Insieme di nodi
 template <typename T>
 class List
