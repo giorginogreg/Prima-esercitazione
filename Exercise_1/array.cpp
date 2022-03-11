@@ -1,5 +1,4 @@
 /*
-    Array di interi
 */
 
 #include <vector>
