@@ -6,7 +6,7 @@
 class ComplexNumber
 {
 public:
-    ComplexNumber(double first_real, double second_real);
+    ComplexNumber(double first_real, double second_real): first_real(first_real), second_real(second_real);
     ComplexNumber operator +(ComplexNumber c2); // Extending sum algebra
     ComplexNumber* operator =(ComplexNumber c2); 
     // Equivalente di operator +(ComplexNumber c1, ComplexNumber c2);

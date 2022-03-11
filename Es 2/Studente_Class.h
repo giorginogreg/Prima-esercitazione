@@ -6,6 +6,7 @@ using namespace std;
 class Studente_Class
 {
     public:
+        Studente_Class(): matricola(0), nome(""), cognome(""), eta(0){}; // Initialized constructor
         int get_matricola() const;
         void set_matricola(int);
 
