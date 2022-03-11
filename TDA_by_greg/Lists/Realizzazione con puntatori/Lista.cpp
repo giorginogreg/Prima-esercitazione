@@ -22,7 +22,8 @@ List<T>::List(int numElem)
 
 template <typename T>
 List<T>::~List() {
-//Lista &Lista::operator=(const &Lista l);
+    // In a dynamic list with pointers, it's needed to deallocate all the
+    // list memory cells, iterating through each
 }
 
 //List &List::operator=(const &List l);
