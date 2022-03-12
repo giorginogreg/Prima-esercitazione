@@ -10,10 +10,10 @@ public:
     using coord_t = float;
 
     Point(coord_t x, coord_t y);
-    Point(const Point &p1);
+    Point(const Point &p1) noexcept;
     ~Point();
     Point operator+(const Point &p);
-    Point operator=(const Point &p);
+    Point* operator=(const Point &p);
     friend std::ostream& operator<<(std::ostream&, const Point);
 
     coord_t getX() const;

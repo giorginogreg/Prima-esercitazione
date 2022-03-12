@@ -9,7 +9,7 @@ Point::Point(coord_t x, coord_t y)
     _y = y;
 }
 
-Point::Point(const Point &p1)
+Point::Point(const Point &p1) noexcept
 {
     _x = p1._x;
     _y = p1._y;
@@ -44,9 +44,11 @@ Point Point::operator+(const Point &p)
     return Point(p.getX() + _x, p.getY() + getY());
 }
 
-Point Point::operator=(const Point &p)
-{
-    return Point(p);
+Point* Point::operator=(const Point &p)
+{   
+    this->setX(p.getX());
+    this->setY(p.getY());
+    return this;
 }
 
 std::ostream &operator<<(std::ostream &o, const Point p)

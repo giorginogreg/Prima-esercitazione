@@ -11,7 +11,6 @@ int main(int argc, char const *argv[])
     
     Point p2 = Point(x1, y1);
 
-    // Expecting now that if i change the values of x1 and y1, also p2 will change his values.
     x1 = 204.10;
     y1 = 104.22;
 
