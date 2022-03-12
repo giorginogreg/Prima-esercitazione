@@ -7,19 +7,22 @@ class Matrix
 {
 public:
     typedef double type_elem;
-    Matrix(int, int);
-    Matrix(int, int, type_elem);
+    Matrix(const int, const int);
+    Matrix(const int rows, const int cols, const type_elem initial_value);
     ~Matrix();
-    type_elem read_value_at(int, int);
-    void write_value_at(int, int, type_elem);
-    void scalar_product(type_elem);
+    Matrix::type_elem read_value_at(const int, const int) const;
+    void write_value_at(const int, const int, const type_elem);
+    void scalar_product(type_elem const scalar);
+
+    void transpose(const Matrix &m);
+
+    void print_matrix();
 
 private:
     int _rows;
     int _cols;
     type_elem **_matrix;
-
-    bool out_of_bound(int row, int col);
+    bool out_of_bound(int const row, int const col) const;
 };
 
 #endif
