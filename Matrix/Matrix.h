@@ -18,11 +18,20 @@ public:
 
     void print_matrix();
 
+    Matrix operator*(const Matrix &m);
+
+    int rows() const { return _rows; }
+    void setRows(int rows) { _rows = rows; }
+
+    int cols() const { return _cols; }
+    void setCols(int cols) { _cols = cols; }
+
 private:
     int _rows;
     int _cols;
     type_elem **_matrix;
     bool out_of_bound(int const row, int const col) const;
+    bool is_multiplication_valid(const Matrix &m) const;
 };
 
 #endif
