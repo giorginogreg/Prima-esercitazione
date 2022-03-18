@@ -1,14 +1,14 @@
 namespace TDA_Greg
 {
     template <typename T>
-    class Nodo
+    class Node
     {
     private:
         T elem;
         T *nextPos;
 
     public:
-        Nodo(T);
+        Node(T);
     };
 } // namespace Gregorio
 

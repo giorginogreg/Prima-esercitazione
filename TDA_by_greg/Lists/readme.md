@@ -9,12 +9,12 @@ T - Tipo dell'elemento
 
 
 ### Operatori
-#### Modifica lista
+#### Modificatori
 - create(): List l - Ritorna una lista vuota
 - writeValue( List l, P pos, T elem of typeElem ): List l - Scrive nella posizione pos l'elemento T.
 - insert( List l, P pos, T elem of typeElem): List l - Inserisce un nodo dopo il pos con il valore T
 - delete( List l, P pos ): List l - Elimina l'elemento dalla posizione P
-#### Lettura dati/metadati lista
+#### Osservatori
 - readValue( List l, P pos ): T elem of typeElem
 - isEmpty( List l ): boolean - vero se il numero di nodi è 1
 - isLastValue( List l, P pos ): boolean

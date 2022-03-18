@@ -1,7 +1,7 @@
-#include "Nodo.h"
+#include "Node.h"
 
 template <typename T>
-Nodo<T>::Nodo(T elem)
+Node<T>::Node(T elem)
 {
     elem = elem;
     nextPos = nullptr;

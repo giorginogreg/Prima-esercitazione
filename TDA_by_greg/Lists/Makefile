@@ -1,6 +1,14 @@
-progetto: progetto.o lib.o
-	g++ progetto.o lib.o -o progetto
-progetto.o: progetto.cpp lib.h
-	g++ -c progetto.cpp
-lib.o: lib.cpp lib.h
-	g++ -c lib.cpp
+CC=g++
+C_FLAGS=-c -Wall -std=c++11
+.PHONY: clean
+
+#progetto: progetto.o lib.o
+#	$(CC) progetto.o lib.o -o progetto
+#progetto.o: progetto.cpp lib.h
+#	$(CC) $(C_FLAGS) progetto.cpp
+#lib.o: lib.cpp lib.h
+#	$(CC) $(C_FLAGS) lib.cpp
+
+clean:
+	@rm -rf *.o *~ *#
+	@echo "Not necessaries files deleted"
