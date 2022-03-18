@@ -130,3 +130,20 @@ Matrix Matrix::operator*(const Matrix &m)
 
     return m_r;
 }
+
+// Copy constructor
+Matrix::Matrix(const Matrix &m)
+    : _rows(m.rows()),
+      _cols(m.cols())
+{
+    _matrix = new type_elem *[m.rows()];
+    for (int i = 0; i < m.rows(); i++)
+    {
+        _matrix[i] = new type_elem[m.cols()];
+        for (int j = 0; j < m.cols(); j++)
+        {
+            write_value_at(i,j, m.read_value_at(i,j));
+        }
+    }
+    
+}

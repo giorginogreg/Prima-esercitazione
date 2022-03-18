@@ -7,10 +7,11 @@ class Matrix
 {
 public:
     typedef double type_elem;
+    Matrix(const Matrix &m);
     Matrix(const int, const int);
     Matrix(const int rows, const int cols, const type_elem initial_value);
-    // Destructor knows only how to deallocate private variables, but if there are 
-    // any complex types like pointers ecc. with some allocated value, i need to 
+    // Destructor knows only how to deallocate private variables, but if there are
+    // any complex types like pointers ecc. with some allocated value, i need to
     // update this method instructing destructor on how does it have to do
     ~Matrix();
     Matrix::type_elem read_value_at(const int, const int) const;

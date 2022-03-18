@@ -19,18 +19,21 @@ int main(int argc, char const *argv[])
   
     m.print_matrix();
 
-    Matrix m2(cols, rows);
+    //Matrix m2(m);
+    Matrix m2 = m;
     m2.write_value_at(0, 0, 4);
     m2.write_value_at(0, 1, 1);
     
     m2.write_value_at(1, 0, -2);
     m2.write_value_at(1, 1, 2);
     
-    m2.write_value_at(2, 0, 0);
-    m2.write_value_at(2, 1, 3);
-    
-    m2.print_matrix();
+    //m2.write_value_at(2, 0, 0);
+    //m2.write_value_at(2, 1, 3);
+    m.write_value_at(1, 0, 10);
+    m.print_matrix();
 
+    m2.print_matrix();
+ 
     Matrix multiplied(rows, rows);
     
     try
