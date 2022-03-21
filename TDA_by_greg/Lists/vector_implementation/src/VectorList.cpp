@@ -47,8 +47,8 @@ void VectorList<T, S>::insertNodeAfter(int position, T elementToAdd) {
 
 template<typename T, int S>
 void VectorList<T, S>::deleteNodeAt(int p) {
-    change_list_size(getDimension() - 1);
     shiftElementsToLeft(p);
+    change_list_size(getDimension() - 1);
     _elements_inside--;
 }
 
@@ -64,7 +64,7 @@ bool VectorList<T, S>::isEmpty() {
 
 template<typename T, int S>
 bool VectorList<T, S>::isLastValue(int p) {
-    return p == _elements_inside;
+    return p == _dimension;
 }
 
 template<typename T, int S>
@@ -85,9 +85,10 @@ int VectorList<T, S>::previousPosition(int p) {
 template<class T, int S>
 void VectorList<T, S>::change_list_size(const int new_dimension) {
     if (new_dimension < 0)
-        throw OutOfBoundException("La dimensione deve essere maggiore o uguale new_array 0");
+        throw OutOfBoundException("La dimensione deve essere maggiore di 0");
     auto *temp = new VectorList<T, 0>;
-    T* list = new T[new_dimension];
+    T* list = new T[std::max(new_dimension - 1, 1)];
+    temp->setDimension(new_dimension);
     temp->setList(list);
 
     int number = (getDimension() < new_dimension) ? getDimension() : new_dimension;
@@ -107,7 +108,7 @@ int VectorList<T, S>::getDimension() const {
 
 template<class T, int S>
 void VectorList<T, S>::setDimension(int dimension) {
-    _dimension = dimension;
+    _dimension = dimension; // Human Readable format
 }
 
 template<class T, int S>
@@ -141,39 +142,26 @@ void VectorList<T, S>::shiftElementsToRight(const int starting_position) {
     if (outOfBound(starting_position))
         throw OutOfBoundException("Error: out of boundary indexes");
 
-    int position = starting_position;
-    bool isFirst = true;
+    int nextPos = starting_position; // goes from right to left
+    while (!isLastValue(nextPosition(nextPos)))
+        nextPos = nextPosition(nextPos);
 
-    while (!isLastValue(position)) {
-        auto nextPos = nextPosition(position);
-        T temp = readValueAt(nextPos);
-        if(isFirst) {
-            writeValueAt(nextPos, readValueAt(position));
-            isFirst = false;
-        } else writeValueAt(nextPos, temp);
-
-        position = nextPosition(position);
+    while (firstNodeList() > nextPos || nextPos > starting_position) {
+        writeValueAt(nextPos, readValueAt(previousPosition(nextPos)));
+        nextPos = previousPosition(nextPos);
     }
-}
 
+}
 
 template<class T, int S>
 void VectorList<T, S>::shiftElementsToLeft(const int starting_position) {
-
     if (outOfBound(starting_position))
         throw OutOfBoundException("Error: out of boundary indexes");
 
-    int position = firstNodeList();
-    bool isFirst = true;
+    int nextPos = starting_position;
 
-    while (!isLastValue(position)) {
-        auto nextPos = nextPosition(position);
-        T temp = readValueAt(nextPos);
-        if(isFirst) {
-            writeValueAt(nextPos, readValueAt(position));
-            isFirst = false;
-        } else writeValueAt(nextPos, temp);
-
-        position = nextPos;
+    while (!isLastValue(nextPos)) {
+        writeValueAt(nextPos, readValueAt(nextPosition(nextPos)));
+        nextPos = nextPosition(nextPos);
     }
 }

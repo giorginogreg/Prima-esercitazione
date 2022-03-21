@@ -24,12 +24,13 @@ TEST_CASE( "Is list empty?" ) {
     REQUIRE(vectorList.isEmpty() == true);
 
     vectorList.insertNodeAfter(0, 1);
+
     REQUIRE(vectorList.readValueAt(0) == 1);
     REQUIRE(vectorList.isEmpty() == false);
-
     REQUIRE(vectorList.getElementsInside() == 1);
 
     vectorList.deleteNodeAt(0);
+
     REQUIRE(vectorList.isEmpty() == true);
     REQUIRE(vectorList.getElementsInside() == 0);
     REQUIRE(vectorList.getDimension() == size);
