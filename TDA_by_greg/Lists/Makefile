@@ -9,6 +9,27 @@ C_FLAGS=-c -Wall -std=c++11
 #lib.o: lib.cpp lib.h
 #	$(CC) $(C_FLAGS) lib.cpp
 
+Test_Cases: Node.o VectorList.o OutOfBoundException.o Test_Cases.o
+	$(CC) vector_implementation/VectorList.o vector_implementation/Test_Cases.o vector_implementation/OutOfBoundException.o -o Test_Cases && ./Test_Cases
+
+Test_Cases.o: Node.o VectorList.o
+	$(CC) $(C_FLAGS) vector_implementation/Test_Cases.cpp -o vector_implementation/Test_Cases.o
+
+tester: Node.o tester.o VectorList.o OutOfBoundException.o
+	$(CC) Node.o vector_implementation/VectorList.o vector_implementation/tester.o vector_implementation/OutOfBoundException.o -o Tester
+
+OutOfBoundException.o:
+	$(CC) $(C_FLAGS) vector_implementation/src/OutOfBoundException.cpp -o vector_implementation/OutOfBoundException.o
+
+tester.o: Node.o VectorList.o
+	$(CC) $(C_FLAGS) vector_implementation/tester.cpp -o vector_implementation/tester.o
+
+VectorList.o: #Node.o
+	$(CC) $(C_FLAGS) vector_implementation/src/VectorList.cpp -o vector_implementation/VectorList.o
+
+Node.o:
+	$(CC) $(C_FLAGS) src/Node.cpp
+
 clean:
 	@rm -rf *.o *~ *#
 	@echo "Not necessaries files deleted"

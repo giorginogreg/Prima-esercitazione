@@ -19,8 +19,8 @@ T - Tipo dell'elemento
 - isEmpty( List l ): boolean - vero se il numero di nodi è 1
 - isLastValue( List l, P pos ): boolean
 - firstNodeList( List l ): P pos
-- nextValue( List l, P pos ): P pos
-- prevValue( List l, P pos ): P pos
+- nextPosition( List l, P pos ): P pos
+- previousPosition( List l, P pos ): P pos
 
 **Ricordarsi di inserire i tipo nella specifica sintattica!**
 
@@ -39,5 +39,5 @@ readValue | List l, P pos | T elem of typeElem | readValue(List, P): T | readVal
 isEmpty | List l | boolean | isEmpty(L): true\|false | isEmpty(list) = bool | - | b = ( list = <> ) | Operatore equivalente a isLastValue(firstNodeList(list), list)
 isLastValue | List l, P pos | boolean | isLastValue(List, P): true\|false | isLastValue(list, pos) = b | 1 <= pos <= n + 1 | b = (pos == n + 1) | 
 firstNodeList | List l | T elem of typeElem | firstValue( List ): P | firstValue( list ): pos | !isEmpty(list) | pos = pos(1) | 
-nextValue| List l, P pos |  P pos | nextValue( List, P ): T | nextValue(list, p) = elem | !isLastValue(list, p) && !isEmpty(list) && p = pos(i), 1 <= i <= n | elem = pos(i + 1) | 
-prevValue | List l, P pos |  P pos | prevValue( List, P ): T | nextValue(list, p) = elem | p = pos(i), 1 < i <= n | elem = pos(i - 1) | 
+nextPosition| List l, P pos |  P pos | nextPosition( List, P ): T | nextPosition(list, p) = elem | !isLastValue(list, p) && !isEmpty(list) && p = pos(i), 1 <= i <= n | elem = pos(i + 1) | 
+previousPosition | List l, P pos |  P pos | previousPosition( List, P ): T | nextPosition(list, p) = elem | p = pos(i), 1 < i <= n | elem = pos(i - 1) | 

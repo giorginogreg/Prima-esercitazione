@@ -4,8 +4,8 @@ namespace TDA_Greg
     class Node
     {
     private:
-        T elem;
-        T *nextPos;
+        T _elem;
+        T *_nextPos;
 
     public:
         Node(T);

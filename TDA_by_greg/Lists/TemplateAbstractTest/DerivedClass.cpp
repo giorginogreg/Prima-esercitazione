@@ -1,0 +1,14 @@
+//
+// Created by Greg on 20/03/22.
+//
+
+#include "DerivedClass.h"
+
+template <>
+BaseTemplate<int> DerivedClass<int>::GetValue() {
+    return *this;
+}
+
+int main(int argc, char const *argv[]) {
+    new DerivedClass<int>();
+}
