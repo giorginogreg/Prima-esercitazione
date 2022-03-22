@@ -32,4 +32,5 @@ Node.o:
 
 clean:
 	@rm -rf *.o *~ *#
+	@rm -rf vector_implementation/*.o vector_implementation/*~ vector_implementation/*#
 	@echo "Not necessaries files deleted"

@@ -64,6 +64,7 @@ bool VectorList<T, S>::isEmpty() {
 
 template<typename T, int S>
 bool VectorList<T, S>::isLastValue(int p) {
+    assert(!outOfBound(p)); // Precondition
     return p == _dimension;
 }
 
