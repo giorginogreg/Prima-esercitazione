@@ -15,7 +15,7 @@ public:
     // Distructor
 
     // Modifiers
-    virtual void writeValueAt(position , type) = 0;
+    virtual void writeValueAt(position, type) = 0;
     virtual void insertNodeAfter(position, type) = 0;
 
     virtual void deleteNodeAt(position) = 0;
@@ -29,6 +29,11 @@ public:
     virtual position previousPosition(position) = 0;
 
     virtual position search(type);
+
+    virtual int getElementsInside() const { return _elems_inside; }
+    virtual void setElementsInside(int elementsInside) { _elems_inside = elementsInside; }
+protected:
+    int _elems_inside;
 
 };
 

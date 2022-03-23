@@ -3,7 +3,7 @@
 
 #include "include/VectorList.h"
 #include "src/VectorList.cpp"
-#include "include/OutOfBoundException.h"
+#include "../include/OutOfBoundException.h"
 
 TEST_CASE( "List initialization" ) {
 

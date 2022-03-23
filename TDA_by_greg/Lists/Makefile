@@ -21,7 +21,7 @@ linkedListTester: LinkedList.o OutOfBoundException.o LinkedListTester.o
 LinkedListTester.o:
 	$(CC) pointer_implementation/tester.cpp -o LinkedListTester.o
 
-tester: Node.o tester.o VectorList.o OutOfBoundException.o
+tester: tester.o VectorList.o OutOfBoundException.o
 	$(CC) Node.o vector_implementation/VectorList.o vector_implementation/tester.o vector_implementation/OutOfBoundException.o -o Tester
 
 OutOfBoundException.o:
@@ -35,7 +35,6 @@ LinkedList.o: #Node.o
 
 VectorList.o: #Node.o
 	$(CC) $(C_FLAGS) vector_implementation/src/VectorList.cpp -o vector_implementation/VectorList.o
-
 
 clean:
 	@rm -rf *.o *~ *#

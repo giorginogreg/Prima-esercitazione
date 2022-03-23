@@ -24,7 +24,7 @@ public:
 
     T readValueAt(position);
     bool isEmpty();
-    bool isLastValue(position);
+    bool isLastPosition(position);
     int firstNodeList();
 
     position nextPosition(position);
@@ -35,23 +35,20 @@ public:
     int getDimension() const;
     void setDimension(int dimension);
 
-    int getElementsInside() const;
-    void setElementsInside(int elementsInside);
+
 
     T *getList() const;
     void setList(T *list);
 
-    void shiftElementsToRight(const position = 0);
-    void shiftElementsToLeft(const position);
+    void shiftElementsToRight(position = 0);
+    void shiftElementsToLeft(position);
 
 private:
     int _dimension;
-    int _elements_inside;
     T *_list;
 
-    bool outOfBound(int desired_position);
-
-    void change_list_size( const int new_dimension);
+    void change_list_size(int new_dimension);
+    bool outOfBound(int desired_position) const;
 };
 
 

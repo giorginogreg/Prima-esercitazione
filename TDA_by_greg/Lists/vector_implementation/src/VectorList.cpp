@@ -1,6 +1,6 @@
 #include <string>
 #include "../include/VectorList.h"
-#include "../include/OutOfBoundException.h"
+#include "../../include/OutOfBoundException.h"
 
 template<typename T, int S>
 VectorList<T, S>::VectorList() {
@@ -27,11 +27,11 @@ VectorList<T, S>::~VectorList() {
 
 template<class T, int S>
 void VectorList<T, S>::initialize() {
-    _elements_inside = 0;
+    this->_elems_inside = 0;
 }
 
 template<class T, int S>
-void VectorList<T, S>::writeValueAt(int p, T t) {
+void VectorList<T, S>::writeValueAt(const int p,const T t) {
     if (outOfBound(p))
         throw OutOfBoundException("Error: out of boundary indexes");
     _list[p] = t;
@@ -42,14 +42,14 @@ void VectorList<T, S>::insertNodeAfter(int position, T elementToAdd) {
     change_list_size(getDimension() + 1);
     shiftElementsToRight(position);
     writeValueAt(position, elementToAdd);
-    _elements_inside++;
+    this->_elems_inside++;
 }
 
 template<typename T, int S>
 void VectorList<T, S>::deleteNodeAt(int p) {
     shiftElementsToLeft(p);
     change_list_size(getDimension() - 1);
-    _elements_inside--;
+    this->_elems_inside--;
 }
 
 template<typename T, int S>
@@ -59,11 +59,11 @@ T VectorList<T, S>::readValueAt(int p) {
 
 template<typename T, int S>
 bool VectorList<T, S>::isEmpty() {
-    return _elements_inside == 0;
+    return this->_elems_inside == 0;
 }
 
 template<typename T, int S>
-bool VectorList<T, S>::isLastValue(int p) {
+bool VectorList<T, S>::isLastPosition(int p) {
     assert(!outOfBound(p)); // Precondition
     return p == _dimension;
 }
@@ -113,16 +113,6 @@ void VectorList<T, S>::setDimension(int dimension) {
 }
 
 template<class T, int S>
-int VectorList<T, S>::getElementsInside() const {
-    return _elements_inside;
-}
-
-template<class T, int S>
-void VectorList<T, S>::setElementsInside(int elementsInside) {
-    _elements_inside = elementsInside;
-}
-
-template<class T, int S>
 T *VectorList<T, S>::getList() const {
     return _list;
 }
@@ -133,7 +123,7 @@ void VectorList<T, S>::setList(T *list) {
 }
 
 template<class T, int S>
-bool VectorList<T, S>::outOfBound(int desired_position) {
+bool VectorList<T, S>::outOfBound(int desired_position) const{
     return desired_position < 0 || desired_position > _dimension;
 }
 
@@ -144,7 +134,7 @@ void VectorList<T, S>::shiftElementsToRight(const int starting_position) {
         throw OutOfBoundException("Error: out of boundary indexes");
 
     int nextPos = starting_position; // goes from right to left
-    while (!isLastValue(nextPosition(nextPos)))
+    while (!isLastPosition(nextPosition(nextPos)))
         nextPos = nextPosition(nextPos);
 
     while (firstNodeList() > nextPos || nextPos > starting_position) {
@@ -161,7 +151,7 @@ void VectorList<T, S>::shiftElementsToLeft(const int starting_position) {
 
     int nextPos = starting_position;
 
-    while (!isLastValue(nextPos)) {
+    while (!isLastPosition(nextPos)) {
         writeValueAt(nextPos, readValueAt(nextPosition(nextPos)));
         nextPos = nextPosition(nextPos);
     }
