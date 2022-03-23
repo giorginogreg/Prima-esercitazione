@@ -20,7 +20,7 @@ template<class T, int S>
 void LinkedList<T, S>::insertNodeAfter(TDA_Greg::Node<T> *p, T t) {
     auto nodeToInsert = new TDA_Greg::Node<T>(t);
 
-    if(isLastValue(p->getNextPos()))
+    if(isLastPosition(p->getNextPos()))
         nodeToInsert->setNextPos(_head);
     else
         nodeToInsert->setNextPos(p->getPrevPos());
@@ -46,7 +46,7 @@ bool LinkedList<T, S>::isEmpty() {
 }
 
 template<class T, int S>
-bool LinkedList<T, S>::isLastValue(TDA_Greg::Node<T> *p) {
+bool LinkedList<T, S>::isLastPosition(TDA_Greg::Node<T> *p) {
     return p == _head;
 }
 

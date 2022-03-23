@@ -24,7 +24,7 @@ public:
 
     virtual T readValueAt(TDA_Greg::Node<T> *p);
     virtual bool isEmpty();
-    virtual bool isLastValue(TDA_Greg::Node<T> *p);
+    virtual bool isLastPosition(TDA_Greg::Node<T> *p);
     virtual TDA_Greg::Node<T> *firstNodeList();
     virtual TDA_Greg::Node<T> *nextPosition(TDA_Greg::Node<T> *p);
     virtual TDA_Greg::Node<T> *previousPosition(TDA_Greg::Node<T> *p);

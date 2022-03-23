@@ -19,5 +19,4 @@ int main(int argc, char const *argv[]) {
         myList.insertNodeAfter(tempNode, elem_to_insert);
         tempNode = tempNode->getNextPos();
     }
-    int a = 1;
 }

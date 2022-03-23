@@ -23,7 +23,7 @@ public:
     // Observers
     virtual type readValueAt(position) = 0;
     virtual bool isEmpty() = 0;
-    virtual bool isLastValue( position ) = 0;
+    virtual bool isLastPosition(position ) = 0;
     virtual position firstNodeList(  ) = 0;
     virtual position nextPosition(position) = 0;
     virtual position previousPosition(position) = 0;
@@ -35,7 +35,7 @@ public:
 template<class T, class position, int S>
 position LinearList<T, position, S>::search(T v) {
     position p;
-    //for(p = firstNodeList(); !isLastValue(p) && readValueAt(p) < v; p = nextPosition(p));
+    //for(p = firstNodeList(); !isLastPosition(p) && readValueAt(p) < v; p = nextPosition(p));
     return p;
 }
 
