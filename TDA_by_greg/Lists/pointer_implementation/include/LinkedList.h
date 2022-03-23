@@ -12,22 +12,23 @@ template<class T, int S>
 class LinkedList: public LinearList<T, TDA_Greg::Node<T>*, S>{
 
 public:
-    
+    LinkedList();
+
     //Utility
-    //typedef typename LinearList<T, TDA_Greg::Node<T> *, S>::type TDA_Greg::Node<T> *t;
-    //typedef typename LinearList<T, TDA_Greg::Node<T> *, S>::position position;
+    typedef T type;
+    typedef TDA_Greg::Node<T>* position;
 
-    virtual void initialize();
-    virtual void writeValueAt(TDA_Greg::Node<T> *p, T);
-    virtual void insertNodeAfter(TDA_Greg::Node<T> *p, T);
-    virtual void deleteNodeAt(TDA_Greg::Node<T> *p);
+    void initialize();
+    void writeValueAt(position p, T);
+    void insertNodeAfter(position p, T);
+    void deleteNodeAt(position p);
+    type readValueAt(position p);
 
-    virtual T readValueAt(TDA_Greg::Node<T> *p);
-    virtual bool isEmpty();
-    virtual bool isLastPosition(TDA_Greg::Node<T> *p);
-    virtual TDA_Greg::Node<T> *firstNodeList();
-    virtual TDA_Greg::Node<T> *nextPosition(TDA_Greg::Node<T> *p);
-    virtual TDA_Greg::Node<T> *previousPosition(TDA_Greg::Node<T> *p);
+    bool isEmpty();
+    bool isLastPosition(position p);
+    position firstNodeList();
+    position nextPosition(position p);
+    position previousPosition(position p);
 
     virtual ~LinkedList();
 
@@ -35,7 +36,7 @@ public:
     bool operator ==(const LinkedList<T, S> &);
 
 private:
-    TDA_Greg::Node<T> *_head;
+    position _head;
 
 };
 

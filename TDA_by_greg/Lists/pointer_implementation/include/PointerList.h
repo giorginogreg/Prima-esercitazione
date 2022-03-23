@@ -33,6 +33,7 @@ public:
 private:
     Node<T> *lista;
     int node_numbers = S;
+    int elem_numbers; // No. of elems inside the list (useful to track how many elems are inside)
 
 };
 
