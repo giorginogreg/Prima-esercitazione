@@ -2,6 +2,7 @@
 
 #include <stdio.h>  /* printf, scanf, NULL */
 #include <stdlib.h> /* malloc, free, rand */
+
 /*template <typename T>
 List<T>::List()
 {
@@ -76,12 +77,3 @@ P PointerList<T, P, S>::previousPosition(P p) {
     return nullptr;
 }
 
-List::addNodo(Nodo n)
-{
-    this->nodi[] = n;
-}
-
-List::isEmpty()
-{
-    return numNodi == 0;
-}
