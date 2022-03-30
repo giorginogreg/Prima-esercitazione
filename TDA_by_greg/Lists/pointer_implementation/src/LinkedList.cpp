@@ -6,7 +6,7 @@
 
 template<class T, int S>
 void LinkedList<T, S>::initialize() {
-    _head = new TDA_Greg::Node<T>(0);
+    _head = new TDA_Greg::Node<T>();
     _head->setNextPos(_head);
     _head->setPrevPos(_head);
     this->_elems_inside = 0;
@@ -31,7 +31,7 @@ void LinkedList<T, S>::insertNodeAfter(TDA_Greg::Node<T> *p, const T t) {
 }
 
 template<class T, int S>
-void LinkedList<T, S>::deleteNodeAt(TDA_Greg::Node<T> *p) {
+void LinkedList<T, S>::deleteNodeAt(const LinkedList::position p) {
     p->getPrevPos()->setNextPos(p->getNextPos());
     p->getNextPos()->setPrevPos(p->getPrevPos());
     delete p;
@@ -50,12 +50,12 @@ bool LinkedList<T, S>::isEmpty() {
 
 template<class T, int S>
 bool LinkedList<T, S>::isLastPosition(TDA_Greg::Node<T> *p) {
-    return p == _head;
+    return p->getNextPos() == _head;
 }
 
 template<class T, int S>
 TDA_Greg::Node<T>* LinkedList<T, S>::firstNodeList() {
-    return _head;
+    return _head->getNextPos();
 }
 
 template<class T, int S>

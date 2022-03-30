@@ -61,3 +61,42 @@ TEST_CASE( "List Shifting" ) {
     REQUIRE(linkedList.readValueAt(tempPos->getNextPos()->getNextPos()) == 1);
 
 }
+
+TEST_CASE( "First insert" ) {
+    const int size = 0;
+    LinkedList<int, size> linkedList;
+    auto tempPos = linkedList.firstNodeList();
+    linkedList.insertNodeAfter(tempPos, 1);
+    REQUIRE(linkedList.readValueAt(linkedList.firstNodeList()) == 1);
+    REQUIRE(linkedList.nextPosition(tempPos) == linkedList.firstNodeList());
+    REQUIRE(linkedList.isLastPosition(tempPos->getNextPos()));
+    REQUIRE(linkedList.previousPosition(tempPos) == linkedList.firstNodeList()->getPrevPos());
+}
+
+
+TEST_CASE( "Insert after a node at tail" ) {
+    const int size = 0;
+    LinkedList<int, size> linkedList;
+    auto tempPos = linkedList.firstNodeList();
+    linkedList.insertNodeAfter(tempPos, 1);
+    while(!linkedList.isLastPosition(tempPos)) tempPos = tempPos->getNextPos();
+    linkedList.insertNodeAfter(tempPos, 2);
+    auto before_last = tempPos;
+    tempPos = tempPos->getNextPos();
+    REQUIRE(linkedList.readValueAt(tempPos) == 2);
+    REQUIRE(linkedList.nextPosition(tempPos->getNextPos()) == linkedList.firstNodeList());
+    REQUIRE(linkedList.previousPosition(tempPos) == before_last);
+}
+
+
+TEST_CASE( "Insert a node between the first and the tail" ) {
+    const int size = 0;
+    LinkedList<int, size> linkedList;
+    auto tempPos = linkedList.firstNodeList();
+    linkedList.insertNodeAfter(tempPos, 1);
+    tempPos = tempPos->getNextPos(); // Last node
+    linkedList.insertNodeAfter(tempPos, 2);
+    while(!linkedList.isLastPosition(tempPos)) tempPos = tempPos->getNextPos();
+    REQUIRE(linkedList.readValueAt(tempPos) == 2);
+
+}
