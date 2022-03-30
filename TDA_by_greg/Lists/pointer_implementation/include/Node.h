@@ -6,7 +6,7 @@ namespace TDA_Greg
     template <typename T>
     class Node
     {
-        friend class LinearList<T, Node*, 0>; // Node class is Linked List friend, so it can access private fields
+        //friend class LinearList<T, Node*, 0>; // Node class is Linked List friend, so it can access private fields
     private:
         T _elem;
         Node<T> *_nextPos;

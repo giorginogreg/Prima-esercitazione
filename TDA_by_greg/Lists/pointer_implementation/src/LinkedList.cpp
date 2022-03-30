@@ -21,12 +21,9 @@ template<class T, int S>
 void LinkedList<T, S>::insertNodeAfter(TDA_Greg::Node<T> *p, const T t) {
     auto nodeToInsert = new TDA_Greg::Node<T>(t);
 
-    if(isLastPosition(p->getNextPos()))
-        nodeToInsert->setNextPos(_head);
-    else
-        nodeToInsert->setNextPos(p->getPrevPos());
-    p->setNextPos(nodeToInsert);
+    nodeToInsert->setNextPos(p->getNextPos());
     nodeToInsert->setPrevPos(p);
+    p->setNextPos(nodeToInsert);
     this->setElementsInside(this->getElementsInside() + 1);
 }
 
@@ -45,7 +42,7 @@ typename LinkedList<T,S>::type LinkedList<T, S>::readValueAt(const LinkedList::p
 
 template<class T, int S>
 bool LinkedList<T, S>::isEmpty() {
-    return _head->getNextPos() == _head; // If the next position is equal to the same node (initialization cond.)
+    return _head->getNextPos() == _head && _head->getPrevPos() == _head; // If the next position is equal to the same node (initialization cond.)
 }
 
 template<class T, int S>

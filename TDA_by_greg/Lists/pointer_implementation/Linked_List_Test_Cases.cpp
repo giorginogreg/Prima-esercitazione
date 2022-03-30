@@ -54,11 +54,12 @@ TEST_CASE( "List Shifting" ) {
     tempPos = tempPos->getNextPos();
     linkedList.insertNodeAfter(tempPos, 3);
 
-    tempPos = linkedList.firstNodeList();
+    tempPos = linkedList.firstNodeList()->getPrevPos(); // Raggiungo la head per inserire in testa prima del nodo
     linkedList.insertNodeAfter(tempPos, 0);
 
-    REQUIRE(linkedList.readValueAt(tempPos->getNextPos()) == 0);
-    REQUIRE(linkedList.readValueAt(tempPos->getNextPos()->getNextPos()) == 1);
+    tempPos = linkedList.firstNodeList();
+    REQUIRE(linkedList.readValueAt(tempPos) == 0);
+    REQUIRE(linkedList.readValueAt(tempPos->getNextPos()) == 1);
 
 }
 
