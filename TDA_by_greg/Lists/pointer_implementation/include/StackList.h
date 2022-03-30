@@ -7,38 +7,42 @@
 
 #include "../../include/LinearList.h"
 #include "../include/LinkedList.h"
+#include "../src/LinkedList.cpp"
 #include "Node.h"
 template<class T, int S>
-class StackList: public LinearList<T, TDA_Greg::Node<T> *, S> {
+class StackList {
 
 public:
-    void push();
-    void pop(); // Discard last changes
-    bool empty();
-    T top(); // Return last inserted element
+    virtual void push(T);
+    virtual T pop(); // Discard last changes
+    virtual bool empty();
+    virtual T top(); // Return last inserted element
 
 private:
     LinkedList<T, S> _l;
-    TDA_Greg::Node<T> getLastNode();
+    TDA_Greg::Node<T>* getLastNode();
 };
 
 template<class T, int S>
-void StackList<T, S>::push() {
+void StackList<T, S>::push(T elem) {
     auto last_node = getLastNode();
-    _l.insertNodeAfter(last_node);
+    _l.insertNodeAfter(last_node, elem);
 }
 
 template<class T, int S>
-TDA_Greg::Node<T> StackList<T, S>::getLastNode() {
+TDA_Greg::Node<T>* StackList<T, S>::getLastNode() {
     auto first_node = _l.firstNodeList();
-    while(!_l.isLastPosition(first_node)) first_node = first_node->getNextPos();
+    while(!_l.isLastPosition(first_node))
+        first_node = first_node->getNextPos();
     return first_node;
 }
 
 template<class T, int S>
-void StackList<T, S>::pop() {
+T StackList<T, S>::pop() {
     auto last_node = getLastNode();
+    T temp_value = last_node->getElem();
     _l.deleteNodeAt(last_node);
+    return temp_value;
 }
 
 template<class T, int S>
@@ -48,7 +52,7 @@ bool StackList<T, S>::empty() {
 
 template<class T, int S>
 T StackList<T, S>::top() {
-    return getLastNode().getElem();
+    return getLastNode()->getElem();
 }
 
 
