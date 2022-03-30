@@ -28,7 +28,7 @@ public:
     virtual position nextPosition(position) = 0;
     virtual position previousPosition(position) = 0;
 
-    virtual position search(type);
+    //virtual position search(type);
 
     virtual int getElementsInside() const { return _elems_inside; }
     virtual void setElementsInside(int elementsInside) { _elems_inside = elementsInside; }
@@ -36,6 +36,7 @@ protected:
     int _elems_inside;
 
 };
+/*
 
 template<class T, class position, int S>
 position LinearList<T, position, S>::search(T v) {
@@ -43,5 +44,6 @@ position LinearList<T, position, S>::search(T v) {
     //for(p = firstNodeList(); !isLastPosition(p) && readValueAt(p) < v; p = nextPosition(p));
     return p;
 }
+*/
 
 #endif
