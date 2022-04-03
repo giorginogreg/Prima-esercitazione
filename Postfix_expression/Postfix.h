@@ -5,7 +5,7 @@
 #ifndef ALGORITHM_DATA_STRUCTURES_POSTFIX_H
 #define ALGORITHM_DATA_STRUCTURES_POSTFIX_H
 
-#include "../TDA_by_greg/Lists/pointer_implementation/include/StackList.h"
+#include "../TDA_by_greg/Lists/pointer_implementation/Stack/include/StackList.h"
 #include <string>
 #include <regex>
 
