@@ -1,6 +1,7 @@
 CC=g++
 C_FLAGS=-c -Wall -std=c++11
-.PHONY: clean
+OUTPUT_FLAGS=-fprofile-arcs -ftest-coverage
+.PHONY: clean gcov lcov genhtml generate_report
 
 #progetto: progetto.o lib.o
 #	$(CC) progetto.o lib.o -o progetto
@@ -9,16 +10,28 @@ C_FLAGS=-c -Wall -std=c++11
 #lib.o: lib.cpp lib.h
 #	$(CC) $(C_FLAGS) lib.cpp
 
-main: main.o Queue.o
-	$(CC) main.o Queue.o -o main
+generate_report:
+	make main && make gcov && make lcov && make genhtml
 
-main.o: Queue.o
+genhtml:
+	genhtml main_coverage.info --output-directory outHTML && make clean
+
+lcov:
+	 lcov -c --directory . --output-file main_coverage.info
+
+gcov:
+	gcov main.cpp && ./main
+
+main: main.o
+	$(CC) -o main $(OUTPUT_FLAGS) main.cpp
+
+main.o:
 	$(CC) $(C_FLAGS) main.cpp
 
-Queue.o:
-	$(CC) $(C_FLAGS) ../src/Queue.cpp
+#Queue.o:
+#	$(CC) $(C_FLAGS) ../src/Queue.cpp
 
 clean:
-	@rm -rf *.o *~ *#
+	@rm -rf *.o *~ *# *.gcno *.gcda *.gcov main_coverage.info main
 	@rm -rf vector_implementation/*.o vector_implementation/*~ vector_implementation/*#
 	@echo "Not necessaries files deleted"

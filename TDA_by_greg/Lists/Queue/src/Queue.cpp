@@ -6,5 +6,5 @@
 
 template<class Type, int Size>
 void Queue<Type, Size>::create() {
-    //max_size = Size;
+    max_size = Size;
 }
