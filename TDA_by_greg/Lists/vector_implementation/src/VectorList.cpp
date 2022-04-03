@@ -1,6 +1,6 @@
 #include <string>
 #include "../include/VectorList.h"
-#include "../../include/OutOfBoundException.h"
+#include "../../../Exception/OutOfBoundException.h"
 
 template<typename T, int S>
 VectorList<T, S>::VectorList() {

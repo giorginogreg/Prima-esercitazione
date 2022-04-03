@@ -1,7 +1,7 @@
 #ifndef VECTORLIST_H
 #define VECTORLIST_H
 
-#include "../../include/LinearList.h"
+#include "../../pointer_implementation/Linear List/LinearList.h"
 
 #pragma once
 

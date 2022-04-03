@@ -22,10 +22,10 @@ LinkedListTester.o:
 	$(CC) pointer_implementation/tester.cpp -o LinkedListTester.o
 
 tester: tester.o VectorList.o OutOfBoundException.o
-	$(CC) Node.o vector_implementation/VectorList.o vector_implementation/tester.o vector_implementation/OutOfBoundException.o -o Tester
+	$(CC) vector_implementation/VectorList.o vector_implementation/tester.o vector_implementation/OutOfBoundException.o -o Tester
 
 OutOfBoundException.o:
-	$(CC) $(C_FLAGS) vector_implementation/src/OutOfBoundException.cpp -o vector_implementation/OutOfBoundException.o
+	$(CC) $(C_FLAGS) ../Exception/OutOfBoundException.cpp -o vector_implementation/OutOfBoundException.o
 
 tester.o: VectorList.o
 	$(CC) $(C_FLAGS) vector_implementation/tester.cpp -o vector_implementation/tester.o
