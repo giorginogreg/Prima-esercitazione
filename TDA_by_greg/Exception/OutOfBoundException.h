@@ -7,6 +7,7 @@
 
 
 #include <string>
+#include <exception>
 
 class OutOfBoundException: public std::exception{
 public:

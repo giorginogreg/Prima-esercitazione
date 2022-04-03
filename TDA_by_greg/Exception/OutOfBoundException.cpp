@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "../include/OutOfBoundException.h"
+#include "OutOfBoundException.h"
 
 OutOfBoundException::OutOfBoundException(std::string msg) {
     std::cout << msg << std::endl;
