@@ -1,3 +1,6 @@
+**/*.gcov
+**/*.gcda
+**/*.gcno
 **.out
 **/.vscode
 **/.idea
@@ -10,3 +13,5 @@ cpp
 tester
 !CMakeLists.txt
 cmake-build-debug
+
+outHTML
