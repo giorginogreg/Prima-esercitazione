@@ -8,10 +8,25 @@
 #include "/Users/greg/Desktop/Universita/ASD/Esercitazioni_ASD/catch.hpp"
 
 TEST_CASE( "List initialization" ) {
-
     PointerQueue<int, 10> p;
+    REQUIRE(p.isEmpty());
+}
 
-    REQUIRE_FALSE(p.isEmpty());
-    //REQUIRE(stackList.getElementsInside() == 0);
+TEST_CASE( "Push and read value" ) {
+    PointerQueue<int, 10> p;
+    p.enqueue(50);
+    REQUIRE(p.readQueue() == 50);
+}
+
+TEST_CASE( "Enqueue and dequeue" ) {
+    PointerQueue<int, 10> p;
+    p.enqueue(50);
+    REQUIRE(p.dequeue() == 50);
+    p.enqueue(100);
+
+    p.enqueue(150);
+    REQUIRE(p.dequeue() == 100);
+    REQUIRE(p.dequeue() == 150);
 
 }
+
