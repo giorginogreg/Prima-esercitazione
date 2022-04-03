@@ -9,7 +9,7 @@ FILE(GLOB GENERIC_HEADER_FILES
         "../include/*.h")
 
 FILE(GLOB SRCFILES
-        "src/*.tpp")
+        "src/*.cpp")
 
 FILE(GLOB HEADER_FILES
         "include/*.h")
@@ -18,5 +18,11 @@ add_executable(
     pointerQueue
     ${GENERIC_HEADER_FILES} ${GENERIC_SRCFILES}
     ${SRCFILES} ${HEADER_FILES}
-    main.cpp
+    pointerQueue.cpp
+)
+
+add_executable(
+    tester_pointerQueue
+    ${SRCFILES} ${HEADER_FILES}
+    tests/tester_pointerQueue.cpp
 )

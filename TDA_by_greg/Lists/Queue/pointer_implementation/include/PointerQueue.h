@@ -9,10 +9,10 @@
 template<class Type, int Size>
 class PointerQueue: public Queue<Type, Size> {
 public:
-    virtual bool isEmpty();
-    virtual Type readQueue();
-    virtual Type dequeue();
-    virtual void enqueue(Type type);
+    bool isEmpty();
+    Type readQueue();
+    Type dequeue();
+    void enqueue(Type type);
     void create() override;
 };
 
