@@ -5,10 +5,10 @@
 #ifndef ALGORITHM_DATA_STRUCTURES_STACKLIST_H
 #define ALGORITHM_DATA_STRUCTURES_STACKLIST_H
 
-#include "../../include/LinearList.h"
-#include "../include/LinkedList.h"
-#include "../src/LinkedList.cpp"
-#include "Node.h"
+#include "../../Linear List/LinearList.h"
+#include "../../Linked List/include/LinkedList.h"
+#include "../../Linked List/src/LinkedList.cpp"
+#include "../../include/Node.h"
 template<class T, int S>
 class StackList {
 
