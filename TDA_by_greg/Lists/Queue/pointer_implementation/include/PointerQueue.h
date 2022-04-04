@@ -15,6 +15,8 @@ class PointerQueue: public Queue<Type, Size> {
 public:
     PointerQueue();
 
+    virtual ~PointerQueue();
+
     bool isEmpty();
     Type readQueue();
     Type dequeue();

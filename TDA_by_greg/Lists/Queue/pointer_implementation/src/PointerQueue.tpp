@@ -46,6 +46,9 @@ void PointerQueue<Type, Size>::enqueue(Type elem) {
         position temp_pos = headQueue;
         while(!isLastNode(temp_pos)) temp_pos = temp_pos->getNextPos();
         temp_pos->setNextPos(nodeToEnqueue);
+
+        // versione corretta
+        // end->setNextPos(nodeToEnqueue);
     } else {
         start = headQueue = nodeToEnqueue;
     }
@@ -57,5 +60,11 @@ void PointerQueue<Type, Size>::enqueue(Type elem) {
 template<class Type, int Size>
 bool PointerQueue<Type, Size>::isLastNode(PointerQueue::position p) {
     return p->getNextPos() == nullptr;
+}
+
+template<class Type, int Size>
+PointerQueue<Type, Size>::~PointerQueue() {
+    while (!isEmpty())
+        dequeue();
 }
 
