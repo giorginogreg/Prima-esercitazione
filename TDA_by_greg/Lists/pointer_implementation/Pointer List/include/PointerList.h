@@ -2,8 +2,8 @@
 #ifndef POINTER_LIST_H
 #define POINTER_LIST_H
 
-#include "../include/Node.h"
-#include "../../include/LinearList.h"
+#include "../../include/Node.h"
+#include "../../Linear List/LinearList.h"
 
 using namespace TDA_Greg;
 

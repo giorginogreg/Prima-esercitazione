@@ -1,11 +1,13 @@
 #include <stdio.h> 
 #include "ComplexNumbers.h"
+/*
 
 ComplexNumber::ComplexNumber(double first_real, double second_real)
 {
     this->first_real = first_real;
     this->second_real = second_real;
 }
+*/
 
 ComplexNumber ComplexNumber::operator+(ComplexNumber c)
 {

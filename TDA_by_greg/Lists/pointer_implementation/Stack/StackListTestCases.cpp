@@ -10,7 +10,6 @@
 
 TEST_CASE( "List initialization" ) {
 
-    const int size = 10;
     StackList<int, 10> stackList;
 
     //REQUIRE(linkedList.getDimension() == size);

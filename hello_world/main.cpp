@@ -1,5 +1,5 @@
-using namespace std;
 #include <iostream> // simile alla Forward declaration
+using namespace std;
 
 int main(int argc, char const *argv[])
 {

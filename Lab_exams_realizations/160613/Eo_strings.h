@@ -6,7 +6,7 @@
 #define POINTERQUEUE_EO_STRINGS_H
 
 #include <string>
-#include "/Users/greg/Desktop/Universita/ASD/Esercitazioni_ASD/TDA_by_greg/Lists/pointer_implementation/Linked List/include/LinkedList.h"
+#include "./../../TDA_by_greg/Lists/pointer_implementation/Linked List/include/LinkedList.h"
 using namespace std;
 
 class Eo_strings {

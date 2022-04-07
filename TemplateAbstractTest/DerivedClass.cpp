@@ -9,6 +9,6 @@ BaseTemplate<int> DerivedClass<int>::GetValue() {
     return *this;
 }
 
-int main(int argc, char const *argv[]) {
+int main() {
     new DerivedClass<int>();
 }

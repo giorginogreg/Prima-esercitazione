@@ -5,7 +5,7 @@
 #include "../include/PointerQueue.h"
 
 #define CATCH_CONFIG_MAIN
-#include "/Users/greg/Desktop/Universita/ASD/Esercitazioni_ASD/catch.hpp"
+#include "../../../../../catch.hpp"
 
 TEST_CASE( "List initialization" ) {
     PointerQueue<int, 10> p;

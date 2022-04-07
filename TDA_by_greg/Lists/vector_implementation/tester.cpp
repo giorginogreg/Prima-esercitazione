@@ -2,7 +2,7 @@
 #include "./include/VectorList.h"
 #include "src/VectorList.cpp"
 
-int main(int argc, char const *argv[])
+int main()
 {
     const int size = 0;
     VectorList<int, size> vectorList;
