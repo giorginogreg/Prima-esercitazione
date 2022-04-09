@@ -8,7 +8,7 @@
 #include "../../Linear List/LinearList.h"
 #include "../../Linked List/include/LinkedList.h"
 #include "../../Linked List/src/LinkedList.cpp"
-#include "../../include/Node.h"
+#include "../../../../include/Node.h"
 template<class T, int S>
 class StackList {
 

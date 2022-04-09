@@ -7,23 +7,39 @@
 
 #include <ostream>
 #include "../../include/Set.h"
+#include "../../../include/Node.h"
+#include "../../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
 
 using namespace std;
 
-template<class T, class PositionType>
-class PointerSet: public Set<T, PositionType> {
+template<class T, int elems>
+class PointerSet: public Set<T, TDA_Greg::Node<T>* > {
 public:
+    typedef TDA_Greg::Node<T>* PositionType;
+
+    PointerSet(){
+        this->elems_inside = 0;
+        create();
+    }
+
+    ~PointerSet() { delete p; }
+
     void create();
     bool isEmpty();
     bool belongsTo(T t);
     void insert(T t);
     void remove(T t);
-    Set<T, PositionType> union_op(Set<T, PositionType> set);
-    Set<T, PositionType> intersect(Set<T, PositionType> set);
-    Set<T, PositionType> difference(Set<T, PositionType> set);
+    Set<T, PositionType>* union_op(Set<T, PositionType>* set);
+    Set<T, PositionType>* intersect(Set<T, PositionType>* set);
+    friend Set<T, PositionType>* difference( PointerSet<T, elems> set);
+
     ostream &operator <<(ostream&);
+
+
 protected:
-    int elems_inside = 0;
+    PointerList<T, elems>* p = new PointerList<T, elems>();
 };
+
+#include "../src/PointerSet.tpp"
 
 #endif //POINTERQUEUE_POINTERSET_H

@@ -2,40 +2,50 @@
 #ifndef POINTER_LIST_H
 #define POINTER_LIST_H
 
-#include "../../include/Node.h"
+#include "../../../../include/Node.h"
 #include "../../Linear List/LinearList.h"
 
-using namespace TDA_Greg;
+using TDA_Greg::Node;
 
 // Insieme di nodi
-template <class T, class P, int S>
-class PointerList: public LinearList<T, P, S>
+template <class T, int S>
+class PointerList: public LinearList<T, Node<T>*, S>
 {
+
 public:
-    virtual void initialize();
+     typedef Node<T>* PositionType;
 
-    virtual void writeValueAt(int i, T t);
-    virtual void insertNodeAfter(P p, T t);
-    virtual void deleteNodeAt(P p);
-    virtual T readValueAt(P p);
+     PointerList(); // Default constructor - Equal to create operator
+     PointerList(const PointerList<T,S> &p); // Copy constructor
 
-    virtual bool isEmpty();
-    virtual bool isLastValue(P p);
-    virtual P firstNodeList();
-    virtual P nextPosition(P p);
-    virtual P previousPosition(P p);
+     void initialize();
 
-    PointerList(); // Default constructor - Equal to create operator
-    PointerList(int numElem);
+     void writeValueAt(PositionType i, T t);
+     void insertNodeAfter(PositionType p, T t);
+     void deleteNodeAt(PositionType p);
+     T readValueAt(PositionType p) const;
 
-    ~PointerList();
+     bool isEmpty() const;
+     bool isLastPosition(PositionType p) const;
+     PositionType firstNodeList() const;
+     PositionType nextPosition(PositionType p) const;
+     PositionType previousPosition(PositionType p) const;
+
+     // Utility methods
+     bool find(T);
+     PositionType lastNodeList() { return _tail; };
+     PositionType getFirstPositionByElem(T t); // Assuming that the elem exists in the list
+     PositionType getHead() const { return _list; };
+     // Destructor
+     ~PointerList();
 
 private:
-    Node<T> *lista;
-    int node_numbers = S;
-    int elem_numbers; // No. of elems inside the list (useful to track how many elems are inside)
+    PositionType _list;
+    PositionType _tail;
+    int _max_nodes;
 
 };
 
+#include "../src/PointerList.tpp"
 
 #endif

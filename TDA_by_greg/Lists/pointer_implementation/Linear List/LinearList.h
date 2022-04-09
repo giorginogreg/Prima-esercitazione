@@ -21,12 +21,12 @@ public:
     virtual void deleteNodeAt(position) = 0;
 
     // Observers
-    virtual type readValueAt(position) = 0;
-    virtual bool isEmpty() = 0;
-    virtual bool isLastPosition(position ) = 0;
-    virtual position firstNodeList(  ) = 0;
-    virtual position nextPosition(position) = 0;
-    virtual position previousPosition(position) = 0;
+    virtual type readValueAt(position) const = 0;
+    virtual bool isEmpty() const = 0;
+    virtual bool isLastPosition(position ) const = 0;
+    virtual position firstNodeList( ) const = 0;
+    virtual position nextPosition(position) const = 0;
+    virtual position previousPosition(position) const = 0;
 
     //virtual position search(type);
 
@@ -34,7 +34,6 @@ public:
     virtual void setElementsInside(int elementsInside) { _elems_inside = elementsInside; }
 protected:
     int _elems_inside;
-
 };
 /*
 

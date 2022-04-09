@@ -1,4 +1,4 @@
-#include "../Linear List/LinearList.h"
+#include "../Lists/pointer_implementation/Linear List/LinearList.h"
 #ifndef NODE_GREG_H
 #define NODE_GREG_H
 namespace TDA_Greg

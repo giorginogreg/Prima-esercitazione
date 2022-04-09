@@ -7,8 +7,11 @@ FILE(GLOB SRCFILES
         "./include/*.h")
 
 FILE(GLOB SUPERSRCFILES
-        "./../include/*.h")
-add_executable(PointerSet main.cpp
+        "./../include/*.h"
+        "./../../Lists/pointer_implementation/Pointer List/src/*.tpp"
+        "./../../Lists/pointer_implementation/Pointer List/include/*.h"
+)
+add_executable(PointerSet PointerSet.cpp
         ${SRCFILES}
         ${SUPERSRCFILES}
         )

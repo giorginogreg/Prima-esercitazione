@@ -5,7 +5,7 @@
 #ifndef POINTERQUEUE_H
 #define POINTERQUEUE_H
 #include "../../include/Queue.h"
-#include "../../../pointer_implementation/include/Node.h"
+#include "../../../../include/Node.h"
 
 template<class Type, int Size>
 class PointerQueue: public Queue<Type, Size> {
