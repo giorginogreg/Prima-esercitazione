@@ -88,20 +88,26 @@ Set <T, typename PointerSet<T, nElems>::PositionType>*
     return intersected_set;*/
 }
 
-template<class T, int nElems>
-Set <T, typename PointerSet<T, nElems>::PositionType>*
-difference( PointerSet<T, nElems> set2 ) {
-    auto diff_set = new PointerSet<T, nElems>();
-    diff_set.p = new PointerList<T, nElems>(set2.p);
 
-    auto temp_pos = set2.firstNodeList();
-    while(!set2.isLastPosition(temp_pos)){
-        if(set2.find(temp_pos->getElem()))
-            diff_set.remove(temp_pos->getElem());
+template<class T, int nElems>
+Set<T, typename PointerSet<T, nElems>::PositionType>
+    *PointerSet<T, nElems>::difference(Set<T, PositionType> *set) {
+    auto* pointerSet = dynamic_cast<PointerSet*>(set);
+    auto pointerList = pointerSet->p;
+    auto diff_set = new PointerSet<T, nElems>();
+    diff_set->p = new PointerList<T, nElems>(*this->p);
+
+    auto temp_pos = p->getHead();
+    do {
         temp_pos = temp_pos->getNextPos();
-    }
+        if(pointerList->find(temp_pos->getElem())) // if elem is set on the other list..
+            diff_set->remove(temp_pos->getElem());
+    } while (!pointerList->isLastPosition(temp_pos));
+
     return diff_set;
 }
+
+
 
 template<class T, int nElems>
 void PointerSet<T, nElems>::remove(T t) {

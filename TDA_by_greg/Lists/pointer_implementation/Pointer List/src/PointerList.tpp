@@ -58,9 +58,12 @@ void PointerList<TypeElems, S>::insertNodeAfter(PositionType p, TypeElems t) {
 template<class TypeElems, int S>
 void PointerList<TypeElems, S>::deleteNodeAt(PositionType p) {
     p->getPrevPos()->setNextPos(p->getNextPos());
-    p->getNextPos()->setPrevPos(p->getPrevPos());
-    if(isLastPosition(p))
+
+    if(!isLastPosition(p))
+        p->getNextPos()->setPrevPos(p->getPrevPos());
+    else
         delete p;
+
     this->setElementsInside(this->getElementsInside() - 1);
 }
 

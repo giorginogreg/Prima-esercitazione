@@ -16,7 +16,7 @@ public:
      typedef Node<T>* PositionType;
 
      PointerList(); // Default constructor - Equal to create operator
-     PointerList(const PointerList<T,S> &p); // Copy constructor
+     PointerList(const PointerList<T,S> &Fp); // Copy constructor
 
      void initialize();
 

@@ -31,9 +31,9 @@ public:
     void remove(T t);
     Set<T, PositionType>* union_op(Set<T, PositionType>* set);
     Set<T, PositionType>* intersect(Set<T, PositionType>* set);
-    friend Set<T, PositionType>* difference( PointerSet<T, elems> set);
-
+    Set<T, PositionType>* difference( Set<T, PositionType>* set);
     ostream &operator <<(ostream&);
+
 
 
 protected:
