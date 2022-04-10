@@ -131,6 +131,4 @@ ostream &operator<<(ostream &o, PointerSet<T, elems> &pointerSet) {
 
 }
 
-
-
 #endif //POINTERSET_POINTERSET_TPP

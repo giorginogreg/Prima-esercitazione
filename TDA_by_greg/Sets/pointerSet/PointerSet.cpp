@@ -35,6 +35,5 @@ int main(int argc, char *argv[]) {
     auto* differenced_set = dynamic_cast<PointerSet<int, 10>*>(p.difference(&p2)); // Expect 2
     cout << *differenced_set << endl;
 
-
     return 0;
 }
