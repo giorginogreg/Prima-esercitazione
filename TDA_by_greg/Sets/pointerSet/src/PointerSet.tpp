@@ -107,17 +107,30 @@ Set<T, typename PointerSet<T, nElems>::PositionType>
     return diff_set;
 }
 
-
-
 template<class T, int nElems>
 void PointerSet<T, nElems>::remove(T t) {
     p->deleteNodeAt(p->getFirstPositionByElem(t));
 }
 
 template<class T, int nElems>
-ostream &PointerSet<T, nElems>::operator<<(ostream &o) {
-    return o << endl;
+void PointerSet<T, nElems>::printTDA() {
+    auto head = p->getHead();
+    do {
+        head = head->getNextPos();
+        cout << head->getElem() << " | ";
+    } while (!p->isLastPosition(head));
+    cout << endl;
 }
+
+template<class T, int elems>
+ostream &operator<<(ostream &o, PointerSet<T, elems> &pointerSet) {
+
+    o << "List Content: " << endl;
+    pointerSet.printTDA();
+    return o;
+
+}
+
 
 
 #endif //POINTERSET_POINTERSET_TPP

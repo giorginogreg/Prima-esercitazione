@@ -32,12 +32,11 @@ public:
     Set<T, PositionType>* union_op(Set<T, PositionType>* set);
     Set<T, PositionType>* intersect(Set<T, PositionType>* set);
     Set<T, PositionType>* difference( Set<T, PositionType>* set);
-    ostream &operator <<(ostream&);
-
-
+    void printTDA();
 
 protected:
     PointerList<T, elems>* p = new PointerList<T, elems>();
+
 };
 
 #include "../src/PointerSet.tpp"
