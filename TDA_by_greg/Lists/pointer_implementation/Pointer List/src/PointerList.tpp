@@ -69,7 +69,7 @@ void PointerList<TypeElems, S>::deleteNodeAt(PositionType p) {
 
 template<class TypeElems, int S>
 TypeElems PointerList<TypeElems, S>::readValueAt(PositionType p) const {
-    return p->getElem();
+    return *p->getElem();
 }
 
 template<class TypeElems, int S>

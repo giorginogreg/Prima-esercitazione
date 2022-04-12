@@ -12,6 +12,10 @@ namespace TDA_Greg
         Node<T> *_nextPos;
         Node<T> *_prevPos;
     public:
+        Node() {}
+
+        Node(T elem) : _elem(elem) {}
+
         void setElem(T elem) {
             _elem = elem;
         }
@@ -24,8 +28,8 @@ namespace TDA_Greg
             _prevPos = prevPos;
         }
 
-        T getElem() const {
-            return _elem;
+        T* getElem() {
+            return &_elem;
         }
 
         Node<T> *getNextPos() const {
@@ -36,12 +40,6 @@ namespace TDA_Greg
             return _prevPos;
         }
 
-    public:
-        Node() {}
-
-        Node(T elem) {
-            _elem = elem;
-        }
         //bool operator ==(Node &);
     };
 

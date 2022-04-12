@@ -12,4 +12,4 @@ FILE(GLOB SUPER_SRCFILES
 add_executable(PointerDictionary main.cpp
         ${SRCFILES}
         ${SUPER_SRCFILES}
-        src/PointerDictionary.cpp)
+        src/PointerDictionary.tpp)
