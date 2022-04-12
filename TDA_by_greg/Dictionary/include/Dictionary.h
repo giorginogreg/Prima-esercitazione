@@ -7,12 +7,6 @@
 
 template<class K_T, class V_T>
 struct Pair {
-
-  /*  Pair(K_T key, V_T value) {
-        _key = key;
-        _value = value;
-    }*/
-
     K_T _key;
     V_T _value;
 };

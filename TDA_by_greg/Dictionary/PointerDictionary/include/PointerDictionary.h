@@ -6,7 +6,7 @@
 #define POINTERDICTIONARY_H
 
 #include "../../include/Dictionary.h"
-#include "../../../include/Node_Dictionary.h"
+#include "../../../include/Node.h"
 #include "../../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
 
 template<class K_T, class V_T>
