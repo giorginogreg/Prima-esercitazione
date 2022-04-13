@@ -13,10 +13,39 @@
 
 template<class T>
 struct TreeNode {
+
     TreeNode* _ancestor;
-    T value;
+    T* value;
     TreeNode* _lSon;
     TreeNode* _rSon;
+
+    TreeNode() {
+        value = nullptr;
+        _ancestor =  _lSon = _rSon = nullptr;
+    }
+    TreeNode(T val) {
+        value = new T(val);
+        _ancestor = _lSon = _rSon = nullptr;
+    }
+    TreeNode(TreeNode<T>* ancestor) {
+        value = nullptr;
+        _ancestor = ancestor;
+        _lSon = _rSon = nullptr;
+
+    }
+    TreeNode(T val, TreeNode<T>* ancestor) {
+        *value = val;
+        _ancestor = ancestor;
+        _lSon = _rSon = nullptr;
+
+    }
+    TreeNode(T val, TreeNode<T>* ancestor,TreeNode<T>* lSon, TreeNode<T>* rSon ) {
+        *value = val;
+        _ancestor = ancestor;
+        _lSon = lSon;
+        _rSon = rSon;
+
+    }
 };
 
 template<class T>
@@ -24,29 +53,31 @@ class Tree {
 
 public:
 
+    typedef TreeNode<T>* tree;
+
     // operatori
     virtual void create() = 0;
     virtual bool empty() const = 0;
 
-    virtual TreeNode<T> root() const = 0;
-    virtual TreeNode<T> ancestor(TreeNode<T>) const =  0;
-    virtual TreeNode<T> getLeftNode(TreeNode<T>) const = 0;
-    virtual TreeNode<T> getRightNode(TreeNode<T>) const = 0;
+    virtual TreeNode<int> *const root() const = 0;
+    virtual TreeNode<T>* ancestor(TreeNode<T>* ) const =  0;
+    virtual TreeNode<T>* getLeftNode(TreeNode<T>*) const = 0;
+    virtual TreeNode<T>* getRightNode(TreeNode<T>* ) const = 0;
     virtual bool isLeftNodeEmpty(TreeNode<T>) const = 0;
     virtual bool isRightNodeEmpty(TreeNode<T>) const = 0;
 
     virtual void eraseTree(TreeNode<T>) = 0;
 
     virtual T readValue(TreeNode<T>) const = 0;
-    virtual void writeValue(TreeNode<T>&, T ) = 0;
+    virtual void writeValue(TreeNode<T>*, T ) = 0;
 
     virtual void insertRoot(TreeNode<T>*) = 0;
     virtual void insertRightNode(TreeNode<T>*) = 0;
     virtual void insertLeftNode(TreeNode<T>*) = 0;
 
-    virtual void previsit(TreeNode<T>);
-    virtual void invisita(TreeNode<T>);
-    virtual void postvisit(TreeNode<T>);
+    //virtual void previsit(TreeNode<T>);
+    //virtual void invisita(TreeNode<T>);
+    //virtual void postvisit(TreeNode<T>);
     virtual void printTree() const;
 
 private:

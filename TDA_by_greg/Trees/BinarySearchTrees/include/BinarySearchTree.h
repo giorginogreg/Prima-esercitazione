@@ -13,37 +13,42 @@
 #include "../../../include/Node.h"
 #include "../../include/Tree.h"
 
-
-
-
 template <class T>
 class BinarySearchTree: public Tree<T> {
 
 public:
-    virtual void create();
+
+    BinarySearchTree<T>() { create(); }
+    BinarySearchTree<T>(T val) { create(val); }
+    BinarySearchTree<T>(const BinarySearchTree<T> &tree);
+
+    virtual ~BinarySearchTree() = default;
+
+    void create();
+    void create(T);
 
     // Observers
     bool empty() const;
-    virtual TreeNode<T> root() const;
-    virtual TreeNode<T> ancestor(TreeNode<T> node) const;
-    virtual TreeNode<T> getLeftNode(TreeNode<T> node) const;
-    virtual TreeNode<T> getRightNode(TreeNode<T> node) const;
-    virtual bool isLeftNodeEmpty(TreeNode<T> node) const;
-    virtual bool isRightNodeEmpty(TreeNode<T> node) const;
-    virtual T readValue(TreeNode<T> node) const;
+    TreeNode<T>* const root() const;
+    TreeNode<T>* ancestor(TreeNode<T>* node) const;
+    TreeNode<T>* getLeftNode(TreeNode<T>* node) const;
+    TreeNode<T>* getRightNode(TreeNode<T>* node) const;
+    bool isLeftNodeEmpty(TreeNode<T> node) const;
+    bool isRightNodeEmpty(TreeNode<T> node) const;
+    T readValue(TreeNode<T> node) const;
 
     // Modifiers
-    virtual void eraseTree(TreeNode<T> node);
-    virtual void writeValue(TreeNode<T> &node, T t);
-    virtual void insertRoot(TreeNode<T> node);
-    virtual void insertRightNode(TreeNode<T>* node);
-    virtual void insertLeftNode(TreeNode<T>* node);
+    void eraseTree(TreeNode<T> node);
+    void writeValue(TreeNode<T>* node, T t);
+    void insertRoot(TreeNode<T>* node);
+    void insertRightNode(TreeNode<T>* node);
+    void insertLeftNode(TreeNode<T>* node);
 
 private:
-    TreeNode<T> _root;
+    TreeNode<T>* _root = new TreeNode<T>();
 
 };
 
-
+#include "../src/BinarySearchTree.tpp"
 
 #endif //BINARYSEARCHTREES_H
