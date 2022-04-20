@@ -20,13 +20,12 @@ void BinarySearchTree<T>::create() {
     _root->_ancestor = nullptr;
     _root->_lSon = nullptr;
     _root->_rSon = nullptr;
-    _root->value = nullptr;
 }
 
 template<class T>
 void BinarySearchTree<T>::create(T val) {
     create();
-    _root->value = &val;
+    _root->value = val;
 }
 
 template<class T>
@@ -36,23 +35,21 @@ void BinarySearchTree<T>::insertRoot(TreeNode<T>* node) {
 
 template<class T>
 void BinarySearchTree<T>::insertRightNode(TreeNode<T>* node) {
-    TreeNode<T> t(node);
-    node->_rSon = &t;
+    node->_ancestor = this->_root;
+    this->_root->_rSon = node;
 }
 
 template<class T>
 void BinarySearchTree<T>::insertLeftNode(TreeNode<T>* node) {
-    TreeNode<T> t(node);
-    node->_lSon = &t;
+    node->_ancestor = this->_root;
+    this->_root->_lSon = node;
 }
-
 
 template<class T>
 bool BinarySearchTree<T>::empty() const {
     return _root->_ancestor == nullptr
     && _root->_lSon == nullptr
-    && _root->_rSon == nullptr
-    && _root->value == nullptr;
+    && _root->_rSon == nullptr;
 }
 
 template<class T>
@@ -92,12 +89,12 @@ void BinarySearchTree<T>::eraseTree(TreeNode<T> node) {
 
 template<class T>
 T BinarySearchTree<T>::readValue(TreeNode<T> node) const {
-    return *(node.value);
+    return node.value;
 }
 
 template<class T>
 void BinarySearchTree<T>::writeValue(TreeNode<T>* node, T t) {
-    *(node->value) = t;
+    node->value = t;
 }
 
 template<class T>

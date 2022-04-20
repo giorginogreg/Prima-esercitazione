@@ -15,32 +15,30 @@ template<class T>
 struct TreeNode {
 
     TreeNode* _ancestor;
-    T* value;
+    T value;
     TreeNode* _lSon;
     TreeNode* _rSon;
 
     TreeNode() {
-        value = nullptr;
+        //*value = nullptr;
         _ancestor =  _lSon = _rSon = nullptr;
     }
     TreeNode(T val) {
-        value = new T(val);
+        value = val;
         _ancestor = _lSon = _rSon = nullptr;
     }
     TreeNode(TreeNode<T>* ancestor) {
-        value = nullptr;
         _ancestor = ancestor;
         _lSon = _rSon = nullptr;
-
     }
     TreeNode(T val, TreeNode<T>* ancestor) {
-        *value = val;
+        value = val;
         _ancestor = ancestor;
         _lSon = _rSon = nullptr;
 
     }
     TreeNode(T val, TreeNode<T>* ancestor,TreeNode<T>* lSon, TreeNode<T>* rSon ) {
-        *value = val;
+        value = val;
         _ancestor = ancestor;
         _lSon = lSon;
         _rSon = rSon;

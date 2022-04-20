@@ -12,7 +12,6 @@ using std::cout;
 using std::endl;
 
 int main() {
-    cout << "Hello world!" << endl;
     typedef int T;
 
     auto L1 = new BinarySearchTree<T>(5);
