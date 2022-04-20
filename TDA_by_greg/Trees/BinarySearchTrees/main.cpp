@@ -26,5 +26,17 @@ int main() {
     t->insertLeftNode(L1->root());
     t->insertRightNode(R1->root());
 
+    //t->printTree();
+
+    t->preOrder(t->root()); // Expect 10 - 5 - 2 - 3 - 5 - 4 - 1
+
+    cout << "----" << endl;
+
+    t->inOrder(t->root()); // Expect 2 - 5 - 3 - 10 - 4 - 5 - 1
+
+    cout << "----" << endl;
+
+    t->postOrder(t->root()); // Expect 2 - 3 - 5 - 4 - 1 - 5 - 10
+
     return 0;
 }

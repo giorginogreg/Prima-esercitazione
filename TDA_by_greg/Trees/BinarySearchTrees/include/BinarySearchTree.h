@@ -44,9 +44,12 @@ public:
     void insertRightNode(TreeNode<T>* node);
     void insertLeftNode(TreeNode<T>* node);
 
+    void printTree() const;
+
 private:
     TreeNode<T>* _root = new TreeNode<T>();
 
+    void printSubTree(TreeNode<T>* root, std::string prependString) const;
 };
 
 #include "../src/BinarySearchTree.tpp"

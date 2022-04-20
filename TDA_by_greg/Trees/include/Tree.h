@@ -42,7 +42,10 @@ struct TreeNode {
         _ancestor = ancestor;
         _lSon = lSon;
         _rSon = rSon;
-
+    }
+    bool isLeaf() {
+        return _lSon == nullptr
+               && _rSon == nullptr;
     }
 };
 
@@ -73,14 +76,15 @@ public:
     virtual void insertRightNode(TreeNode<T>*) = 0;
     virtual void insertLeftNode(TreeNode<T>*) = 0;
 
-    //virtual void previsit(TreeNode<T>);
-    //virtual void invisita(TreeNode<T>);
-    //virtual void postvisit(TreeNode<T>);
-    virtual void printTree() const;
+    virtual void printTree() const = 0;
+
+    // Visit algorithms
+    virtual void preOrder(TreeNode<T>* ); // NLR
+    virtual void inOrder(TreeNode<T>* ); // LNR
+    virtual void postOrder(TreeNode<T>* ); // LRN
 
 private:
-    virtual void printSubTree(TDA_Greg::Node<T>) const;
-
+    //virtual void printSubTree(TreeNode<T> root, std::string prependString) const = 0;
 };
 
 

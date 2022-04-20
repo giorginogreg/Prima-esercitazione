@@ -98,13 +98,80 @@ void BinarySearchTree<T>::writeValue(TreeNode<T>* node, T t) {
 }
 
 template<class T>
-void Tree<T>::printTree() const {
-
+void BinarySearchTree<T>::printTree() const {
+    printSubTree(_root, "");
 }
 
 template<class T>
-void Tree<T>::printSubTree(TDA_Greg::Node<T>) const {
+void BinarySearchTree<T>::printSubTree(TreeNode<T>* root, std::string prependString) const {
+    std::cout << prependString;
+    std::cout << readValue(*root);
+    if(!root->isLeaf()){
+        std::cout << std::endl;
+        printSubTree(getLeftNode(root),  "├──" );
+        printSubTree(getRightNode(root),  "└──" );
+    }
+}
+
+/**
+ * Starting from the root, reach all the leafs
+ * While not is leaf, inspect the current node and all the sons.
+ * @tparam T
+ */
+template<class T>
+void Tree<T>::preOrder(TreeNode<T>* root) {
+    std::cout << readValue(*root);
+    std::cout << std::endl;
+    if(!root->isLeaf()){
+        preOrder(getLeftNode(root));
+        preOrder(getRightNode(root));
+    }
+}
+
+/**
+ * Visit all the left nodes first, reaching the leafs.
+ * Then visit the node and after the right nodes
+ *
+ * @tparam T
+ * @param root
+ */
+template<class T>
+void Tree<T>::inOrder(TreeNode<T>* root) {
+    if(root->isLeaf()) {
+        std::cout << readValue(*root);
+        std::cout << std::endl;
+
+    } else {
+        inOrder(getLeftNode(root));
+        std::cout << readValue(*root);
+        std::cout << std::endl;
+
+        inOrder(getRightNode(root));
+    }
 
 }
+
+/**
+ * Mi sposto alla foglia più a dx.
+ * Visito tutte le foglie di quel sottoalbero, dopodichè visito il nodo radice del sottoalbero, risalendo.
+ * @tparam T
+ * @param root
+ */
+template<class T>
+void Tree<T>::postOrder(TreeNode<T>* root) {
+    if(root->isLeaf()) {
+        std::cout << readValue(*root);
+        std::cout << std::endl;
+
+    } else {
+        postOrder(getLeftNode(root));
+        postOrder(getRightNode(root));
+        std::cout << readValue(*root);
+        std::cout << std::endl;
+
+    }
+}
+
+
 
 #endif

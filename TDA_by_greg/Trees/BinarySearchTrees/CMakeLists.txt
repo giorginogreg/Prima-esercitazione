@@ -14,6 +14,7 @@ add_executable(
         ${SRCFILES}
         main.cpp
 )
+#[[
 
 add_executable(
         BinarySearchTreesTests
@@ -21,3 +22,4 @@ add_executable(
         ${SRCFILES}
         mainTest.cpp)
 
+]]
