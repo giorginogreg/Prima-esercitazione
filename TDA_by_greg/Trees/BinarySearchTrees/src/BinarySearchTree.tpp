@@ -113,7 +113,14 @@ void BinarySearchTree<T>::printSubTree(TreeNode<T>* root, std::string prependStr
     }
 }
 
+template<class T>
+int BinarySearchTree<T>::depth(TreeNode<T> *root) {
+    return 0;
+}
+
 /**
+ * Node first then sons
+ *
  * Starting from the root, reach all the leafs
  * While not is leaf, inspect the current node and all the sons.
  * @tparam T
@@ -152,6 +159,7 @@ void Tree<T>::inOrder(TreeNode<T>* root) {
 }
 
 /**
+ * Leafs node first, then nodes
  * Mi sposto alla foglia più a dx.
  * Visito tutte le foglie di quel sottoalbero, dopodichè visito il nodo radice del sottoalbero, risalendo.
  * @tparam T

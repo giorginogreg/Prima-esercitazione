@@ -46,6 +46,12 @@ public:
 
     void printTree() const;
 
+    void preOrder(TreeNode<T>* node) ;
+    void inOrder(TreeNode<T>* node) ;
+    void postOrder(TreeNode<T>* node) ;
+
+    int depth(TreeNode<T> *root) override;
+
 private:
     TreeNode<T>* _root = new TreeNode<T>();
 

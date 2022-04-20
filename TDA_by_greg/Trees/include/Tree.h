@@ -10,6 +10,7 @@
  * Per ogni nodo N, tutti gli elementi contenuti nel sottoalbero radicato nel figlio DX di N sono maggiori di N.value
  */
 #include "../../include/Node.h"
+#include "../../Lists/pointer_implementation/Linked List/include/LinkedList.h"
 
 template<class T>
 struct TreeNode {
@@ -79,10 +80,11 @@ public:
     virtual void printTree() const = 0;
 
     // Visit algorithms
-    virtual void preOrder(TreeNode<T>* ); // NLR
-    virtual void inOrder(TreeNode<T>* ); // LNR
-    virtual void postOrder(TreeNode<T>* ); // LRN
+    virtual void preOrder(TreeNode<T>* ) = 0; // NLR
+    virtual void inOrder(TreeNode<T>* ) = 0; // LNR
+    virtual void postOrder(TreeNode<T>* ) = 0; // LRN
 
+    virtual int depth(TreeNode<T>* root) = 0;
 private:
     //virtual void printSubTree(TreeNode<T> root, std::string prependString) const = 0;
 };
