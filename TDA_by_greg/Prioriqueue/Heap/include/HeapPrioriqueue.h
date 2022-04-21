@@ -7,13 +7,26 @@
 
 #include "../../include/Prioriqueue.h"
 
-template<class T>
+template<class T, int MAX_LENGTH>
 class HeapPrioriqueue: public Prioriqueue<T> {
 public:
-    virtual void create();
-    virtual void insert(T t);
-    virtual T getMinimum();
-    virtual void deleteMinimum();
+
+    HeapPrioriqueue();
+    void create();
+    void insert(T t);
+    T getMinimum();
+    void deleteMinimum();
+
+    ~HeapPrioriqueue();
+
+
+private:
+    T* _heap;
+    int _last_elem;
+
+    void fixUp();
+    void fixDown(int, int);
+
 };
 
 #include "../src/HeapPrioriqueue.tpp"
