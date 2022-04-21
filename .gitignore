@@ -8,8 +8,8 @@
 ComplexNumbers/ComplexNumbers
 .DS_Store
 **.o
+Debug
 hello_world/hello_world
-cpp
 tester
 !CMakeLists.txt
 cmake-build-debug*
