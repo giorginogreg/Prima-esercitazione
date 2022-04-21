@@ -27,6 +27,7 @@ private:
     void fixUp();
     void fixDown(int, int);
 
+    void heapSort(int n);
 };
 
 #include "../src/HeapPrioriqueue.tpp"

@@ -77,4 +77,15 @@ void HeapPrioriqueue<T, MAX_LENGTH>::fixDown(int k, int N) {
     }
 }
 
+template<class T, int MAX_LENGTH>
+void HeapPrioriqueue<T, MAX_LENGTH>::heapSort(int n) {
+    for(int i = 0; i < n; i++){
+        fixUp(i);
+    }
+    for(int i = 0; i < n; i++){
+        swap(_heap, 0, n-i);
+        fixDown(1, n-1-i);
+    }
+}
+
 #endif //HEAP_HEAPPRIORIQUEUE_TPP
