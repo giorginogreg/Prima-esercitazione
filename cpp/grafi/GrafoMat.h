@@ -14,10 +14,9 @@ class InfoArco {
 	}
 };
 
-
 template<class E, class P> 
-	class InfoNodo {
- public:
+class InfoNodo {
+public:
 	E   etichetta;
 	bool vuoto;
 	void* info;
@@ -34,9 +33,8 @@ template<class E, class P>
 	}
 };
 
-
 class NodoG{
- public:
+public:
 	NodoG(int i){
 		nodoId = i;
 	}
@@ -44,21 +42,21 @@ class NodoG{
 	}
 	int getId(){ return nodoId; }
 	void setId(int id) {nodoId = id;}
- private:
+private:
 	int nodoId;
 };
 
 
 template<class E, class P>
-	class GrafoMat : public Grafo<E, P, NodoG > {
- public:
+class GrafoMat : public Grafo<E, P, NodoG > {
+public:
     typedef E Etichetta;
     typedef P Peso;
     typedef NodoG Nodo;
     typedef Arco_<Peso, Nodo> Arco;
     typedef Grafo<Etichetta, Peso, Nodo> Grafo_;
     typedef typename Grafo_::ListaNodi ListaNodi;
-		typedef typename Grafo_::ListaNodiPos ListaNodiPos;
+    typedef typename Grafo_::ListaNodiPos ListaNodiPos;
 
     GrafoMat(int);
     ~GrafoMat();
@@ -68,30 +66,29 @@ template<class E, class P>
     void insArco(Nodo, Nodo, Peso);
     void cancNodo(Nodo);
     void cancArco(Nodo, Nodo);
-		//    bool esisteNodo(Nodo);
-		//    bool esisteArco(Arco);
-    ListaNodi Adiacenti(Nodo) const ;
-    ListaNodi list_nodi() const ;
-    Etichetta leggiEtichetta(Nodo) const ;
-    void scriviEtichetta(Nodo, Etichetta) ;
-    Peso leggiPeso(Nodo, Nodo) const ;
-    void scriviPeso(Nodo, Nodo, Peso) ;
+    //    bool esisteNodo(Nodo);
+    //    bool esisteArco(Arco);
+    ListaNodi Adiacenti(Nodo) const;
+    ListaNodi list_nodi() const;
+    Etichetta leggiEtichetta(Nodo) const;
+    void scriviEtichetta(Nodo, Etichetta);
+    Peso leggiPeso(Nodo, Nodo) const;
+    void scriviPeso(Nodo, Nodo, Peso);
 
-		int numNodi(){
-			return nodi;
-		};
-		int numArchi(){
-			return archi;
-		};
+    int numNodi(){
+        return nodi;
+    };
 
+    int numArchi(){
+        return archi;
+    };
 
- private:
-    InfoNodo<E,P>* matrice;
-    int dimensione;
-    int nodi;
-		int archi;
+private:
+InfoNodo<E,P>* matrice;
+int dimensione;
+int nodi;
+    int archi;
 };
-
 
 template<class E, class P>
 	GrafoMat<E, P>::GrafoMat(int _dimensione){
@@ -146,7 +143,7 @@ template<class E, class P>
 			canc = false;
 
 	if (canc){
-		delete matrice[n.getId()].archi;
+		delete[] matrice[n.getId()].archi;
 		matrice[n.getId()].vuoto = true;
 	}
 }

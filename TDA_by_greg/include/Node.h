@@ -10,6 +10,7 @@ namespace TDA_Greg
         T _elem;
         Node<T> *_nextPos;
         Node<T> *_prevPos;
+
     public:
         Node() {}
 

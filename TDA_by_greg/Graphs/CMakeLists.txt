@@ -8,4 +8,4 @@ FILE(GLOB SRCFILES
 add_executable(
         Graphs
         main.cpp
-        ${SRCFILES} main.cpp src/Graph.tpp include/Graph.h)
+        ${SRCFILES} main.cpp src/Graph.tpp include/Graph.h include/Link.h AdjacenceMatrix/main.cpp)
