@@ -123,6 +123,22 @@ void PointerSet<T, nElems>::printTDA() {
 }
 
 template<class T, int elems>
+T PointerSet<T, elems>::find(T t) {
+    return p->getFirstPositionByElem(t);
+}
+
+template<class T, int elems>
+vector< T > PointerSet<T, elems>::getAllElements() {
+    auto pointerNodes = new vector<Node<T>>();
+    auto head = p->getHead();
+    do {
+        head = head->getNextPos();
+        pointerNodes.push_back(head->getElem());
+    } while (!p->isLastPosition(head));
+    return pointerNodes;
+}
+
+template<class T, int elems>
 ostream &operator<<(ostream &o, PointerSet<T, elems> &pointerSet) {
 
     o << "List Content: " << endl;

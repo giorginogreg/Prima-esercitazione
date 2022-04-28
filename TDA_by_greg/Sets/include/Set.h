@@ -14,6 +14,7 @@ public:
     virtual bool belongsTo(T) = 0;
     virtual void insert(T) = 0;
     virtual void remove(T) = 0;
+    virtual T find(T) = 0;
     virtual Set<T, PositionType>* union_op(Set<T, PositionType>* ) = 0;
     /*virtual Set<T, PositionType>* intersect(Set<T, PositionType>);
     virtual Set<T, PositionType>* difference(Set<T, PositionType>);

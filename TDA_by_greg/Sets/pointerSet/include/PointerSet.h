@@ -27,6 +27,10 @@ public:
     void create();
     bool isEmpty();
     bool belongsTo(T t);
+
+    T find(T t);
+    vector<T> getAllElements();
+
     void insert(T t);
     void remove(T t);
     Set<T, PositionType>* union_op(Set<T, PositionType>* set);
@@ -36,7 +40,6 @@ public:
 
 protected:
     PointerList<T, elems>* p = new PointerList<T, elems>();
-
 };
 
 #include "../src/PointerSet.tpp"
