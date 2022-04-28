@@ -23,6 +23,7 @@ template<class T, int nElems>
 void PointerSet<T, nElems>::insert(T t) {
     if(!belongsTo(t)) {
         p->insertNodeAfter(p->lastNodeList(), t);
+        Set<T, PositionType>::elems_inside++;
     }
 }
 
@@ -110,6 +111,7 @@ Set<T, typename PointerSet<T, nElems>::PositionType>
 template<class T, int nElems>
 void PointerSet<T, nElems>::remove(T t) {
     p->deleteNodeAt(p->getFirstPositionByElem(t));
+    Set<T, PositionType>::elems_inside--;
 }
 
 template<class T, int nElems>
@@ -123,19 +125,25 @@ void PointerSet<T, nElems>::printTDA() {
 }
 
 template<class T, int elems>
-T PointerSet<T, elems>::find(T t) {
+typename PointerSet<T, elems>::PositionType PointerSet<T, elems>::find(T t) {
     return p->getFirstPositionByElem(t);
+}
+
+
+template<class T, int elems>
+PointerList<T, elems> PointerSet<T, elems>::getAllElementsAsPointerList() {
+    return *p;
 }
 
 template<class T, int elems>
 vector< T > PointerSet<T, elems>::getAllElements() {
-    auto pointerNodes = new vector<Node<T>>();
+    auto pointerNodes = new vector<T>();
     auto head = p->getHead();
     do {
         head = head->getNextPos();
-        pointerNodes.push_back(head->getElem());
+        pointerNodes->push_back(head->getElem());
     } while (!p->isLastPosition(head));
-    return pointerNodes;
+    return *pointerNodes;
 }
 
 template<class T, int elems>

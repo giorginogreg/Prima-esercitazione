@@ -22,35 +22,42 @@
 #include "../../include/Graph.h"
 #include "../../../include/GraphNode.h"
 #include "../../include/Link.h"
-#include "../../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
+#include "../../../Sets/pointerSet/include/PointerSet.h"
 #include <vector>
 using std::vector;
 
 #define NO_LINK 0
-
+#define DEFAULT_LINK 1
 template<class T, class WeightType>
-class AdjacencyMatrixGraph : public Graph<T> {
+class AdjacencyMatrixGraph : public Graph<T, WeightType> {
 public:
+    AdjacencyMatrixGraph();
+    ~AdjacencyMatrixGraph();
+
     void create();
     bool isEmpty();
     
-    void insertNode(GraphNode<T> node);
-    void removeNode(GraphNode<T> node);
+    void insertNode(GraphNode<T>* node);
+    void removeNode(GraphNode<T>* node);
 
-    void insertLink(GraphNode<T>, GraphNode<T>);
-    void removeLink(GraphNode<T>, GraphNode<T>);
+    void insertLink(GraphNode<T>*, GraphNode<T>*, WeightType w = DEFAULT_LINK);
+    void removeLink(GraphNode<T>*, GraphNode<T>*);
+    WeightType getLinkWeight(GraphNode<T>, GraphNode<T>);
 
-    PointerList<GraphNode<T>*, 0> getAllNodes();
+    PointerList<GraphNode<T>, 0> getAllNodes();
     PointerList<GraphNode<T>, 0> adjacents(GraphNode<T> node);
     bool existsNode(GraphNode<T> node);
-    bool existsLink(GraphNode<T> node, GraphNode<T> node1);
+    bool existsLink(GraphNode<T> node, GraphNode<T> node2);
 
     T readValue(GraphNode<T> node);
-    void writeValue(GraphNode<T> node, T t);
+    void writeValue(GraphNode<T>* node, T t);
 
 private:
+    void setWeight(GraphNode<T> node1, GraphNode<T> node2, WeightType w);
+
     PointerList<Edge<T, WeightType>, 0> edgesList;
-    PointerList<GraphNode<T>, 0> nodesList;
+    PointerSet<GraphNode<T>, 0> nodesList;
+
     vector<vector<WeightType>> adjacencyMatrix;
 };
 

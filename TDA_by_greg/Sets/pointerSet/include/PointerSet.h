@@ -28,7 +28,8 @@ public:
     bool isEmpty();
     bool belongsTo(T t);
 
-    T find(T t);
+    PositionType find(T t);
+    PointerList<T, elems> getAllElementsAsPointerList();
     vector<T> getAllElements();
 
     void insert(T t);

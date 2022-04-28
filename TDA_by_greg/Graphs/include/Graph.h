@@ -10,24 +10,25 @@
 
 using TDA_Greg::Node;
 
-template<class T>
+template<class T, class WeightType>
 class Graph {
+public:
     virtual void create() = 0;
     virtual bool isEmpty() = 0;
 
-    virtual void insertNode(GraphNode<T>) = 0;
-    virtual void insertLink(GraphNode<T>, GraphNode<T>) = 0;
+    virtual void insertNode(GraphNode<T>*) = 0;
+    virtual void insertLink(GraphNode<T>*, GraphNode<T>*, WeightType) = 0;
 
-    virtual void removeNode(GraphNode<T>) = 0;
-    virtual void removeLink(GraphNode<T>, GraphNode<T>) = 0;
+    virtual void removeNode(GraphNode<T>*) = 0;
+    virtual void removeLink(GraphNode<T>*, GraphNode<T>*) = 0;
 
-    virtual PointerList<GraphNode<T>*, 0> getAllNodes() = 0;
+    virtual PointerList<GraphNode<T>, 0> getAllNodes() = 0;
     virtual PointerList<GraphNode<T>,0> adjacents(GraphNode<T>) = 0;
     virtual bool existsNode(GraphNode<T>) = 0;
     virtual bool existsLink(GraphNode<T>, GraphNode<T>) = 0;
 
     virtual T readValue(GraphNode<T>) = 0;
-    virtual void writeValue(GraphNode<T>, T) = 0;
+    virtual void writeValue(GraphNode<T>*, T) = 0;
 
     // For tree-weight we need also the info of the value in the link
     int getNodesInside() { return _nodesInside; }
@@ -36,7 +37,7 @@ class Graph {
 private:
     // ArcsList
     // NodesList
-    int _nodesInside;
+    int _nodesInside = 0;
 };
 
 #endif //GRAPHS_GRAPH_H

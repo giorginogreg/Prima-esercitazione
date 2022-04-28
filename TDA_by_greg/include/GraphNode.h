@@ -13,17 +13,27 @@ using std::string;
 
 template<class T>
 class GraphNode : public Node<T> {
-private:
-    string _label;
-    bool _softDeleted = false;
-    int _links = 0;
 public:
-    string getLabel() const {
-        return _label;
+    GraphNode() {}
+
+    GraphNode(T t) {
+        Node<T>::setElem(t);
     }
 
-    void setLabel(const string& label) {
-        _label = label;
+    int getId() const {
+        return _id;
+    }
+
+    void setId(int id) {
+        _id = id;
+    }
+
+    string getLabel() const {
+        return Node<T>::getElem();
+    }
+
+    void setLabel(const T label) {
+        Node<T>::setElem(label);
     }
 
     bool isSoftDeleted() const {
@@ -45,6 +55,26 @@ public:
     void setLinks(int links) {
         _links = links;
     }
+
+    bool operator==(const GraphNode &rhs) const {
+        auto n = static_cast<Node<T>>(*this);
+        auto n2 = static_cast<Node<T>>(rhs);
+        return
+            n == n2 &&
+           _softDeleted == rhs._softDeleted &&
+           _links == rhs._links &&
+           _id == rhs._id;
+    }
+
+    bool operator!=(const GraphNode &rhs) const {
+        return rhs != *this;
+    }
+
+private:
+    bool _softDeleted = false;
+    int _links = 0;
+    int _id = -1;
 };
+
 
 #endif //TDAGREG_GRAPHNODE_H

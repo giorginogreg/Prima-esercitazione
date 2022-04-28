@@ -8,4 +8,6 @@ FILE(GLOB SRCFILES
 add_executable(
         AdjacencyMatrixGraph
         main.cpp
-        ${SRCFILES} ../../include/GraphNode.h)
+        ${SRCFILES}
+        ../../include/GraphNode.h
+)

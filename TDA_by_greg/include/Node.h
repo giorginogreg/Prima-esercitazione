@@ -12,7 +12,7 @@ namespace TDA_Greg
         Node<T> *_prevPos;
 
     public:
-        Node() {}
+        Node() { }
 
         Node(T elem) : _elem(elem) {}
 
@@ -28,8 +28,8 @@ namespace TDA_Greg
             _prevPos = prevPos;
         }
 
-        T* getElem() {
-            return &_elem;
+        T getElem() {
+            return _elem;
         }
 
         Node<T> *getNextPos() const {
@@ -40,15 +40,11 @@ namespace TDA_Greg
             return _prevPos;
         }
 
-        //bool operator ==(Node &);
+        bool operator==(Node &node_to_compare) {
+            return node_to_compare.getElem() == this->getElem();
+        }
     };
 
-
-    /*
-        template<typename T>
-     * bool Node<T>::operator==(Node &node_to_compare) {
-        return node_to_compare == this;
-    }*/
 } // namespace Gregorio
 
 #endif //NODE_GREG_H
