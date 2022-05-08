@@ -53,33 +53,33 @@ void VectorList<T, S>::deleteNodeAt(int p) {
 }
 
 template<typename T, int S>
-T VectorList<T, S>::readValueAt(int p) {
+T VectorList<T, S>::readValueAt(int p) const {
     return _list[p];
 }
 
 template<typename T, int S>
-bool VectorList<T, S>::isEmpty() {
+bool VectorList<T, S>::isEmpty() const {
     return this->_elems_inside == 0;
 }
 
 template<typename T, int S>
-bool VectorList<T, S>::isLastPosition(int p) {
+bool VectorList<T, S>::isLastPosition(int p) const {
     assert(!outOfBound(p)); // Precondition
     return p == _dimension;
 }
 
 template<typename T, int S>
-int VectorList<T, S>::firstNodeList() {
+int VectorList<T, S>::firstNodeList() const {
     return 0;
 }
 
 template<typename T, int S>
-int VectorList<T, S>::nextPosition(int p) {
+int VectorList<T, S>::nextPosition(int p) const {
     return p + 1;
 }
 
 template<typename T, int S>
-int VectorList<T, S>::previousPosition(int p) {
+int VectorList<T, S>::previousPosition(int p) const {
     return p - 1;
 }
 

@@ -22,13 +22,14 @@ public:
     void insertNodeAfter(position, T);
     void deleteNodeAt(position);
 
-    T readValueAt(position);
-    bool isEmpty();
-    bool isLastPosition(position);
-    int firstNodeList();
+    T readValueAt(position) const;
+    bool isEmpty() const;
 
-    position nextPosition(position);
-    position previousPosition(position);
+    bool isLastPosition(position) const;
+    int firstNodeList() const;
+
+    position nextPosition(position) const;
+    position previousPosition(position) const;
 
     // Getters and setters
 
@@ -51,5 +52,6 @@ private:
     bool outOfBound(int desired_position) const;
 };
 
+#include "../src/VectorList.tpp"
 
 #endif
