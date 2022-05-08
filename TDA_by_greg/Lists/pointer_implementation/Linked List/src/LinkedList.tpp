@@ -36,32 +36,32 @@ void LinkedList<T, S>::deleteNodeAt(const LinkedList::position p) {
 }
 
 template<class T, int S>
-typename LinkedList<T,S>::type LinkedList<T, S>::readValueAt(const LinkedList::position p) {
+typename LinkedList<T,S>::type LinkedList<T, S>::readValueAt(LinkedList::position p) const {
     return p->getElem();
 }
 
 template<class T, int S>
-bool LinkedList<T, S>::isEmpty() {
+bool LinkedList<T, S>::isEmpty() const {
     return _head->getNextPos() == _head && _head->getPrevPos() == _head; // If the next position is equal to the same node (initialization cond.)
 }
 
 template<class T, int S>
-bool LinkedList<T, S>::isLastPosition(TDA_Greg::Node<T> *p) {
+bool LinkedList<T, S>::isLastPosition(TDA_Greg::Node<T> *p) const {
     return p->getNextPos() == _head;
 }
 
 template<class T, int S>
-TDA_Greg::Node<T>* LinkedList<T, S>::firstNodeList() {
+TDA_Greg::Node<T>* LinkedList<T, S>::firstNodeList() const {
     return _head->getNextPos();
 }
 
 template<class T, int S>
-TDA_Greg::Node<T>* LinkedList<T, S>::nextPosition(const LinkedList::position p) {
+TDA_Greg::Node<T>* LinkedList<T, S>::nextPosition(const LinkedList::position p) const {
     return p->getNextPos();
 }
 
 template<class T, int S>
-TDA_Greg::Node<T>* LinkedList<T, S>::previousPosition(const LinkedList::position p) {
+TDA_Greg::Node<T>* LinkedList<T, S>::previousPosition(const LinkedList::position p) const {
     return p->getPrevPos();
 }
 
@@ -84,6 +84,3 @@ template<class T, int S>
 LinkedList<T, S>::LinkedList() {
     initialize();
 }
-
-
-

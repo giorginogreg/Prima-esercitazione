@@ -22,13 +22,13 @@ public:
     void writeValueAt(position p, T);
     void insertNodeAfter(position p, T);
     void deleteNodeAt(position p);
-    type readValueAt(position p);
+    type readValueAt(position p) const;
 
-    bool isEmpty();
-    bool isLastPosition(position p);
-    position firstNodeList();
-    position nextPosition(position p);
-    position previousPosition(position p);
+    bool isEmpty() const;
+    bool isLastPosition(position p) const;
+    position firstNodeList() const;
+    position nextPosition(position p) const;
+    position previousPosition(position p) const;
 
     virtual ~LinkedList();
 
@@ -39,5 +39,7 @@ private:
     position _head;
 
 };
+
+#include "../src/LinkedList.tpp"
 
 #endif //ALGORITHM_DATA_STRUCTURES_LINKEDLIST_H
