@@ -2,7 +2,6 @@
 #include "../../../catch.hpp"
 
 #include "include/VectorList.h"
-#include "src/VectorList.cpp"
 #include "../../Exception/OutOfBoundException.h"
 
 TEST_CASE( "List initialization" ) {

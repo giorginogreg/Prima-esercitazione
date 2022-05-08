@@ -1,6 +1,5 @@
 #include <iostream>
 #include "./include/VectorList.h"
-#include "src/VectorList.cpp"
 
 int main()
 {
