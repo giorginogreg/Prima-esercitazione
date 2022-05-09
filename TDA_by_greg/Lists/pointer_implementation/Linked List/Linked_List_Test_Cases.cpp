@@ -3,16 +3,15 @@
 #include "./../../../../catch.hpp"
 
 #include "include/LinkedList.h"
-#include "src/LinkedList.cpp"
 #include "./../../../Exception/OutOfBoundException.h"
 
-TEST_CASE( "List initialization" ) {
+TEST_CASE( "Linked List initialization" ) {
 
     const int size = 10;
     LinkedList<int, 10> linkedList;
 
-    //REQUIRE(linkedList.getDimension() == size);
-    REQUIRE(linkedList.getElementsInside() == 0);
+    REQUIRE(linkedList.getElementsInside() == size);
+    //REQUIRE(linkedList.getElementsInside() ==  );
 
 }
 

@@ -1,12 +1,7 @@
 //
 // Created by Greg on 21/03/22.
 //
-#include <iostream>
-//#include "./include/PointerList.h"
-//#include "src/PointerList.cpp"
 #include "include/LinkedList.h"
-#include "src/LinkedList.cpp"
-#include "../../../include/Node.h"
 
 int main(int argc, char const *argv[]) {
     // T is an int node
