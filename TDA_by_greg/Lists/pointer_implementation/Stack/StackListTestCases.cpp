@@ -6,12 +6,12 @@
 #include "../../../../catch.hpp"
 
 #include "include/StackList.h"
-#include "src/StackList.cpp"
 
 TEST_CASE( "List initialization" ) {
 
     StackList<int, 10> stackList;
 
+    REQUIRE(stackList.empty());
     //REQUIRE(linkedList.getDimension() == size);
     //REQUIRE(stackList.getElementsInside() == 0);
 
