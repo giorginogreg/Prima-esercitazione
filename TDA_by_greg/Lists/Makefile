@@ -34,7 +34,7 @@ LinkedList.o: #Node.o
 	$(CC) $(C_FLAGS) pointer_implementation/src/LinkedList.cpp -o pointer_implementation/LinkedList.o
 
 VectorList.o: #Node.o
-	$(CC) $(C_FLAGS) vector_implementation/src/VectorList.cpp -o vector_implementation/VectorList.o
+	$(CC) $(C_FLAGS) vector_implementation/src/VectorList.tpp -o vector_implementation/VectorList.o
 
 clean:
 	@rm -rf *.o *~ *#
