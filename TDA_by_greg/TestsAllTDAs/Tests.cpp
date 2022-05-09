@@ -1,27 +1,15 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "../../catch.hpp"
-
 #define DICTIONARY_TESTS
-// Dictionary tests
-
-#include "../Dictionary/PointerDictionary/include/PointerDictionary.h"
-
+#include "../Dictionary/PointerDictionary/TestsPointerDictionary.cpp"
 
 // -----------------
 #define GRAPH_TESTS
-
-// Graph tests
-
-#include "../Graphs/AdjacenceMatrix/include/AdjacencyMatrixGraph.h"
-
+#include "../Graphs/AdjacenceMatrix/TestsAdjacencyMatrixGraph.cpp"
 
 // -----------------
 #define VECTOR_LIST_TESTS
-// List tests
+#include "../Lists/vector_implementation/Test_Cases.cpp"
 
-#include "../Lists/vector_implementation/include/VectorList.h"
-#include "../Exception/OutOfBoundException.h"
-
+/*
 TEST_CASE( "List initialization" ) {
 
 const int size = 10;
@@ -290,3 +278,5 @@ TEST_CASE( "List initialization" ) {
 
 
 // ------------------
+
+ */
