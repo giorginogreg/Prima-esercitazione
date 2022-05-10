@@ -2,7 +2,6 @@
 // Created by Greg on 10/04/22.
 //
 
-
 #include <iostream>
 #include <string>
 #include "include/PointerDictionary.h"
@@ -11,7 +10,6 @@ using std::cout;
 using std::endl;
 
 int main(int argc, char *argv[]) {
-    cout << "Hello world!" << endl;
     auto* p = new PointerDictionary<int, int>();
     Pair<int, int> pair {
         ._key = 0,
