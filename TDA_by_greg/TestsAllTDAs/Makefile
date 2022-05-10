@@ -1,5 +1,5 @@
 CC=g++
-C_FLAGS=-c -Wall -std=c++11
+C_FLAGS=-c -Werror -std=c++11
 .PHONY: clean
 
 #progetto: progetto.o lib.o

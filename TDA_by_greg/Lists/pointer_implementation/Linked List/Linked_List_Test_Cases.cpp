@@ -10,13 +10,12 @@ TEST_CASE( "Linked List initialization" ) {
     const int size = 10;
     LinkedList<int, 10> linkedList;
 
-    REQUIRE(linkedList.getElementsInside() == size);
-    //REQUIRE(linkedList.getElementsInside() ==  );
+    REQUIRE(linkedList.getElementsInside() == 0);
 
 }
 
 
-TEST_CASE( "Is list empty?" ) {
+TEST_CASE( "Is linked list empty?" ) {
 
     const int size = 0;
     LinkedList<int, size> linkedList;
@@ -38,11 +37,11 @@ TEST_CASE( "Is list empty?" ) {
 
 }
 
-TEST_CASE( "Array out of bound" ) {
+TEST_CASE( "Linked List: Array out of bound" ) {
     // Test non implementabile, non ci sono confini sulla lista collegata
 }
 
-TEST_CASE( "List Shifting" ) {
+TEST_CASE( "Linked List: List Shifting" ) {
 
     const int size = 3;
     LinkedList<int, size> linkedList;
@@ -63,7 +62,7 @@ TEST_CASE( "List Shifting" ) {
 
 }
 
-TEST_CASE( "First insert" ) {
+TEST_CASE( "Linked List: First insert" ) {
     const int size = 0;
     LinkedList<int, size> linkedList;
     auto tempPos = linkedList.firstNodeList();
@@ -75,7 +74,7 @@ TEST_CASE( "First insert" ) {
 }
 
 
-TEST_CASE( "Insert after a node at tail" ) {
+TEST_CASE( "Linked List: Insert after a node at tail" ) {
     const int size = 0;
     LinkedList<int, size> linkedList;
     auto tempPos = linkedList.firstNodeList();
@@ -90,7 +89,7 @@ TEST_CASE( "Insert after a node at tail" ) {
 }
 
 
-TEST_CASE( "Insert a node between the first and the tail" ) {
+TEST_CASE( "Linked List: Insert a node between the first and the tail" ) {
     const int size = 0;
     LinkedList<int, size> linkedList;
     auto tempPos = linkedList.firstNodeList();

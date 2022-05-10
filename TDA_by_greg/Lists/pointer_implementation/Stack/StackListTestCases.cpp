@@ -7,7 +7,7 @@
 
 #include "include/StackList.h"
 
-TEST_CASE( "List initialization" ) {
+TEST_CASE( "Stack: List initialization" ) {
 
     StackList<int, 10> stackList;
 

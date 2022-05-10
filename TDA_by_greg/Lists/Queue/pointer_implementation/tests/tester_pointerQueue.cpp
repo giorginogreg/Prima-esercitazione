@@ -7,18 +7,18 @@
 #define CATCH_CONFIG_MAIN
 #include "../../../../../catch.hpp"
 
-TEST_CASE( "List initialization" ) {
+TEST_CASE( "Pointer Queue: List initialization" ) {
     PointerQueue<int, 10> p;
     REQUIRE(p.isEmpty());
 }
 
-TEST_CASE( "Push and read value" ) {
+TEST_CASE( "Pointer Queue: Push and read value" ) {
     PointerQueue<int, 10> p;
     p.enqueue(50);
     REQUIRE(p.readQueue() == 50);
 }
 
-TEST_CASE( "Enqueue and dequeue" ) {
+TEST_CASE( "Pointer Queue: Enqueue and dequeue" ) {
     PointerQueue<int, 10> p;
     p.enqueue(50);
     REQUIRE(p.dequeue() == 50);

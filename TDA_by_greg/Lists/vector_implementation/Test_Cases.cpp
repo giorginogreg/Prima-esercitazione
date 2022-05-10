@@ -15,7 +15,7 @@ TEST_CASE( "List initialization" ) {
 }
 
 
-TEST_CASE( "Is list empty?" ) {
+TEST_CASE( "Is vector list empty?" ) {
 
     const int size = 0;
     VectorList<int, size> vectorList;
@@ -36,7 +36,7 @@ TEST_CASE( "Is list empty?" ) {
 
 }
 
-TEST_CASE( "Array out of bound" ) {
+TEST_CASE( "Vector List: Array out of bound" ) {
 
     const int size = 3;
     VectorList<int, size> vectorList;
@@ -44,7 +44,7 @@ TEST_CASE( "Array out of bound" ) {
 
 }
 
-TEST_CASE( "List Shifting" ) {
+TEST_CASE( "Vector List: List Shifting" ) {
 
     const int size = 3;
     VectorList<int, size> vectorList;

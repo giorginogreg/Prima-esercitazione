@@ -2,19 +2,13 @@
 #include "../../../../catch.hpp"
 
 TEST_CASE( "Queue initialization" ) {
-
-    REQUIRE(true);
-
+    REQUIRE(false);
 }
 
 TEST_CASE( "Dequeue with empty queue not possible" ) {
-
-    REQUIRE(true);
-
+    REQUIRE(false);
 }
 
 TEST_CASE( "Enqueue more than the size" ) {
-
-    REQUIRE(true);
-
+    REQUIRE(false);
 }
