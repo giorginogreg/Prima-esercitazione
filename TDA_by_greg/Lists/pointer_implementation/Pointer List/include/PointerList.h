@@ -8,20 +8,18 @@
 using TDA_Greg::Node;
 
 // Insieme di nodi
-template <class T, int S>
-class PointerList: public LinearList<T, Node<T>*, S>
+template <class T>
+class PointerList: public LinearList<T, Node<T>*>
 {
 
 public:
      typedef Node<T>* PositionType;
 
-     PointerList(); // Default constructor - Equal to create operator
-     PointerList(const PointerList<T,S> &Fp); // Copy constructor
+     PointerList(int); // Default constructor - Equal to create operator
+     PointerList(const PointerList<T> &Fp); // Copy constructor
 
-     void initialize();
-
-     void writeValueAt(PositionType i, T t);
-     void insertNodeAfter(PositionType p, T t);
+     void writeValueAt(PositionType, T);
+     void insertNodeAfter(PositionType, T);
      void deleteNodeAt(PositionType p);
      T readValueAt(PositionType p) const;
 
@@ -33,6 +31,7 @@ public:
 
      // Utility methods
      bool find(T);
+
      PositionType lastNodeList() { return _tail; };
      PositionType getFirstPositionByElem(T t); // Assuming that the elem exists in the list
      PositionType getHead() const { return _list; };
@@ -42,8 +41,8 @@ public:
 private:
     PositionType _list;
     PositionType _tail;
-    int _max_nodes;
 
+    void initialize(int);
 };
 
 #include "../src/PointerList.tpp"

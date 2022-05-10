@@ -3,46 +3,48 @@
 
 #pragma once
 
-template <class T, class P, int S>
+template <class T, class P>
 class LinearList
 {
-public:
 
-    typedef T type;
-    typedef P position;
+public:
+    typedef T ElemType;
+    typedef P PositionType;
+
     // Constructor
-    virtual void initialize() = 0;
-    // Distructor
+    void initialize(int max_elems_inside);
+
+    // Destructor
 
     // Modifiers
-    virtual void writeValueAt(position, type) = 0;
-    virtual void insertNodeAfter(position, type) = 0;
+    virtual void writeValueAt(PositionType, ElemType) = 0;
+    virtual void insertNodeAfter(PositionType, ElemType) = 0;
 
-    virtual void deleteNodeAt(position) = 0;
+    virtual void deleteNodeAt(PositionType) = 0;
 
     // Observers
-    virtual type readValueAt(position) const = 0;
+    virtual ElemType readValueAt(PositionType) const = 0;
     virtual bool isEmpty() const = 0;
-    virtual bool isLastPosition(position ) const = 0;
-    virtual position firstNodeList( ) const = 0;
-    virtual position nextPosition(position) const = 0;
-    virtual position previousPosition(position) const = 0;
+    virtual bool isLastPosition(PositionType) const = 0;
 
-    //virtual position search(type);
+    virtual PositionType firstNodeList( ) const = 0;
+    virtual PositionType nextPosition(PositionType) const = 0;
+    virtual PositionType previousPosition(PositionType) const = 0;
 
-    virtual int getElementsInside() const { return _elems_inside; }
-    virtual void setElementsInside(int elementsInside) { _elems_inside = elementsInside; }
+    int getElementsInside() const { return _elems_inside; }
+    void setElementsInside(int elementsInside) { _elems_inside = elementsInside; }
+
+    int getMaxElementsInside() const { return _max_elems_inside; }
+
 protected:
-    int _elems_inside;
+    int _elems_inside = 0;
+    int _max_elems_inside = 0;
 };
-/*
 
-template<class T, class position, int S>
-position LinearList<T, position, S>::search(T v) {
-    position p;
-    //for(p = firstNodeList(); !isLastPosition(p) && readValueAt(p) < v; p = nextPosition(p));
-    return p;
+template<class T, class P>
+void LinearList<T, P>::initialize(int max_elems_inside) {
+    _max_elems_inside = max_elems_inside;
 }
-*/
+
 
 #endif

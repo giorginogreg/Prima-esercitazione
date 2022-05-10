@@ -19,5 +19,5 @@ add_executable(
         BinarySearchTreesTests
         ${SUPERSRCFILES}
         ${SRCFILES}
-        mainTest.cpp)
+        TestsBinarySearchTrees.cpp)
 

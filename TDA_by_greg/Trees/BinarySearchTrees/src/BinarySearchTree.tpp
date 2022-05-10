@@ -126,7 +126,7 @@ int BinarySearchTree<T>::depth(TreeNode<T> *root) {
  * @tparam T
  */
 template<class T>
-void Tree<T>::preOrder(TreeNode<T>* root) {
+void BinarySearchTree<T>::preOrder(TreeNode<T>* root) {
     std::cout << readValue(*root);
     std::cout << std::endl;
     if(!root->isLeaf()){
@@ -143,7 +143,7 @@ void Tree<T>::preOrder(TreeNode<T>* root) {
  * @param root
  */
 template<class T>
-void Tree<T>::inOrder(TreeNode<T>* root) {
+void BinarySearchTree<T>::inOrder(TreeNode<T>* root) {
     if(root->isLeaf()) {
         std::cout << readValue(*root);
         std::cout << std::endl;
@@ -166,7 +166,7 @@ void Tree<T>::inOrder(TreeNode<T>* root) {
  * @param root
  */
 template<class T>
-void Tree<T>::postOrder(TreeNode<T>* root) {
+void BinarySearchTree<T>::postOrder(TreeNode<T>* root) {
     if(root->isLeaf()) {
         std::cout << readValue(*root);
         std::cout << std::endl;

@@ -24,31 +24,31 @@ public:
 
     virtual ~BinarySearchTree() = default;
 
-    void create();
+    void create() override;
     void create(T);
 
     // Observers
-    bool empty() const;
-    TreeNode<T>* const root() const;
-    TreeNode<T>* ancestor(TreeNode<T>* node) const;
-    TreeNode<T>* getLeftNode(TreeNode<T>* node) const;
-    TreeNode<T>* getRightNode(TreeNode<T>* node) const;
-    bool isLeftNodeEmpty(TreeNode<T> node) const;
-    bool isRightNodeEmpty(TreeNode<T> node) const;
-    T readValue(TreeNode<T> node) const;
+    bool empty() const override;
+    TreeNode<T>* const root() const override;
+    TreeNode<T>* ancestor(TreeNode<T>* node) const override;
+    TreeNode<T>* getLeftNode(TreeNode<T>* node) const override;
+    TreeNode<T>* getRightNode(TreeNode<T>* node) const override;
+    bool isLeftNodeEmpty(TreeNode<T> node) const override;
+    bool isRightNodeEmpty(TreeNode<T> node) const override;
+    T readValue(TreeNode<T> node) const override;
 
     // Modifiers
-    void eraseTree(TreeNode<T> node);
-    void writeValue(TreeNode<T>* node, T t);
-    void insertRoot(TreeNode<T>* node);
-    void insertRightNode(TreeNode<T>* node);
-    void insertLeftNode(TreeNode<T>* node);
+    void eraseTree(TreeNode<T> node) override;
+    void writeValue(TreeNode<T>* node, T t) override;
+    void insertRoot(TreeNode<T>* node) override;
+    void insertRightNode(TreeNode<T>* node) override;
+    void insertLeftNode(TreeNode<T>* node) override;
 
-    void printTree() const;
+    void printTree() const override;
 
-    void preOrder(TreeNode<T>* node) ;
-    void inOrder(TreeNode<T>* node) ;
-    void postOrder(TreeNode<T>* node) ;
+    void preOrder(TreeNode<T>* node) override;
+    void inOrder(TreeNode<T>* node) override;
+    void postOrder(TreeNode<T>* node) override;
 
     int depth(TreeNode<T> *root) override;
 
