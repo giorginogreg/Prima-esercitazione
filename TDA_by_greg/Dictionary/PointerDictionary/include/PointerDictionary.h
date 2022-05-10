@@ -26,7 +26,7 @@ public:
     virtual Pair<K_T, V_T> find(K_T) const;
     virtual Node<Pair<K_T, V_T>>* findNode(K_T) const;
 private:
-    PointerList< Pair<K_T, V_T>, 0>* p = new PointerList< Pair<K_T,V_T>, 0>();
+    PointerList< Pair<K_T, V_T>>* p = new PointerList< Pair<K_T,V_T>>();
 };
 
 #include "../src/PointerDictionary.tpp"

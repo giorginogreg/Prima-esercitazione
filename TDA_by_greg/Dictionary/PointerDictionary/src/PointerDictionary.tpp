@@ -27,8 +27,8 @@ bool PointerDictionary<K_T, V_T>::belongsTo(K_T key) const {
     if(!isEmpty()) {
         do {
             iterator = iterator->getNextPos();
-            auto elem = iterator->getElem();
-            if(elem->_key == key)
+            Pair<K_T, V_T> elem = iterator->getElem();
+            if(elem._key == key)
                 return true;
         } while (!p->isLastPosition(iterator));
     }
@@ -58,33 +58,30 @@ V_T PointerDictionary<K_T, V_T>::getValue(const K_T t) const {
 template<class K_T, class V_T>
 void PointerDictionary<K_T, V_T>::updatePair(const Pair<K_T, V_T> pair) {
     auto node = findNode(pair._key);
-    auto elem = node->getElem();
-    elem->_value = pair._value;
+    Pair<K_T, V_T> elem = node->getElem();
+    elem._value = pair._value;
+    node->setElem(elem);
 }
 
 template<class K_T, class V_T>
 Pair<K_T, V_T> PointerDictionary<K_T, V_T>::find(K_T key ) const {
-
     // Pre-conds: The element exists already in the dictionary
-
     auto iterator = p->firstNodeList();
     while (!p->isLastPosition(iterator)) {
-        auto elem = iterator->getElem();
-        if(elem->_key == key)
-            return *elem;
+        Pair<K_T, V_T> elem = iterator->getElem();
+        if(elem._key == key)
+            return elem;
         iterator = iterator->getNextPos();
     }
 }
 
 template<class K_T, class V_T>
 Node<Pair<K_T, V_T>>* PointerDictionary<K_T, V_T>::findNode(K_T key) const {
-
     // Pre-conds: The element exists already in the dictionary
-
     auto iterator = p->firstNodeList();
     while (!p->isLastPosition(iterator)) {
-        auto elem = iterator->getElem();
-        if(elem->_key == key)
+        Pair<K_T, V_T> elem = iterator->getElem();
+        if(elem._key == key)
             return iterator;
         iterator = iterator->getNextPos();
     }
