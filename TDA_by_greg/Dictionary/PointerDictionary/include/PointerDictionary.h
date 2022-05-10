@@ -12,7 +12,7 @@
 template<class K_T, class V_T>
 class PointerDictionary: public Dictionary<K_T, V_T> {
 public:
-    PointerDictionary();
+    PointerDictionary(int maxElemsInside);
 
     void create();
     virtual bool isEmpty() const;
@@ -26,7 +26,7 @@ public:
     virtual Pair<K_T, V_T> find(K_T) const;
     virtual Node<Pair<K_T, V_T>>* findNode(K_T) const;
 private:
-    PointerList< Pair<K_T, V_T>>* p = new PointerList< Pair<K_T,V_T>>();
+    PointerList< Pair<K_T, V_T>>* p;
 };
 
 #include "../src/PointerDictionary.tpp"

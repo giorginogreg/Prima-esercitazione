@@ -5,7 +5,8 @@
 #include "../include/PointerDictionary.h"
 
 template<class K_T, class V_T>
-PointerDictionary<K_T, V_T>::PointerDictionary() {
+PointerDictionary<K_T, V_T>::PointerDictionary(int maxElemsInside) {
+    p = new PointerList< Pair<K_T,V_T>>(10);
     create();
 }
 
@@ -66,13 +67,14 @@ void PointerDictionary<K_T, V_T>::updatePair(const Pair<K_T, V_T> pair) {
 template<class K_T, class V_T>
 Pair<K_T, V_T> PointerDictionary<K_T, V_T>::find(K_T key ) const {
     // Pre-conds: The element exists already in the dictionary
-    auto iterator = p->firstNodeList();
-    while (!p->isLastPosition(iterator)) {
+    auto iterator = p->getHead();
+    do {
+        iterator = iterator->getNextPos();
         Pair<K_T, V_T> elem = iterator->getElem();
         if(elem._key == key)
             return elem;
-        iterator = iterator->getNextPos();
-    }
+    } while (!p->isLastPosition(iterator));
+
 }
 
 template<class K_T, class V_T>

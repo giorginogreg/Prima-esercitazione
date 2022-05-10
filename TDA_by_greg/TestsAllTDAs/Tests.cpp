@@ -1,3 +1,7 @@
+// -----------------
+#define POINTER_LINKED_LIST_TESTS
+#include "../Lists/pointer_implementation/Linked List/Linked_List_Test_Cases.cpp"
+
 #define DICTIONARY_TESTS
 #include "../Dictionary/PointerDictionary/TestsPointerDictionary.cpp"
 
@@ -8,10 +12,6 @@
 // -----------------
 #define VECTOR_LIST_TESTS
 #include "../Lists/vector_implementation/Test_Cases.cpp"
-
-// -----------------
-#define POINTER_LINKED_LIST_TESTS
-#include "../Lists/pointer_implementation/Linked List/Linked_List_Test_Cases.cpp"
 
 // -----------------
 #define POINTER_QUEUE_TESTS

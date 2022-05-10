@@ -6,13 +6,13 @@
 using std::string;
 
 TEST_CASE( "Testing that a pointer is empty after initialization" ) {
-    auto p = new PointerDictionary<string, int>();
+    auto p = new PointerDictionary<string, int>(10);
 
     REQUIRE(p->isEmpty());
 }
 
 TEST_CASE( "Testing that putting a new pair into a dictionary is working" ) {
-    auto p = new PointerDictionary<string, int>();
+    auto p = new PointerDictionary<string, int>(10);
 
     Pair<string, int> pair {
         ._key = "A",
@@ -25,7 +25,7 @@ TEST_CASE( "Testing that putting a new pair into a dictionary is working" ) {
 }
 
 TEST_CASE( "Testing that inserting multiple values in a dictionary is working" ) {
-    auto p = new PointerDictionary<string, int>();
+    auto p = new PointerDictionary<string, int>(10);
 
     Pair<string, int> pair {
         ._key = "A",
@@ -44,7 +44,7 @@ TEST_CASE( "Testing that inserting multiple values in a dictionary is working" )
 }
 
 TEST_CASE( "Testing that updating a value is working" ) {
-    auto p = new PointerDictionary<string, int>();
+    auto p = new PointerDictionary<string, int>(10);
 
     Pair<string, int> pair {
         ._key = "A",
@@ -79,6 +79,6 @@ TEST_CASE( "Testing that updating a value is working" ) {
             ._value = 500
     };
     p->put(pair4);
-    REQUIRE(p->getValue("C") == 10);
+    REQUIRE(p->getValue("C") == 500);
 
 }
