@@ -9,7 +9,7 @@
 #include "../../../../include/Node.h"
 
 template<class T, int S>
-class LinkedList: public LinearList<T, TDA_Greg::Node<T>*, S>{
+class LinkedList: public LinearList<T, TDA_Greg::Node<T>*>{
 
 public:
     LinkedList();

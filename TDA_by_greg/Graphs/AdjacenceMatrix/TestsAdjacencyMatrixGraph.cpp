@@ -2,6 +2,6 @@
 #include "./../../../catch.hpp"
 
 TEST_CASE( "Adjacency Matrix Graph: What i'm going to test" ) {
-    REQUIRE( true );
+    REQUIRE( false );
 }
 

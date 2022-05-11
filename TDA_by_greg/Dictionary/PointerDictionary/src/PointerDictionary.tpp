@@ -66,25 +66,33 @@ void PointerDictionary<K_T, V_T>::updatePair(const Pair<K_T, V_T> pair) {
 
 template<class K_T, class V_T>
 Pair<K_T, V_T> PointerDictionary<K_T, V_T>::find(K_T key ) const {
+
+    Pair<K_T, V_T> elem;
+
     // Pre-conds: The element exists already in the dictionary
     auto iterator = p->getHead();
     do {
         iterator = iterator->getNextPos();
-        Pair<K_T, V_T> elem = iterator->getElem();
+        elem = iterator->getElem();
         if(elem._key == key)
-            return elem;
+            break;
     } while (!p->isLastPosition(iterator));
 
+    return elem;
 }
 
 template<class K_T, class V_T>
 Node<Pair<K_T, V_T>>* PointerDictionary<K_T, V_T>::findNode(K_T key) const {
+
+    Pair<K_T, V_T> elem;
+
     // Pre-conds: The element exists already in the dictionary
     auto iterator = p->firstNodeList();
     while (!p->isLastPosition(iterator)) {
-        Pair<K_T, V_T> elem = iterator->getElem();
+        elem = iterator->getElem();
         if(elem._key == key)
             return iterator;
         iterator = iterator->getNextPos();
     }
+    return nullptr;
 }

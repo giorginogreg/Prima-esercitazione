@@ -6,7 +6,7 @@
 #pragma once
 
 template <class T, int S>
-class VectorList: public LinearList<T, int, S>
+class VectorList: public LinearList<T, int>
 {
 public:
     typedef int position;

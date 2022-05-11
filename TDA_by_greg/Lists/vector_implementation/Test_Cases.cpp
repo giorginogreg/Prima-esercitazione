@@ -10,7 +10,6 @@ TEST_CASE( "List initialization" ) {
     VectorList<int, 10> vectorList;
 
     REQUIRE(vectorList.getDimension() == size);
-    REQUIRE(vectorList.getElementsInside() == 0);
 
 }
 

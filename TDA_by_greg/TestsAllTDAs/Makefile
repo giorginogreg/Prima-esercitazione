@@ -10,9 +10,9 @@ C_FLAGS=-c -Werror -std=c++11
 #	$(CC) $(C_FLAGS) lib.cpp
 
 Tests: OutOfBoundException.o Tests.o
-	$(CC) Tests.o OutOfBoundException.o -o Tests && ./Tests
+	$(CC) Tests.o OutOfBoundException.o -o Tests && ./Tests && make clean
 
-Tests.o :
+Tests.o:
 	$(CC) $(C_FLAGS) Tests.cpp -o Tests.o
 
 OutOfBoundException.o:
