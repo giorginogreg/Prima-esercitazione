@@ -3,33 +3,34 @@
 //
 
 #include "../../include/Queue.h"
+#include "assert.h"
 #include "../include/PointerQueue.h"
 
-template<class Type, int Size>
-PointerQueue<Type, Size>::PointerQueue(){
+template<class Type>
+PointerQueue<Type>::PointerQueue(int maxElemsInside){
     start = end = headQueue = nullptr;
-    Queue<Type, Size>::create();
+    Queue<Type>::create(maxElemsInside);
 }
 
-template<class Type, int Size>
-bool PointerQueue<Type, Size>::isEmpty() {
+template<class Type>
+bool PointerQueue<Type>::isEmpty() {
     return start == end && this->elems_inside == 0;
 }
 
-template<class Type, int Size>
-bool PointerQueue<Type, Size>::isFull() {
+template<class Type>
+bool PointerQueue<Type>::isFull() {
     return this->elems_inside == this->max_size;
 }
 
-template<class Type, int Size>
-Type PointerQueue<Type, Size>::readQueue() {
-    //TODO: verificare che la coda non sia vuota
+template<class Type>
+Type PointerQueue<Type>::readQueue() {
+    assert(!isEmpty());
     return headQueue->getElem();
 }
 
-template<class Type, int Size>
-Type PointerQueue<Type, Size>::dequeue() {
-    //TODO: Verificare che la coda non sia vuota
+template<class Type>
+Type PointerQueue<Type>::dequeue() {
+    assert(!isEmpty());
     Type temp_value = headQueue->getElem();
     TDA_Greg::Node<Type>* temp_node = headQueue;
     start = headQueue = headQueue->getNextPos();
@@ -38,9 +39,9 @@ Type PointerQueue<Type, Size>::dequeue() {
     return temp_value;
 }
 
-template<class Type, int Size>
-void PointerQueue<Type, Size>::enqueue(Type elem) {
-    //TODO verificare che la coda non sia piena
+template<class Type>
+void PointerQueue<Type>::enqueue(Type elem) {
+    assert(!isFull());
     auto nodeToEnqueue = new TDA_Greg::Node<Type>(elem);
     if(headQueue != nullptr) {
         position temp_pos = headQueue;
@@ -57,13 +58,13 @@ void PointerQueue<Type, Size>::enqueue(Type elem) {
     this->elems_inside ++;
 }
 
-template<class Type, int Size>
-bool PointerQueue<Type, Size>::isLastNode(PointerQueue::position p) {
+template<class Type>
+bool PointerQueue<Type>::isLastNode(PointerQueue::position p) {
     return p->getNextPos() == nullptr;
 }
 
-template<class Type, int Size>
-PointerQueue<Type, Size>::~PointerQueue() {
+template<class Type>
+PointerQueue<Type>::~PointerQueue() {
     while (!isEmpty())
         dequeue();
 }

@@ -1,25 +1,36 @@
 //
 // Created by Greg on 31/03/22.
 //
-#include "../../include/Queue.h"
 
 #ifndef ESERCITAZIONI_ASD_QUEUE_VECTOR_H
 #define ESERCITAZIONI_ASD_QUEUE_VECTOR_H
+#include "../../include/Queue.h"
 
-template<class Type, int Size>
-class VectorQueue: public Queue<Type, Size> {
+template<class Type>
+class VectorQueue: public Queue<Type> {
+
 public:
-    virtual void create();
+    VectorQueue(int);
+
+    void create();
     virtual bool isEmpty();
+
+
     virtual Type readQueue();
     virtual Type dequeue();
-    virtual void enqueue(Type type);
+    virtual void enqueue(Type);
+
+
 private:
-    Type vectorQueue[Size];
+
+    Type* vectorQueue;
     int start;
     int end;
 
-    void checkLimits();
+    void checkStartLimit();
+    void checkEndLimit();
 };
+
+#include "../src/VectorQueue.tpp"
 
 #endif //ESERCITAZIONI_ASD_QUEUE_VECTOR_H

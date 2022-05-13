@@ -8,17 +8,18 @@
 #include "../../Linear List/LinearList.h"
 #include "../../Linked List/include/LinkedList.h"
 #include "../../../../include/Node.h"
-template<class T, int S>
+
+template<class T>
 class StackList {
 
 public:
-    virtual void push(T);
-    virtual T pop(); // Discard last changes
-    virtual bool empty();
-    virtual T top(); // Return last inserted element
+    void push(T);
+    T pop(); // Discard last changes
+    bool empty();
+    T top(); // Return last inserted element
 
 private:
-    LinkedList<T, S> _l;
+    LinkedList<T> _l;
     TDA_Greg::Node<T>* getLastNode();
 };
 

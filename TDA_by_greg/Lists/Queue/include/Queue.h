@@ -2,14 +2,14 @@
 // Created by Greg on 31/03/22.
 //
 
-#ifndef ESERCITAZIONI_ASD_TAIL_H
-#define ESERCITAZIONI_ASD_TAIL_H
+#ifndef ESERCITAZIONI_ASD_QUEUE_H
+#define ESERCITAZIONI_ASD_QUEUE_H
 
-template<class Type, int Size>
+template<class Type>
 class Queue {
 
 public:
-    virtual void create();
+    virtual void create(int maxElemsInside);
     virtual bool isEmpty() = 0;
     virtual Type readQueue() = 0;
     virtual Type dequeue() = 0;
@@ -24,4 +24,4 @@ protected:
 
 #include "../src/Queue.tpp"
 
-#endif //ESERCITAZIONI_ASD_TAIL_H
+#endif //ESERCITAZIONI_ASD_QUEUE_H

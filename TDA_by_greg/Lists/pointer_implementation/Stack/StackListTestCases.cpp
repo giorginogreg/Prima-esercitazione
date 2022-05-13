@@ -7,12 +7,39 @@
 
 #include "include/StackList.h"
 
-TEST_CASE( "Stack: List initialization" ) {
+TEST_CASE( "Stack: List initialization", "[vector]" ) {
 
-    StackList<int, 10> stackList;
+    auto stackList = new StackList<int>();
 
-    REQUIRE(stackList.empty());
-    //REQUIRE(linkedList.getDimension() == size);
-    //REQUIRE(stackList.getElementsInside() == 0);
+    SECTION( "Is list empty after initialization" ) {
+        REQUIRE(stackList->empty());
+    }
+
+    SECTION( "Stack: Testing that single push works" ) {
+        stackList->push(1);
+        REQUIRE(stackList->pop() == 1);
+    }
+
+    SECTION( "Stack: Testing that multiple pushes works" ) {
+        stackList->push(1);
+        stackList->push(2);
+        stackList->push(3);
+        REQUIRE(stackList->pop() == 3);
+        REQUIRE(stackList->pop() == 2);
+        REQUIRE(stackList->pop() == 1);
+    }
+
+    SECTION( "Stack: Testing that pop with empty list triggers error" ) {
+        //REQUIRE_THROWS_AS(stackList->pop(), IllegalAction)
+    }
+
+    SECTION( "Stack: Testing that top works" ) {
+        stackList->push(1);
+        stackList->push(2);
+        stackList->push(3);
+        REQUIRE(stackList->top() == 3);
+    }
+
+
 
 }

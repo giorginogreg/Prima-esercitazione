@@ -8,7 +8,7 @@
 #include "../../Linear List/LinearList.h"
 #include "../../../../include/Node.h"
 
-template<class T, int S>
+template<class T>
 class LinkedList: public LinearList<T, TDA_Greg::Node<T>*>{
 
 public:
@@ -32,8 +32,8 @@ public:
 
     virtual ~LinkedList();
 
-    LinkedList& operator =(const LinkedList<T, S> &);
-    bool operator ==(const LinkedList<T, S> &);
+    LinkedList& operator =(const LinkedList<T> &);
+    bool operator ==(const LinkedList<T> &);
 
 private:
     position _head;

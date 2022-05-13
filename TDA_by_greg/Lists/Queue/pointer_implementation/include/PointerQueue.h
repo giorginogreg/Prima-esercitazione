@@ -7,13 +7,13 @@
 #include "../../include/Queue.h"
 #include "../../../../include/Node.h"
 
-template<class Type, int Size>
-class PointerQueue: public Queue<Type, Size> {
+template<class Type>
+class PointerQueue: public Queue<Type> {
 
     typedef TDA_Greg::Node<Type>* position;
 
 public:
-    PointerQueue();
+    PointerQueue(int maxElemsInside);
 
     virtual ~PointerQueue();
 

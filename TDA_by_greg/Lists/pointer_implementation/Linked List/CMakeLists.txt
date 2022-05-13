@@ -7,6 +7,6 @@ FILE(GLOB SRCFILES
 
 add_executable(
     LinkedList
-    Test.cpp
+    LinkedListTester.cpp
     ${SRCFILES}
 )

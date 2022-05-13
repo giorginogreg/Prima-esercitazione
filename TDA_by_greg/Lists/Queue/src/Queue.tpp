@@ -4,7 +4,7 @@
 
 #include "../include/Queue.h"
 
-template<class Type, int Size>
-void Queue<Type, Size>::create() {
-    max_size = Size;
+template<class Type>
+void Queue<Type>::create(int maxElemsInside) {
+    max_size = maxElemsInside;
 }

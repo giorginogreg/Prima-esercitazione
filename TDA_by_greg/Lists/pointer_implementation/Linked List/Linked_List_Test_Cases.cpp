@@ -8,7 +8,7 @@
 TEST_CASE( "Linked List initialization" ) {
 
     const int size = 10;
-    LinkedList<int, 10> linkedList;
+    LinkedList<int> linkedList;
 
     REQUIRE(linkedList.getElementsInside() == 0);
 
@@ -18,7 +18,7 @@ TEST_CASE( "Linked List initialization" ) {
 TEST_CASE( "Is linked list empty?" ) {
 
     const int size = 0;
-    LinkedList<int, size> linkedList;
+    LinkedList<int> linkedList;
 
     REQUIRE(linkedList.isEmpty() == true);
     auto tempPos = linkedList.firstNodeList();
@@ -44,7 +44,7 @@ TEST_CASE( "Linked List: Array out of bound" ) {
 TEST_CASE( "Linked List: List Shifting" ) {
 
     const int size = 3;
-    LinkedList<int, size> linkedList;
+    LinkedList<int> linkedList;
     auto tempPos = linkedList.firstNodeList();
     linkedList.insertNodeAfter(tempPos, 1);
     tempPos = tempPos->getNextPos();
@@ -64,7 +64,7 @@ TEST_CASE( "Linked List: List Shifting" ) {
 
 TEST_CASE( "Linked List: First insert" ) {
     const int size = 0;
-    LinkedList<int, size> linkedList;
+    LinkedList<int> linkedList;
     auto tempPos = linkedList.firstNodeList();
     linkedList.insertNodeAfter(tempPos, 1);
     REQUIRE(linkedList.readValueAt(linkedList.firstNodeList()) == 1);
@@ -76,7 +76,7 @@ TEST_CASE( "Linked List: First insert" ) {
 
 TEST_CASE( "Linked List: Insert after a node at tail" ) {
     const int size = 0;
-    LinkedList<int, size> linkedList;
+    LinkedList<int> linkedList;
     auto tempPos = linkedList.firstNodeList();
     linkedList.insertNodeAfter(tempPos, 1);
     while(!linkedList.isLastPosition(tempPos)) tempPos = tempPos->getNextPos();
@@ -91,7 +91,7 @@ TEST_CASE( "Linked List: Insert after a node at tail" ) {
 
 TEST_CASE( "Linked List: Insert a node between the first and the tail" ) {
     const int size = 0;
-    LinkedList<int, size> linkedList;
+    LinkedList<int> linkedList;
     auto tempPos = linkedList.firstNodeList();
     linkedList.insertNodeAfter(tempPos, 1);
     tempPos = tempPos->getNextPos(); // Last node
