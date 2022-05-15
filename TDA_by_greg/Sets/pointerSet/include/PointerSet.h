@@ -12,24 +12,24 @@
 
 using namespace std;
 
-template<class T, int elems>
-class PointerSet: public Set<T, TDA_Greg::Node<T>* > {
+template<class T, class NodeType = Node<T>>
+class PointerSet: public Set<T, NodeType* > {
 public:
-    typedef TDA_Greg::Node<T>* PositionType;
+    typedef NodeType* PositionType;
 
-    PointerSet(){
+    PointerSet(int maxElemsInside = 10){
         this->elems_inside = 0;
-        create();
+        create(maxElemsInside);
     }
 
     ~PointerSet() { delete p; }
 
-    void create();
+    void create(int);
     bool isEmpty();
     bool belongsTo(T t);
 
     PositionType find(T t);
-    PointerList<T, elems> getAllElementsAsPointerList();
+    PointerList<T> getAllElementsAsPointerList();
     vector<T> getAllElements();
 
     void insert(T t);
@@ -40,7 +40,7 @@ public:
     void printTDA();
 
 protected:
-    PointerList<T, elems>* p = new PointerList<T, elems>();
+    PointerList<T>* p;
 };
 
 #include "../src/PointerSet.tpp"

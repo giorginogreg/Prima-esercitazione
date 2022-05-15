@@ -22,8 +22,8 @@ public:
     virtual void removeNode(GraphNode<T>*) = 0;
     virtual void removeLink(GraphNode<T>*, GraphNode<T>*) = 0;
 
-    virtual PointerList<GraphNode<T>, 0> getAllNodes() = 0;
-    virtual PointerList<GraphNode<T>,0> adjacents(GraphNode<T>) = 0;
+    virtual PointerList<GraphNode<T>> getAllNodes() = 0;
+    virtual PointerList<GraphNode<T>> adjacents(GraphNode<T>) = 0;
     virtual bool existsNode(GraphNode<T>) = 0;
     virtual bool existsLink(GraphNode<T>, GraphNode<T>) = 0;
 

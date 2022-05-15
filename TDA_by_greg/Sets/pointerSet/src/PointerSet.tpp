@@ -9,38 +9,39 @@
 
 using namespace std;
 
-template<class T, int nElems>
-void PointerSet<T, nElems>::create() {
+template<class T, class NodeType>
+void PointerSet<T, NodeType>::create(int nElems) {
     this->max_elems_inside = nElems;
+    p = new PointerList<T>(nElems);
 }
 
-template<class T, int nElems>
-bool PointerSet<T, nElems>::isEmpty() {
+template<class T, class NodeType>
+bool PointerSet<T, NodeType>::isEmpty() {
     return p->isEmpty();
 }
 
-template<class T, int nElems>
-void PointerSet<T, nElems>::insert(T t) {
+template<class T, class NodeType>
+void PointerSet<T, NodeType>::insert(T t) {
     if(!belongsTo(t)) {
         p->insertNodeAfter(p->lastNodeList(), t);
         Set<T, PositionType>::elems_inside++;
     }
 }
 
-template<class T, int nElems>
-bool PointerSet<T, nElems>::belongsTo(T t) {
+template<class T, class NodeType>
+bool PointerSet<T, NodeType>::belongsTo(T t) {
     return p->find(t);
 }
 
-template<class T, int nElems>
-Set <T, typename PointerSet<T, nElems>::PositionType>*
-        PointerSet<T, nElems>::union_op( Set<T, PositionType>* set2 ) {
+template<class T, class NodeType>
+Set <T, typename PointerSet<T, NodeType>::PositionType>*
+        PointerSet<T, NodeType>::union_op( Set<T, PositionType>* set2 ) {
             // Trasformo un puntatore a set da Set a puntatore a un puntatore a PointerSet
             auto* pointerSet = dynamic_cast<PointerSet*>(set2);
 
             // alloco memoria con un costruttore di copia per la lista a puntatore del pointerSet
-            auto unified_set = new PointerSet<T, nElems>();
-            unified_set->p = new PointerList<T, nElems>(*(pointerSet->p));
+            auto unified_set = new PointerSet<T, NodeType>();
+            unified_set->p = new PointerList<T>(*(pointerSet->p));
             // Scandisco tutti gli elementi del secondo vettore
             auto temp_pos = p->getHead();
 
@@ -55,15 +56,15 @@ Set <T, typename PointerSet<T, nElems>::PositionType>*
             return unified_set;
 }
 
-template<class T, int nElems>
-Set <T, typename PointerSet<T, nElems>::PositionType>*
-    PointerSet<T, nElems>::intersect( Set<T, PositionType>* set2 ) {
+template<class T, class NodeType>
+Set <T, typename PointerSet<T, NodeType>::PositionType>*
+    PointerSet<T, NodeType>::intersect( Set<T, PositionType>* set2 ) {
 
     // Trasformo un puntatore a set da Set a puntatore a un puntatore a PointerSet
     auto* pointerSet = dynamic_cast<PointerSet*>(set2);
 
     // alloco memoria con un costruttore di copia per la lista a puntatore del pointerSet
-    auto intersected_set = new PointerSet<T, nElems>();
+    auto intersected_set = new PointerSet<T, NodeType>();
 
     // Scandisco tutti gli elementi del secondo vettore
     auto temp_pos = p->getHead();
@@ -78,8 +79,8 @@ Set <T, typename PointerSet<T, nElems>::PositionType>*
     }
     return intersected_set;
 /*
-    auto intersected_set = new PointerSet<T, nElems>();
-    intersected_set.p = new PointerList<T, nElems>(set2.p);
+    auto intersected_set = new PointerSet<T, NodeType>();
+    intersected_set.p = new PointerList<T, NodeType>(set2.p);
     auto temp_pos = intersected_set.p->firstNodeList();
     while(!intersected_set.p->isLastPosition(temp_pos)){
         if(set2.find(temp_pos->getElem()))
@@ -90,13 +91,13 @@ Set <T, typename PointerSet<T, nElems>::PositionType>*
 }
 
 
-template<class T, int nElems>
-Set<T, typename PointerSet<T, nElems>::PositionType>
-    *PointerSet<T, nElems>::difference(Set<T, PositionType> *set) {
+template<class T, class NodeType>
+Set<T, typename PointerSet<T, NodeType>::PositionType>
+    *PointerSet<T, NodeType>::difference(Set<T, PositionType> *set) {
     auto* pointerSet = dynamic_cast<PointerSet*>(set);
     auto pointerList = pointerSet->p;
-    auto diff_set = new PointerSet<T, nElems>();
-    diff_set->p = new PointerList<T, nElems>(*this->p);
+    auto diff_set = new PointerSet<T, NodeType>();
+    diff_set->p = new PointerList<T>(*this->p);
 
     auto temp_pos = p->getHead();
     do {
@@ -108,14 +109,14 @@ Set<T, typename PointerSet<T, nElems>::PositionType>
     return diff_set;
 }
 
-template<class T, int nElems>
-void PointerSet<T, nElems>::remove(T t) {
+template<class T, class NodeType>
+void PointerSet<T, NodeType>::remove(T t) {
     p->deleteNodeAt(p->getFirstPositionByElem(t));
     Set<T, PositionType>::elems_inside--;
 }
 
-template<class T, int nElems>
-void PointerSet<T, nElems>::printTDA() {
+template<class T, class NodeType>
+void PointerSet<T, NodeType>::printTDA() {
     auto head = p->getHead();
     do {
         head = head->getNextPos();
@@ -124,20 +125,20 @@ void PointerSet<T, nElems>::printTDA() {
     cout << endl;
 }
 
-template<class T, int elems>
-typename PointerSet<T, elems>::PositionType PointerSet<T, elems>::find(T t) {
+template<class T, class NodeType>
+typename PointerSet<T, NodeType>::PositionType PointerSet<T, NodeType>::find(T t) {
     return p->getFirstPositionByElem(t);
 }
 
 
-template<class T, int elems>
-PointerList<T, elems> PointerSet<T, elems>::getAllElementsAsPointerList() {
+template<class T, class NodeType>
+PointerList<T> PointerSet<T, NodeType>::getAllElementsAsPointerList() {
     return *p;
 }
 
-template<class T, int elems>
-vector< T > PointerSet<T, elems>::getAllElements() {
-    auto pointerNodes = new vector<T>();
+template<class T, class NodeType>
+vector< T > PointerSet<T, NodeType>::getAllElements() {
+    auto pointerNodes = new vector<T, NodeType>();
     auto head = p->getHead();
     do {
         head = head->getNextPos();
@@ -146,8 +147,8 @@ vector< T > PointerSet<T, elems>::getAllElements() {
     return *pointerNodes;
 }
 
-template<class T, int elems>
-ostream &operator<<(ostream &o, PointerSet<T, elems> &pointerSet) {
+template<class T, class NodeType>
+ostream &operator<<(ostream &o, PointerSet<T, NodeType> &pointerSet) {
 
     o << "List Content: " << endl;
     pointerSet.printTDA();

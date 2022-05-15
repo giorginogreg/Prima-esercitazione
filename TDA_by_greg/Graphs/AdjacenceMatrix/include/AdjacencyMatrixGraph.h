@@ -44,8 +44,8 @@ public:
     void removeLink(GraphNode<T>*, GraphNode<T>*);
     WeightType getLinkWeight(GraphNode<T>, GraphNode<T>);
 
-    PointerList<GraphNode<T>, 0> getAllNodes();
-    PointerList<GraphNode<T>, 0> adjacents(GraphNode<T> node);
+    PointerList<GraphNode<T>> getAllNodes();
+    PointerList<GraphNode<T>> adjacents(GraphNode<T> node);
     bool existsNode(GraphNode<T> node);
     bool existsLink(GraphNode<T> node, GraphNode<T> node2);
 
@@ -55,8 +55,8 @@ public:
 private:
     void setWeight(GraphNode<T> node1, GraphNode<T> node2, WeightType w);
 
-    PointerList<Edge<T, WeightType>, 0> edgesList;
-    PointerSet<GraphNode<T>, 0> nodesList;
+    PointerList<Edge<T, WeightType>>* edgesList;
+    PointerSet<T, GraphNode<T>>* nodesList; // Lista di nodi di tipo T
 
     vector<vector<WeightType>> adjacencyMatrix;
 };

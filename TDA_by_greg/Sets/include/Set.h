@@ -9,7 +9,7 @@ template<class T, class PositionType>
 class Set {
 public:
 
-    virtual void create() = 0;
+    virtual void create(int) = 0;
     virtual bool isEmpty() = 0;
     virtual bool belongsTo(T) = 0;
     virtual void insert(T) = 0;
