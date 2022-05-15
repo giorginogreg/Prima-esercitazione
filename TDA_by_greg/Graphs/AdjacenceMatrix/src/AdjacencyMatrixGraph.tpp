@@ -10,6 +10,8 @@ using std::vector;
 template<class T, class WeightType>
 AdjacencyMatrixGraph<T, WeightType>::AdjacencyMatrixGraph(){
     create();
+    edgesList = new PointerList<Edge<T, WeightType>>(5);
+    nodesList = new PointerSet<T, GraphNode<T>>();
 }
 
 
@@ -23,16 +25,19 @@ void AdjacencyMatrixGraph<T, WeightType>::create() {
 
 template<class T, class WeightType>
 bool AdjacencyMatrixGraph<T, WeightType>::isEmpty() {
-    return nodesList.getElemsInside() == 0;
+    return nodesList->getElemsInside() == 0;
 }
 
 template<class T, class WeightType>
 void AdjacencyMatrixGraph<T, WeightType>::insertNode(GraphNode<T>* node) {
-    if(!nodesList.isEmpty())
-        assert(!nodesList.belongsTo(*node)); // PRE-COND: Node doesn't belong to nodesList
+    T val = node->getElem();
+    if(!nodesList->isEmpty())
+        assert(!nodesList->belongsTo(val)); // PRE-COND: Node doesn't belong to nodesList
 
     //nodesList.insertNodeAfter(nodesList.lastNodeList(), node);
-    nodesList.insert(*node);
+    nodesList->insert(val);
+
+    //todo: se il numero massimo di nodi è stato raggiunto, controlla se per ogni nodo c'è uno con il soft remotion a 1
 
     int nNodes = Graph<T, WeightType>::getNodesInside() + 1;
     node->setId(nNodes - 1);
@@ -47,7 +52,7 @@ void AdjacencyMatrixGraph<T, WeightType>::insertNode(GraphNode<T>* node) {
 template<class T, class WeightType>
 void AdjacencyMatrixGraph<T, WeightType>::insertLink(GraphNode<T>* node1, GraphNode<T>* node2, WeightType w) {
     Edge<T, WeightType> e(*node1, *node2, w);
-    edgesList.insertNodeAfter(edgesList.lastNodeList(), e);
+    edgesList->insertNodeAfter(edgesList->lastNodeList(), e);
 
     setWeight(*node1, *node2, w);
 
@@ -61,7 +66,7 @@ void AdjacencyMatrixGraph<T, WeightType>::removeNode(GraphNode<T>* node) {
     assert( existsNode(*node) );
     assert( ! node->hasLinks() );
 
-    nodesList.remove(*node);
+    nodesList->remove((*node).getElem());
     int nNodes = Graph<T, WeightType>::getNodesInside();
     adjacencyMatrix.erase(adjacencyMatrix.begin() +  node->getId());// remove elem for each row
 
@@ -76,14 +81,12 @@ void AdjacencyMatrixGraph<T, WeightType>::removeNode(GraphNode<T>* node) {
 template<class T, class WeightType>
 void AdjacencyMatrixGraph<T, WeightType>::removeLink(GraphNode<T>* node1, GraphNode<T>* node2) {
 
-    assert(node1->getLinks() > 0);
-    assert(node2->getLinks() > 0);
     assert(existsLink(*node1, *node2));
+    WeightType w = getLinkWeight(*node1, *node2);
+    Edge<T, WeightType> e(*node1, *node2, w);
 
+    edgesList->deleteNodeAt(edgesList->getFirstPositionByElem(e));
     setWeight(*node1, *node2, NO_LINK);
-    Edge<T, WeightType> e(*node1, *node2);
-
-    edgesList.deleteNodeAt(edgesList.getFirstPositionByElem(e));
     node1->setLinks(node1->getLinks() - 1);
 
 }
@@ -100,31 +103,47 @@ WeightType AdjacencyMatrixGraph<T, WeightType>::getLinkWeight(GraphNode<T> node1
 
 
 template<class T, class WeightType>
-PointerList<GraphNode<T>, 0> AdjacencyMatrixGraph<T, WeightType>::getAllNodes() {
-    return nodesList.getAllElementsAsPointerList();
+PointerList<GraphNode<T>> AdjacencyMatrixGraph<T, WeightType>::getAllNodes() {
+
+    auto nodes = nodesList->getAllElementsAsPointerList();
+    auto nodesPointerListGraphNode = new PointerList<GraphNode<T>>(nodes.getElementsInside());
+
+    auto iterator = nodes.firstNodeList();
+    auto iteratorNodesPL = nodesPointerListGraphNode->firstNodeList();
+
+    while(!nodes.isLastPosition(iterator) && !nodesPointerListGraphNode->isLastPosition(iteratorNodesPL)) {
+        iteratorNodesPL = iteratorNodesPL->getNextPos();
+        iterator = iterator->getNextPos();
+        nodesPointerListGraphNode->insertNodeAfter(iteratorNodesPL, iterator->getElem());
+    }
+
+    return *nodesPointerListGraphNode;
 }
 
 template<class T, class WeightType>
-PointerList<GraphNode<T>, 0> AdjacencyMatrixGraph<T, WeightType>::adjacents(GraphNode<T> node) {
+PointerList<GraphNode<T>> AdjacencyMatrixGraph<T, WeightType>::adjacents(GraphNode<T> node) {
 
-
-    PointerList<GraphNode<T>, 0> adjacents;
-
-    auto allNodes = nodesList.getAllElements();
-
+    //auto nodes = nodesList->getAllElements();
+    auto nodes = nodesList->getAllElementsAsPointerList();
+    auto* adjacents = new PointerList<GraphNode<T>>(nodes.getElementsInside());
     vector<WeightType> row = adjacencyMatrix.at(node.getId());
-    for (GraphNode<T> innerNode : allNodes) {
-        if(row.at(innerNode.getId()) != NO_LINK){
-            adjacents.insertNodeAfter(adjacents.lastNodeList(), innerNode);
+    
+    auto iterNodes = nodes.firstNodeList();
+    while(!nodes.isLastPosition(iterNodes)) {
+       iterNodes = iterNodes->getNextPos();
+        if(row.at(iterNodes->getElem().getId()) != NO_LINK){
+            adjacents->insertNodeAfter(adjacents->lastNodeList(), iterNodes->getElem());
         }
     }
+    
 
-    return adjacents;
+
+    return *adjacents;
 }
 
 template<class T, class WeightType>
 bool AdjacencyMatrixGraph<T, WeightType>::existsNode(GraphNode<T> node) {
-    return nodesList.find(node);
+    return nodesList->find(node.getElem()) != nullptr;
 }
 
 template<class T, class WeightType>
