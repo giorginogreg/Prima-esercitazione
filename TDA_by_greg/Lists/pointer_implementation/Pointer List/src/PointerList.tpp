@@ -21,7 +21,7 @@ PointerList<T>::PointerList(PointerList const &p) {
     nodeToInsert->setNextPos(nullptr);
     nodeToInsert->setPrevPos(nullptr);
     _list = _tail = nodeToInsert;
-    initialize(p._max_nodes);
+    initialize(p._max_elems_inside);
 
     PositionType sentinel_this = _list;
     PositionType _2head = p._list;

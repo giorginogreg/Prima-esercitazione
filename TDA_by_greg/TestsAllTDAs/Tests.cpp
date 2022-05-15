@@ -24,11 +24,9 @@
 #define STACK_TESTS
 #include "../Lists/pointer_implementation/Stack/StackListTestCases.cpp"
 
-
 // -----------------
 #define VECTOR_QUEUE_TESTS
 #include "../Lists/Queue/vector_implementation/Test_Cases.cpp"
-
 
 // -----------------
 #define GRAPH_TESTS

@@ -18,6 +18,7 @@ private:
     Node<T> n2;
     WeightType weight;
 
+
 public:
     Edge() {}
     Edge(Node<T> _n1, Node<T> _n2): n1(_n1), n2(_n2), weight(0){};
@@ -27,6 +28,14 @@ public:
         return edge_to_compare.n1 == n1 &&
             edge_to_compare.n2 == n2 &&
             edge_to_compare.weight == weight;
+    }
+
+    WeightType getWeight() const {
+        return weight;
+    }
+
+    void setWeight(WeightType w) {
+        Edge::weight = w;
     }
 };
 
