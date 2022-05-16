@@ -2,8 +2,8 @@
 // Created by Greg on 06/04/22.
 //
 
-#ifndef POINTERQUEUE_POINTERSET_H
-#define POINTERQUEUE_POINTERSET_H
+#ifndef POINTERSET_H
+#define POINTERSET_H
 
 #include <ostream>
 #include "../../include/Set.h"
@@ -29,7 +29,7 @@ public:
     bool belongsTo(T t);
 
     PositionType find(T t);
-    PointerList<T> getAllElementsAsPointerList();
+    PointerList<T, NodeType> getAllElementsAsPointerList();
     vector<T> getAllElements();
 
     void insert(T t);
@@ -40,9 +40,9 @@ public:
     void printTDA();
 
 protected:
-    PointerList<T>* p;
+    PointerList<T, NodeType>* p;
 };
 
 #include "../src/PointerSet.tpp"
 
-#endif //POINTERQUEUE_POINTERSET_H
+#endif //POINTERSET_H

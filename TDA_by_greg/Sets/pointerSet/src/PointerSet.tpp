@@ -132,7 +132,7 @@ typename PointerSet<T, NodeType>::PositionType PointerSet<T, NodeType>::find(T t
 
 
 template<class T, class NodeType>
-PointerList<T> PointerSet<T, NodeType>::getAllElementsAsPointerList() {
+PointerList<T, NodeType> PointerSet<T, NodeType>::getAllElementsAsPointerList() {
     return *p;
 }
 

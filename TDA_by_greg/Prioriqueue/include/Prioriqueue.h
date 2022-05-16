@@ -9,10 +9,12 @@ template<class T>
 class Prioriqueue {
 
 public:
-    virtual void create() = 0;
+    virtual void create(int) = 0;
     virtual void insert(T) = 0;
     virtual T getMinimum() = 0;
     virtual void deleteMinimum() = 0;
+
+    int max_elems_inside;
 };
 
 #endif //TDA_PRIORIQUEUE_H
