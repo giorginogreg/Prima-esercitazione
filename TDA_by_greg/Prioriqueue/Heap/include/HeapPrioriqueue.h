@@ -7,12 +7,12 @@
 
 #include "../../include/Prioriqueue.h"
 
-template<class T, int MAX_LENGTH>
+template<class T>
 class HeapPrioriqueue: public Prioriqueue<T> {
 public:
 
-    HeapPrioriqueue();
-    void create();
+    HeapPrioriqueue(int);
+    void create(int);
     void insert(T t);
     T getMinimum();
     void deleteMinimum();

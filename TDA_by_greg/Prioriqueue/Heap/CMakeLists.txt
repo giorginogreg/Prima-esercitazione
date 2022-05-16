@@ -5,7 +5,14 @@ project(Heap)
 FILE(GLOB SRCFILES
         "src/Newton/*.cpp")
 
+FILE(GLOB TEST_FILES
+        "Tests*.cpp")
+
+
 add_executable(
         Heap
-        main.cpp
-        ${SRCFILES} main.cpp include/HeapPrioriqueue.h src/HeapPrioriqueue.tpp)
+        ${TEST_FILES}
+        ${SRCFILES}
+        include/HeapPrioriqueue.h
+        src/HeapPrioriqueue.tpp
+)

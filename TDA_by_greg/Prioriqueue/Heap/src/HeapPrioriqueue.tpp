@@ -9,32 +9,33 @@
 #include <cassert>
 #include "../include/HeapPrioriqueue.h"
 
-template<class T, int MAX_LENGTH>
-HeapPrioriqueue<T, MAX_LENGTH>::HeapPrioriqueue(){
-    _heap = new T[MAX_LENGTH];
-    create();
+template<class T>
+HeapPrioriqueue<T>::HeapPrioriqueue(const int max_length){
+    _heap = new T[max_length];
+    create(max_length);
 }
 
-template<class T, int MAX_LENGTH>
-void HeapPrioriqueue<T,MAX_LENGTH>::create() {
+template<class T>
+void HeapPrioriqueue<T>::create(const int max_length) {
     _last_elem = 0;
+    Prioriqueue<T>::max_elems_inside = max_length;
 }
 
-template<class T, int MAX_LENGTH>
-void HeapPrioriqueue<T, MAX_LENGTH>::insert(T t) {
-    assert(_last_elem < MAX_LENGTH);
+template<class T>
+void HeapPrioriqueue<T>::insert(T t) {
+    assert(_last_elem < this->max_elems_inside);
     _heap[++_last_elem - 1] = t;
     fixUp();
 }
 
-template<class T, int MAX_LENGTH>
-T HeapPrioriqueue<T, MAX_LENGTH>::getMinimum() {
+template<class T>
+T HeapPrioriqueue<T>::getMinimum() {
     assert(_last_elem > 0);
     return _heap[0];
 }
 
-template<class T, int MAX_LENGTH>
-void HeapPrioriqueue<T, MAX_LENGTH>::deleteMinimum() {
+template<class T>
+void HeapPrioriqueue<T>::deleteMinimum() {
     assert(_last_elem > 0);
      _heap[0] = _heap[_last_elem - 1];
      _last_elem--;
@@ -42,13 +43,13 @@ void HeapPrioriqueue<T, MAX_LENGTH>::deleteMinimum() {
 }
 
 
-template<class T, int MAX_LENGTH>
-HeapPrioriqueue<T, MAX_LENGTH>::~HeapPrioriqueue() {
+template<class T>
+HeapPrioriqueue<T>::~HeapPrioriqueue() {
     delete[] _heap;
 }
 
-template<class T, int MAX_LENGTH>
-void HeapPrioriqueue<T, MAX_LENGTH>::fixUp() {
+template<class T>
+void HeapPrioriqueue<T>::fixUp() {
     int k = _last_elem;
 
     while (k > 1 && _heap[k-1] < _heap[k / 2 - 1]) { // if node is less than ancestor swap
@@ -59,8 +60,8 @@ void HeapPrioriqueue<T, MAX_LENGTH>::fixUp() {
     }
 }
 
-template<class T, int MAX_LENGTH>
-void HeapPrioriqueue<T, MAX_LENGTH>::fixDown(int k, int N) {
+template<class T>
+void HeapPrioriqueue<T>::fixDown(int k, int N) {
     int scambio = 1;
     while(k <= N / 2 && scambio) {
         int j = k*2;
@@ -77,8 +78,8 @@ void HeapPrioriqueue<T, MAX_LENGTH>::fixDown(int k, int N) {
     }
 }
 
-template<class T, int MAX_LENGTH>
-void HeapPrioriqueue<T, MAX_LENGTH>::heapSort(int n) {
+template<class T>
+void HeapPrioriqueue<T>::heapSort(int n) {
     for(int i = 0; i < n; i++){
         fixUp(i);
     }
