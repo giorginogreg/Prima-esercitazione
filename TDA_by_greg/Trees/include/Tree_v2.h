@@ -17,12 +17,12 @@ struct TreeNode_v2 {
 
     TreeNode_v2* _ancestor;
     T value;
-    LinkedList<TreeNode_v2<T>*, 0> _sons;
+    LinkedList<TreeNode_v2<T>*>* _sons;
     int _level;
 
     TreeNode_v2() {
         _ancestor = nullptr;
-        _sons = new LinkedList< TreeNode_v2<T>*, 0 >();
+        _sons = new LinkedList< TreeNode_v2<T>*>();
     }
     TreeNode_v2(T val) {
         TreeNode_v2<T>();
@@ -45,7 +45,7 @@ struct TreeNode_v2 {
     }
 
     bool isLeaf() {
-        return _sons.isEmpty();
+        return _sons->isEmpty();
     }
 };
 
@@ -60,10 +60,10 @@ public:
     virtual void create() = 0;
     virtual bool empty() const = 0;
 
-    virtual TreeNode_v2<int> *const root() const = 0;
+    virtual TreeNode_v2<T>* root() const = 0;
     virtual TreeNode_v2<T>* ancestor() const =  0;
-    virtual TreeNode_v2<T>* getLeftNode() const = 0;
-    virtual TreeNode_v2<T>* getRightNode() const = 0;
+    virtual TreeNode_v2<T>* getLeftNode(TreeNode_v2<T> *) const = 0;
+    virtual TreeNode_v2<T>* getRightNode(TreeNode_v2<T> *) const = 0;
     virtual bool isLeftNodeEmpty(TreeNode_v2<T>) const = 0;
     virtual bool isRightNodeEmpty(TreeNode_v2<T>) const = 0;
 
@@ -84,6 +84,8 @@ public:
     virtual void postOrder(TreeNode_v2<T>* ) = 0; // LRN
 
     virtual int depth(TreeNode_v2<T>* root) = 0;
+
+    int nodes_inside = 0;
 private:
     //virtual void printSubTree(TreeNode<T> root, std::string prependString) const = 0;
 };

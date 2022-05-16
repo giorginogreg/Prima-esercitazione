@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 14)
 FILE(GLOB SUPERSRCFILES
         "../include/*.h")
 
+FILE(GLOB TESTS
+        "./Tests*.cpp")
+
 FILE(GLOB SRCFILES
         "include/*.h")
 
@@ -13,5 +16,6 @@ add_executable(
         NTrees
         ${SUPERSRCFILES}
         ${SRCFILES}
-        main.cpp src/N-Tree.tpp)
+        ${TESTS}
+)
 

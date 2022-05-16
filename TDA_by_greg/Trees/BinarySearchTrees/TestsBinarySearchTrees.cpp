@@ -9,13 +9,12 @@
 #include "./../../../catch.hpp"
 
 #include "include/BinarySearchTree.h"
-#include "src/BinarySearchTree.tpp"
 
 TEST_CASE( "Binary Tree Initialization" ) {
 
     auto tree = new BinarySearchTree<int>(5);
 
-    REQUIRE(tree->readValue(*tree->root()) == 5);
+    REQUIRE(tree->readValue(*(tree->root())) == 5);
 }
 
 TEST_CASE( "Is tree empty / Full" ) {
@@ -26,5 +25,34 @@ TEST_CASE( "Is tree empty / Full" ) {
     tree->insertLeftNode(new TreeNode<int>());
     tree->insertRightNode(new TreeNode<int>());
     REQUIRE_FALSE(tree->empty());
+
+}
+
+TEST_CASE( "Test that right node is filled correctly" ) {
+
+    auto tree = new BinarySearchTree<int>();
+    auto node = new TreeNode<int>(5);
+    tree->insertRightNode(node);
+    REQUIRE(tree->getRightNode(tree->root()) == node);
+
+}
+
+
+TEST_CASE( "Test that left node is filled correctly" ) {
+
+    auto tree = new BinarySearchTree<int>();
+    auto node = new TreeNode<int>(5);
+    tree->insertLeftNode(node);
+    REQUIRE(tree->getLeftNode(tree->root()) == node);
+
+}
+
+TEST_CASE( "Test that writing value in a node works correctly" ) {
+
+    auto tree = new BinarySearchTree<int>();
+    auto node = new TreeNode<int>(5);
+    tree->insertLeftNode(node);
+    tree->writeValue(tree->getLeftNode(tree->root()), 50);
+    REQUIRE(tree->readValue(*(tree->getLeftNode(tree->root()))) == 50 );
 
 }

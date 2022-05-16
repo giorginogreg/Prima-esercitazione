@@ -15,18 +15,18 @@ public:
     void create();
     bool empty() const;
     void insertRoot(TreeNode_v2<T> *node);
-    TreeNode_v2<int> *root() const;
-    TreeNode_v2<T> *ancestor() const;
+    TreeNode_v2<T>* root() const;
+    TreeNode_v2<T>* ancestor() const;
     bool isLeaf() const;
     TreeNode_v2<T>* firstSon() const;
     bool isLastSibling() const;
     TreeNode_v2<T>* nextSibling() const;
 
-    void insertFirstTree(N_Tree<T>* node);
-    void insertSubTree(N_Tree<T>* node);
+    void insertFirstTree(N_Tree<T>* tree);
+    void insertSubTree(N_Tree<T>* tree);
 
-    TreeNode_v2<T> *getLeftNode(TreeNode_v2<T> *node) const;
-    TreeNode_v2<T> *getRightNode(TreeNode_v2<T> *node) const;
+    TreeNode_v2<T> *getLeftNode(TreeNode_v2<T> *) const;
+    TreeNode_v2<T> *getRightNode(TreeNode_v2<T> *) const;
     bool isLeftNodeEmpty(TreeNode_v2<T> node) const;
     bool isRightNodeEmpty(TreeNode_v2<T> node) const;
 
@@ -46,7 +46,7 @@ public:
     int depth(TreeNode_v2<T> *root);
 
 private:
-    TreeNode_v2<T>* _root = new TreeNode_v2<T>();
+    TreeNode_v2<T>* _root;
 
 };
 

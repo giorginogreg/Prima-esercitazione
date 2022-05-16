@@ -11,12 +11,12 @@ using std::endl;
 
 template<class T>
 void N_Tree<T>::create() {
-
+    _root = new TreeNode_v2<T>();
 }
 
 template<class T>
 bool N_Tree<T>::empty() const {
-    return _root == nullptr;
+    return Tree<T>::nodes_inside == 0;
 }
 
 template<class T>
@@ -27,7 +27,7 @@ void N_Tree<T>::insertRoot(TreeNode_v2<T> *node) {
 }
 
 template<class T>
-TreeNode_v2<int> *N_Tree<T>::root() const {
+TreeNode_v2<T>* N_Tree<T>::root() const {
     assert(!empty());
     return _root;
 }
@@ -83,16 +83,6 @@ bool N_Tree<T>::isLeaf() const {
 }
 
 template<class T>
-TreeNode_v2<T> *N_Tree<T>::getLeftNode(TreeNode_v2<T> *node) const {
-    return nullptr;
-}
-
-template<class T>
-TreeNode_v2<T> *N_Tree<T>::getRightNode(TreeNode_v2<T> *node) const {
-    return nullptr;
-}
-
-template<class T>
 bool N_Tree<T>::isLeftNodeEmpty(TreeNode_v2<T> node) const {
     return false;
 }
@@ -111,14 +101,24 @@ void N_Tree<T>::eraseTree(TreeNode_v2<T> node) {
 
 template<class T>
 T N_Tree<T>::readValue(TreeNode_v2<T> node) const {
-    return nullptr;
+    return node.value;
 }
 
 template<class T>
 void N_Tree<T>::writeValue(TreeNode_v2<T> *node, T t) {
-
+    node->value = t;
 }
 
+
+template<class T>
+TreeNode_v2<T> *N_Tree<T>::getLeftNode(TreeNode_v2<T> *node) const {
+    return nullptr;
+}
+
+template<class T>
+TreeNode_v2<T> *N_Tree<T>::getRightNode(TreeNode_v2<T> *node) const {
+    return nullptr;
+}
 
 template<class T>
 void N_Tree<T>::insertRightNode(TreeNode_v2<T> *node) {
@@ -154,3 +154,4 @@ template<class T>
 int N_Tree<T>::depth(TreeNode_v2<T> *root) {
     return 0;
 }
+
