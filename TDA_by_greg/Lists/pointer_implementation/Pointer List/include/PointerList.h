@@ -39,8 +39,8 @@ public:
      ~PointerList();
 
 private:
-    PositionType _list;
-    PositionType _tail;
+    NodeType* _list;
+    NodeType* _tail;
 
     void initialize(int);
 };

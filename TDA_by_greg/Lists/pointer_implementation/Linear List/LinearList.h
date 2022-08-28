@@ -1,13 +1,11 @@
 #ifndef LINEARLIST_H
 #define LINEARLIST_H
 
-template <class T, class P>
+template <class ElemType, class PositionType> // Position type can be an integer (refering to a vector), a pointer to a node...
 class LinearList
 {
 
 public:
-    typedef T ElemType;
-    typedef P PositionType;
 
     // Constructor
     void initialize(int max_elems_inside);
