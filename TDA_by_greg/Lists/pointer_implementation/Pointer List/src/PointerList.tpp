@@ -15,7 +15,7 @@ PointerList<TypeElems, NodeType>::PointerList(int numMaxElems) {
 template<class TypeElems, class NodeType>
 PointerList<TypeElems, NodeType>::PointerList(PointerList const &p) {
 
-    Node<TypeElems>* nodeToInsert = new Node<T>();
+    Node<TypeElems>* nodeToInsert = new Node<TypeElems>();
 
     nodeToInsert->setNextPos(NULL);
     nodeToInsert->setPrevPos(NULL);
@@ -121,7 +121,7 @@ bool PointerList<TypeElems, NodeType>::find(TypeElems elem) {
  */
 template<class TypeElems, class NodeType>
 NodeType* PointerList<TypeElems, NodeType>::getFirstPositionByElem(TypeElems t) {
-    auto head = _list;
+    NodeType* head = _list;
     while (!isLastPosition(head)) {
         head = nextPosition(head);
         if(readValueAt(head) == t)
