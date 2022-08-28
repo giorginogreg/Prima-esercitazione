@@ -1,8 +1,6 @@
 #ifndef LINEARLIST_H
 #define LINEARLIST_H
 
-#pragma once
-
 template <class T, class P>
 class LinearList
 {

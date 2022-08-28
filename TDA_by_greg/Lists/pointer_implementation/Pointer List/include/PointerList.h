@@ -8,15 +8,15 @@
 using TDA_Greg::Node;
 
 // Insieme di nodi
-template <class T>
-class PointerList: public LinearList<T, Node<T>*>
+template <class T, class NodeType = Node<T> >
+class PointerList: public LinearList<T, NodeType*>
 {
 
 public:
-     typedef Node<T>* PositionType;
+     typedef NodeType* PositionType;
 
      PointerList(int); // Default constructor - Equal to create operator
-     PointerList(const PointerList<T> &Fp); // Copy constructor
+     PointerList(const PointerList<T, NodeType> &Fp); // Copy constructor
 
      void writeValueAt(PositionType, T);
      void insertNodeAfter(PositionType, T);

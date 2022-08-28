@@ -78,10 +78,10 @@ TEST_CASE( "Adjacency Matrix Graph with two nodes" ) {
         REQUIRE_FALSE(g->existsLink(*n1, *n2));
     }
 
-    SECTION( "Assert that the nodes exist in the pointerlist of the adjacency list" ) {
+   /* SECTION( "Assert that the nodes exist in the pointerlist of the adjacency list" ) {
         REQUIRE(adjacencyPl.find(*n2));
         REQUIRE_FALSE(adjacencyPl.find(*n3));
-    }
+    }*/
 }
 
 
