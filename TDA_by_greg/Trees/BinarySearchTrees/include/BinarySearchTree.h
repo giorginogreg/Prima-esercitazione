@@ -2,8 +2,8 @@
 // Created by Greg on 12/04/22.
 //
 
-#ifndef BINARYSEARCHTREES_H
-#define BINARYSEARCHTREES_H
+#ifndef BinaryTreeS_H
+#define BinaryTreeS_H
 
 /**
  * Per ogni nodo N, tutti gli elementi contenuti nel sottoalbero radicato nel figlio sx di N sono minori di N.value
@@ -14,15 +14,15 @@
 #include "../../include/Tree.h"
 
 template <class T>
-class BinarySearchTree: public Tree<T> {
+class BinaryTree: public Tree<T> {
 
 public:
 
-    BinarySearchTree<T>() { create(); }
-    BinarySearchTree<T>(T val) { create(val); }
-    BinarySearchTree<T>(const BinarySearchTree<T> &tree);
+    BinaryTree<T>() { create(); }
+    BinaryTree<T>(T val) { create(val); }
+    BinaryTree<T>(const BinaryTree<T> &tree);
 
-    virtual ~BinarySearchTree() = default;
+    virtual ~BinaryTree() = default;
 
     void create() override;
     void create(T);
@@ -58,6 +58,6 @@ private:
     void printSubTree(TreeNode<T>* root, std::string prependString) const;
 };
 
-#include "../src/BinarySearchTree.tpp"
+#include "../src/BinaryTree.tpp"
 
-#endif //BINARYSEARCHTREES_H
+#endif //BinaryTreeS_H

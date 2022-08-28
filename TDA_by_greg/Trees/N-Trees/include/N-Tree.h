@@ -2,8 +2,8 @@
 // Created by Greg on 20/04/22.
 //
 
-#ifndef BINARYSEARCHTREES_N_TREE_H
-#define BINARYSEARCHTREES_N_TREE_H
+#ifndef BinaryTreeS_N_TREE_H
+#define BinaryTreeS_N_TREE_H
 
 #include "../../include/Tree_v2.h"
 
@@ -52,4 +52,4 @@ private:
 
 #include "../src/N-Tree.tpp"
 
-#endif //BINARYSEARCHTREES_N_TREE_H
+#endif //BinaryTreeS_N_TREE_H

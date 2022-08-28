@@ -28,13 +28,14 @@
 #define VECTOR_QUEUE_TESTS
 #include "../Lists/Queue/vector_implementation/Test_Cases.cpp"
 
-// -----------------
-#define GRAPH_TESTS
-#include "../Graphs/AdjacenceMatrix/TestsAdjacencyMatrixGraph.cpp"
 
 // -----------------
-#define PRIORIQUEUE_BIN_TREE
-#include "../Prioriqueue/BinTree/TestsPrioriqueue.cpp"
+// #define GRAPH_TESTS
+// #include "../Graphs/AdjacenceMatrix/TestsAdjacencyMatrixGraph.cpp"
+
+// ------------------
+#define BINSEARCH_TREES
+#include "../Trees/BinaryTrees/TestsBinaryTrees.cpp"
 
 // -----------------
 #define PRIORIQUEUE_HEAP
@@ -45,9 +46,6 @@
 #include "../Sets/pointerSet/TestsPointerSet.cpp"
 
 // ------------------
-#define BINSEARCH_TREES
-#include "../Trees/BinarySearchTrees/TestsBinarySearchTrees.cpp"
-
-// ------------------
 #define N_TREES
 #include "../Trees/N-Trees/TestsNTrees.cpp"
+

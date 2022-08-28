@@ -2,108 +2,108 @@
 // Created by Greg on 12/04/22.
 //
 
-#ifndef BINARYSEARCHTREE_TPP
-#define BINARYSEARCHTREE_TPP
+#ifndef BinaryTree_TPP
+#define BinaryTree_TPP
 
 #include <iostream>
 #include "../../include/Tree.h"
-#include "../include/BinarySearchTree.h"
+#include "../include/BinaryTree.h"
 
 
 template<class T>
-BinarySearchTree<T>::BinarySearchTree(const BinarySearchTree<T> &tree) {
+BinaryTree<T>::BinaryTree(const BinaryTree<T> &tree) {
 
 }
 
 template<class T>
-void BinarySearchTree<T>::create() {
+void BinaryTree<T>::create() {
     _root->_ancestor = nullptr;
     _root->_lSon = nullptr;
     _root->_rSon = nullptr;
 }
 
 template<class T>
-void BinarySearchTree<T>::create(T val) {
+void BinaryTree<T>::create(T val) {
     create();
     _root->value = val;
 }
 
 template<class T>
-void BinarySearchTree<T>::insertRoot(TreeNode<T>* node) {
+void BinaryTree<T>::insertRoot(TreeNode<T>* node) {
 
 }
 
 template<class T>
-void BinarySearchTree<T>::insertRightNode(TreeNode<T>* node) {
+void BinaryTree<T>::insertRightNode(TreeNode<T>* node) {
     node->_ancestor = this->_root;
     this->_root->_rSon = node;
 }
 
 template<class T>
-void BinarySearchTree<T>::insertLeftNode(TreeNode<T>* node) {
+void BinaryTree<T>::insertLeftNode(TreeNode<T>* node) {
     node->_ancestor = this->_root;
     this->_root->_lSon = node;
 }
 
 template<class T>
-bool BinarySearchTree<T>::empty() const {
+bool BinaryTree<T>::empty() const {
     return _root->_ancestor == nullptr
     && _root->_lSon == nullptr
     && _root->_rSon == nullptr;
 }
 
 template<class T>
-TreeNode<T> *const BinarySearchTree<T>::root() const {
+TreeNode<T> *const BinaryTree<T>::root() const {
     return _root;
 }
 
 template<class T>
-TreeNode<T>* BinarySearchTree<T>::ancestor(TreeNode<T>* node) const {
+TreeNode<T>* BinaryTree<T>::ancestor(TreeNode<T>* node) const {
     return node->_ancestor;
 }
 
 template<class T>
-TreeNode<T>* BinarySearchTree<T>::getLeftNode(TreeNode<T>* node) const {
+TreeNode<T>* BinaryTree<T>::getLeftNode(TreeNode<T>* node) const {
     return node->_lSon;
 }
 
 template<class T>
-TreeNode<T>* BinarySearchTree<T>::getRightNode(TreeNode<T>* node) const {
+TreeNode<T>* BinaryTree<T>::getRightNode(TreeNode<T>* node) const {
     return node->_rSon;
 }
 
 template<class T>
-bool BinarySearchTree<T>::isLeftNodeEmpty(TreeNode<T> node) const {
+bool BinaryTree<T>::isLeftNodeEmpty(TreeNode<T> node) const {
     return node._lSon == nullptr;
 }
 
 template<class T>
-bool BinarySearchTree<T>::isRightNodeEmpty(TreeNode<T> node) const {
+bool BinaryTree<T>::isRightNodeEmpty(TreeNode<T> node) const {
     return node._rSon == nullptr;
 }
 
 template<class T>
-void BinarySearchTree<T>::eraseTree(TreeNode<T> node) {
+void BinaryTree<T>::eraseTree(TreeNode<T> node) {
 
 }
 
 template<class T>
-T BinarySearchTree<T>::readValue(TreeNode<T> node) const {
+T BinaryTree<T>::readValue(TreeNode<T> node) const {
     return node.value;
 }
 
 template<class T>
-void BinarySearchTree<T>::writeValue(TreeNode<T>* node, T t) {
+void BinaryTree<T>::writeValue(TreeNode<T>* node, T t) {
     node->value = t;
 }
 
 template<class T>
-void BinarySearchTree<T>::printTree() const {
+void BinaryTree<T>::printTree() const {
     printSubTree(_root, "");
 }
 
 template<class T>
-void BinarySearchTree<T>::printSubTree(TreeNode<T>* root, std::string prependString) const {
+void BinaryTree<T>::printSubTree(TreeNode<T>* root, std::string prependString) const {
     std::cout << prependString;
     std::cout << readValue(*root);
     if(!root->isLeaf()){
@@ -114,7 +114,7 @@ void BinarySearchTree<T>::printSubTree(TreeNode<T>* root, std::string prependStr
 }
 
 template<class T>
-int BinarySearchTree<T>::depth(TreeNode<T> *root) {
+int BinaryTree<T>::depth(TreeNode<T> *root) {
     return 0;
 }
 
@@ -126,7 +126,7 @@ int BinarySearchTree<T>::depth(TreeNode<T> *root) {
  * @tparam T
  */
 template<class T>
-void BinarySearchTree<T>::preOrder(TreeNode<T>* root) {
+void BinaryTree<T>::preOrder(TreeNode<T>* root) {
     std::cout << readValue(*root);
     std::cout << std::endl;
     if(!root->isLeaf()){
@@ -143,7 +143,7 @@ void BinarySearchTree<T>::preOrder(TreeNode<T>* root) {
  * @param root
  */
 template<class T>
-void BinarySearchTree<T>::inOrder(TreeNode<T>* root) {
+void BinaryTree<T>::inOrder(TreeNode<T>* root) {
     if(root->isLeaf()) {
         std::cout << readValue(*root);
         std::cout << std::endl;
@@ -166,7 +166,7 @@ void BinarySearchTree<T>::inOrder(TreeNode<T>* root) {
  * @param root
  */
 template<class T>
-void BinarySearchTree<T>::postOrder(TreeNode<T>* root) {
+void BinaryTree<T>::postOrder(TreeNode<T>* root) {
     if(root->isLeaf()) {
         std::cout << readValue(*root);
         std::cout << std::endl;

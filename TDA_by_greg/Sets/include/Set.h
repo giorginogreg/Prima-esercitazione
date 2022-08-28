@@ -23,8 +23,8 @@ public:
         return elems_inside;
     }
 protected:
-    int elems_inside = 0;
-    int max_elems_inside = 0;
+    int elems_inside;
+    int max_elems_inside;
 };
 
 #endif //POINTERQUEUE_SET_H
