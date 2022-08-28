@@ -3,23 +3,22 @@
 #include <stdio.h>  /* printfcanf, NULL */
 #include <stdlib.h> /* malloc, free, rand */
 
-
 template<class TypeElems, class NodeType>
 PointerList<TypeElems, NodeType>::PointerList(int numMaxElems) {
-    auto nodeToInsert = new NodeType();
-    nodeToInsert->setNextPos(nullptr);
-    nodeToInsert->setPrevPos(nullptr);
+    Node<TypeElems>* nodeToInsert = new Node<TypeElems>();
+    nodeToInsert->setNextPos(NULL);
+    nodeToInsert->setPrevPos(NULL);
     _list = _tail = nodeToInsert;
     initialize(numMaxElems);
 }
 
-template<class T, class NodeType>
-PointerList<T, NodeType>::PointerList(PointerList const &p) {
+template<class TypeElems, class NodeType>
+PointerList<TypeElems, NodeType>::PointerList(PointerList const &p) {
 
-    auto nodeToInsert = new NodeType();
+    Node<TypeElems>* nodeToInsert = new Node<T>();
 
-    nodeToInsert->setNextPos(nullptr);
-    nodeToInsert->setPrevPos(nullptr);
+    nodeToInsert->setNextPos(NULL);
+    nodeToInsert->setPrevPos(NULL);
     _list = _tail = nodeToInsert;
     initialize(p._max_elems_inside);
 
@@ -45,7 +44,8 @@ void PointerList<TypeElems, NodeType>::writeValueAt(PositionType p, TypeElems t)
 
 template<class TypeElems, class NodeType>
 void PointerList<TypeElems, NodeType>::insertNodeAfter(PositionType p, TypeElems t) {
-    auto nodeToInsert = new NodeType(t);
+
+    Node<TypeElems>* nodeToInsert = new Node<TypeElems>(t);
 
     nodeToInsert->setNextPos(p->getNextPos());
     nodeToInsert->setPrevPos(p);
@@ -56,6 +56,7 @@ void PointerList<TypeElems, NodeType>::insertNodeAfter(PositionType p, TypeElems
 
 template<class TypeElems, class NodeType>
 void PointerList<TypeElems, NodeType>::deleteNodeAt(PositionType p) {
+
     p->getPrevPos()->setNextPos(p->getNextPos());
 
     if(!isLastPosition(p))
@@ -73,12 +74,12 @@ TypeElems PointerList<TypeElems, NodeType>::readValueAt(PositionType p) const {
 
 template<class TypeElems, class NodeType>
 bool PointerList<TypeElems, NodeType>::isEmpty() const {
-    return _list->getNextPos() == nullptr && _list->getPrevPos() == nullptr;
+    return _list->getNextPos() == NULL && _list->getPrevPos() == NULL;
 }
 
 template<class TypeElems, class NodeType>
 bool PointerList<TypeElems, NodeType>::isLastPosition(PositionType p) const {
-    return p->getNextPos() == nullptr;
+    return p->getNextPos() == NULL;
 }
 
 template<class TypeElems, class NodeType>
@@ -107,13 +108,13 @@ template<class TypeElems, class NodeType>
 bool PointerList<TypeElems, NodeType>::find(TypeElems elem) {
     bool found = false;
     if(!isEmpty())
-      found = getFirstPositionByElem(elem) != nullptr;
+      found = getFirstPositionByElem(elem) != NULL;
 
     return found;
 }
 
 /**
- * Can return nullptr if the element is not found, or the position otherwise
+ * Can return NULL if the element is not found, or the position otherwise
  * @tparam T
  * @param t
  * @return
@@ -126,5 +127,5 @@ NodeType* PointerList<TypeElems, NodeType>::getFirstPositionByElem(TypeElems t) 
         if(readValueAt(head) == t)
             return head;
     }
-    return nullptr;
+    return NULL;
 }

@@ -33,14 +33,14 @@ public:
     int getMaxElementsInside() const { return _max_elems_inside; }
 
 protected:
-    int _elems_inside = 0;
-    int _max_elems_inside = 0;
+    int _elems_inside;
+    int _max_elems_inside;
 };
 
 template<class T, class P>
 void LinearList<T, P>::initialize(int max_elems_inside) {
     _max_elems_inside = max_elems_inside;
+    _elems_inside = 0;
 }
-
 
 #endif
