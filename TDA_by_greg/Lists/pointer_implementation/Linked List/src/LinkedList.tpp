@@ -3,23 +3,24 @@
 //
 
 #include "../include/LinkedList.h"
+using namespace TDA_Greg;
 
 template<class T>
 void LinkedList<T>::initialize() {
-    _head = new TDA_Greg::Node<T>();
+    _head = new Node<T>();
     _head->setNextPos(_head);
     _head->setPrevPos(_head);
     this->_elems_inside = 0;
 }
 
 template<class T>
-void LinkedList<T>::writeValueAt(TDA_Greg::Node<T> *p, const T t) {
+void LinkedList<T>::writeValueAt(Node<T> *p, const T t) {
     p->setElem(t);
 }
 
 template<class T>
-void LinkedList<T>::insertNodeAfter(TDA_Greg::Node<T> *p, const T t) {
-    auto nodeToInsert = new TDA_Greg::Node<T>(t);
+void LinkedList<T>::insertNodeAfter(Node<T> *p, const T t) {
+    Node<T>* nodeToInsert = new Node<T>(t);
 
     nodeToInsert->setNextPos(p->getNextPos());
     nodeToInsert->setPrevPos(p);
@@ -46,22 +47,22 @@ bool LinkedList<T>::isEmpty() const {
 }
 
 template<class T>
-bool LinkedList<T>::isLastPosition(TDA_Greg::Node<T> *p) const {
+bool LinkedList<T>::isLastPosition(Node<T> *p) const {
     return p->getNextPos() == _head;
 }
 
 template<class T>
-TDA_Greg::Node<T>* LinkedList<T>::firstNodeList() const {
+Node<T>* LinkedList<T>::firstNodeList() const {
     return _head->getNextPos();
 }
 
 template<class T>
-TDA_Greg::Node<T>* LinkedList<T>::nextPosition(const LinkedList::position p) const {
+Node<T>* LinkedList<T>::nextPosition(const LinkedList::position p) const {
     return p->getNextPos();
 }
 
 template<class T>
-TDA_Greg::Node<T>* LinkedList<T>::previousPosition(const LinkedList::position p) const {
+Node<T>* LinkedList<T>::previousPosition(const LinkedList::position p) const {
     return p->getPrevPos();
 }
 

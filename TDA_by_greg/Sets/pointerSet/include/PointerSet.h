@@ -7,12 +7,16 @@
 
 #include <ostream>
 #include "../../include/Set.h"
-#include "../../../include/Node.h"
-#include "../../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
+
+#include "Node.h"
+#include "PointerList.h"
+
+//#include "../../../include/Node.h"
+//#include "../../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
 
 using namespace std;
 
-template<class T, class NodeType = Node<T>>
+template<class T, class NodeType = Node<T> >
 class PointerSet: public Set<T, NodeType* > {
 public:
     typedef NodeType* PositionType;

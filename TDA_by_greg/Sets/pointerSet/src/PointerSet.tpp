@@ -37,13 +37,13 @@ template<class T, class NodeType>
 Set <T, typename PointerSet<T, NodeType>::PositionType>*
         PointerSet<T, NodeType>::union_op( Set<T, PositionType>* set2 ) {
             // Trasformo un puntatore a set da Set a puntatore a un puntatore a PointerSet
-            auto* pointerSet = dynamic_cast<PointerSet*>(set2);
+            PointerSet<T, NodeType>* pointerSet = dynamic_cast<PointerSet*>(set2);
 
             // alloco memoria con un costruttore di copia per la lista a puntatore del pointerSet
-            auto unified_set = new PointerSet<T, NodeType>();
+            PointerSet<T, NodeType>* unified_set = new PointerSet<T, NodeType>();
             unified_set->p = new PointerList<T>(*(pointerSet->p));
             // Scandisco tutti gli elementi del secondo vettore
-            auto temp_pos = p->getHead();
+            NodeType* temp_pos = p->getHead();
 
             if(!pointerSet->isEmpty()) {
                 do {
@@ -61,13 +61,13 @@ Set <T, typename PointerSet<T, NodeType>::PositionType>*
     PointerSet<T, NodeType>::intersect( Set<T, PositionType>* set2 ) {
 
     // Trasformo un puntatore a set da Set a puntatore a un puntatore a PointerSet
-    auto* pointerSet = dynamic_cast<PointerSet*>(set2);
+    PointerSet<T, NodeType>* pointerSet = dynamic_cast<PointerSet*>(set2);
 
     // alloco memoria con un costruttore di copia per la lista a puntatore del pointerSet
-    auto intersected_set = new PointerSet<T, NodeType>();
+    PointerSet<T, NodeType>* intersected_set = new PointerSet<T, NodeType>();
 
     // Scandisco tutti gli elementi del secondo vettore
-    auto temp_pos = p->getHead();
+    NodeType* temp_pos = p->getHead();
 
     if(!isEmpty()) {
         do {
@@ -94,12 +94,12 @@ Set <T, typename PointerSet<T, NodeType>::PositionType>*
 template<class T, class NodeType>
 Set<T, typename PointerSet<T, NodeType>::PositionType>
     *PointerSet<T, NodeType>::difference(Set<T, PositionType> *set) {
-    auto* pointerSet = dynamic_cast<PointerSet*>(set);
-    auto pointerList = pointerSet->p;
-    auto diff_set = new PointerSet<T, NodeType>();
+    PointerSet<T, NodeType>* pointerSet = dynamic_cast<PointerSet*>(set);
+    PointerList<T, NodeType>* pointerList = pointerSet->p;
+    PointerSet<T, NodeType>* diff_set = new PointerSet<T, NodeType>();
     diff_set->p = new PointerList<T>(*this->p);
 
-    auto temp_pos = p->getHead();
+    NodeType* temp_pos = p->getHead();
     do {
         temp_pos = temp_pos->getNextPos();
         if(pointerList->find(temp_pos->getElem())) // if elem is set on the other list..
@@ -117,7 +117,7 @@ void PointerSet<T, NodeType>::remove(T t) {
 
 template<class T, class NodeType>
 void PointerSet<T, NodeType>::printTDA() {
-    auto head = p->getHead();
+    NodeType* head = p->getHead();
     do {
         head = head->getNextPos();
         cout << head->getElem() << " | ";
@@ -138,8 +138,8 @@ PointerList<T, NodeType> PointerSet<T, NodeType>::getAllElementsAsPointerList() 
 
 template<class T, class NodeType>
 vector< T > PointerSet<T, NodeType>::getAllElements() {
-    auto pointerNodes = new vector<T, NodeType>();
-    auto head = p->getHead();
+    vector<T, NodeType>* pointerNodes = new vector<T, NodeType>();
+    NodeType* head = p->getHead();
     do {
         head = head->getNextPos();
         pointerNodes->push_back(head->getElem());

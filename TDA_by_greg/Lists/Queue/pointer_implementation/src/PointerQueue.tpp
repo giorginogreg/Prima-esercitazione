@@ -2,13 +2,16 @@
 // Created by Greg on 03/04/22.
 //
 
-#include "../../include/Queue.h"
-#include "assert.h"
+//#include "../../include/Queue.h"
+#include "../include/Queue.h"
 #include "../include/PointerQueue.h"
+#include "assert.h"
+
+using namespace TDA_Greg;
 
 template<class Type>
 PointerQueue<Type>::PointerQueue(int maxElemsInside){
-    start = end = headQueue = nullptr;
+    start = end = headQueue = NULL;
     Queue<Type>::create(maxElemsInside);
 }
 
@@ -32,7 +35,7 @@ template<class Type>
 Type PointerQueue<Type>::dequeue() {
     assert(!isEmpty());
     Type temp_value = headQueue->getElem();
-    TDA_Greg::Node<Type>* temp_node = headQueue;
+    Node<Type>* temp_node = headQueue;
     start = headQueue = headQueue->getNextPos();
     delete temp_node; // Non necessario perchè uscendo dalla funzione dealloca il nodo
     this->elems_inside--;
@@ -42,8 +45,8 @@ Type PointerQueue<Type>::dequeue() {
 template<class Type>
 void PointerQueue<Type>::enqueue(Type elem) {
     assert(!isFull());
-    auto nodeToEnqueue = new TDA_Greg::Node<Type>(elem);
-    if(headQueue != nullptr) {
+    Node<Type>* nodeToEnqueue = new Node<Type>(elem);
+    if(headQueue != NULL) {
         position temp_pos = headQueue;
         while(!isLastNode(temp_pos)) temp_pos = temp_pos->getNextPos();
         temp_pos->setNextPos(nodeToEnqueue);
@@ -53,14 +56,14 @@ void PointerQueue<Type>::enqueue(Type elem) {
     } else {
         start = headQueue = nodeToEnqueue;
     }
-    nodeToEnqueue->setNextPos(nullptr);
+    nodeToEnqueue->setNextPos(NULL);
     end = nodeToEnqueue;
     this->elems_inside ++;
 }
 
 template<class Type>
 bool PointerQueue<Type>::isLastNode(PointerQueue::position p) {
-    return p->getNextPos() == nullptr;
+    return p->getNextPos() == NULL;
 }
 
 template<class Type>

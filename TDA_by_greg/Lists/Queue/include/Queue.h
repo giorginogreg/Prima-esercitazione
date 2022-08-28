@@ -18,8 +18,8 @@ public:
 //private:
     // implementation dependant
 protected:
-    int elems_inside = 0;
-    int max_size = 0;
+    int elems_inside;
+    int max_size;
 };
 
 #include "../src/Queue.tpp"

@@ -4,8 +4,11 @@
 
 #ifndef POINTERQUEUE_H
 #define POINTERQUEUE_H
-#include "../../include/Queue.h"
-#include "../../../../include/Node.h"
+//#include "../../include/Queue.h"
+//#include "../../../../include/Node.h"
+
+#include "Queue.h"
+#include "Node.h"
 
 template<class Type>
 class PointerQueue: public Queue<Type> {
