@@ -5,8 +5,11 @@
 #ifndef GRAPHS_GRAPH_H
 #define GRAPHS_GRAPH_H
 
-#include "../../include/GraphNode.h"
-#include "../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
+//#include "../../include/GraphNode.h"
+//#include "../../Lists/pointer_implementation/Pointer List/include/PointerList.h"
+
+#include "GraphNode.h"
+#include "PointerList.h"
 
 using TDA_Greg::Node;
 
@@ -37,7 +40,7 @@ public:
 private:
     // ArcsList
     // NodesList
-    int _nodesInside = 0;
+    int _nodesInside;
 };
 
 #endif //GRAPHS_GRAPH_H

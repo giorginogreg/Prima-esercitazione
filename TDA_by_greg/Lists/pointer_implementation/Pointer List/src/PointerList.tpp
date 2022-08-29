@@ -5,7 +5,8 @@
 
 template<class TypeElems, class NodeType>
 PointerList<TypeElems, NodeType>::PointerList(int numMaxElems) {
-    Node<TypeElems>* nodeToInsert = new Node<TypeElems>();
+    
+    NodeType* nodeToInsert = new NodeType();
     nodeToInsert->setNextPos(NULL);
     nodeToInsert->setPrevPos(NULL);
     _list = _tail = nodeToInsert;
@@ -15,7 +16,7 @@ PointerList<TypeElems, NodeType>::PointerList(int numMaxElems) {
 template<class TypeElems, class NodeType>
 PointerList<TypeElems, NodeType>::PointerList(PointerList const &p) {
 
-    Node<TypeElems>* nodeToInsert = new Node<TypeElems>();
+    NodeType* nodeToInsert = new NodeType();
 
     nodeToInsert->setNextPos(NULL);
     nodeToInsert->setPrevPos(NULL);
@@ -45,7 +46,7 @@ void PointerList<TypeElems, NodeType>::writeValueAt(PositionType p, TypeElems t)
 template<class TypeElems, class NodeType>
 void PointerList<TypeElems, NodeType>::insertNodeAfter(PositionType p, TypeElems t) {
 
-    Node<TypeElems>* nodeToInsert = new Node<TypeElems>(t);
+    NodeType* nodeToInsert = new NodeType(t);
 
     nodeToInsert->setNextPos(p->getNextPos());
     nodeToInsert->setPrevPos(p);

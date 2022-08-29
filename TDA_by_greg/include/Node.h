@@ -32,11 +32,11 @@ namespace TDA_Greg
             return _elem;
         }
 
-        Node<T> *getNextPos() const {
+        Node<T>* getNextPos() const {
             return _nextPos;
         }
 
-        Node<T> *getPrevPos() const {
+        Node<T>* getPrevPos() const {
             return _prevPos;
         }
 

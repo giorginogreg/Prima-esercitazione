@@ -55,10 +55,10 @@ public:
 private:
     void setWeight(GraphNode<T> node1, GraphNode<T> node2, WeightType w);
 
-    PointerList<Edge<T, WeightType>>* edgesList;
-    PointerSet<T, GraphNode<T>>* nodesList; // Lista di nodi di tipo T
+    PointerList<Edge<T, WeightType> >* edgesList;
+    PointerSet<T, GraphNode<T> >* nodesList; // Lista di nodi di tipo T
 
-    vector<vector<WeightType>> adjacencyMatrix;
+    vector< vector<WeightType> > adjacencyMatrix;
 };
 
 #include "./../src/AdjacencyMatrixGraph.tpp"

@@ -18,7 +18,7 @@ AdjacencyMatrixGraph<T, WeightType>::AdjacencyMatrixGraph(){
 
 template<class T, class WeightType>
 void AdjacencyMatrixGraph<T, WeightType>::create() {
-
+    _nodesInside = 0;
 }
 
 
@@ -103,7 +103,7 @@ WeightType AdjacencyMatrixGraph<T, WeightType>::getLinkWeight(GraphNode<T> node1
 
 
 template<class T, class WeightType>
-PointerList<GraphNode<T>> AdjacencyMatrixGraph<T, WeightType>::getAllNodes() {
+PointerList<GraphNode<T> > AdjacencyMatrixGraph<T, WeightType>::getAllNodes() {
 
     auto nodes = nodesList->getAllElementsAsPointerList();
     auto nodesPointerListGraphNode = new PointerList<GraphNode<T>>(nodes.getElementsInside());
@@ -121,7 +121,7 @@ PointerList<GraphNode<T>> AdjacencyMatrixGraph<T, WeightType>::getAllNodes() {
 }
 
 template<class T, class WeightType>
-PointerList<GraphNode<T>> AdjacencyMatrixGraph<T, WeightType>::adjacents(GraphNode<T> node) {
+PointerList<GraphNode<T> > AdjacencyMatrixGraph<T, WeightType>::adjacents(GraphNode<T> node) {
 
     //auto nodes = nodesList->getAllElements();
     auto nodes = nodesList->getAllElementsAsPointerList();
@@ -136,8 +136,6 @@ PointerList<GraphNode<T>> AdjacencyMatrixGraph<T, WeightType>::adjacents(GraphNo
         }
     }
     
-
-
     return *adjacents;
 }
 

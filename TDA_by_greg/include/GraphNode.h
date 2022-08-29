@@ -70,10 +70,29 @@ public:
         return rhs != *this;
     }
 
+    GraphNode<T>* getNextPos() const {
+        return _nextPos;
+    }
+
+    GraphNode<T>* getPrevPos() const {
+        return _prevPos;
+    }
+
+
+    void setNextPos(GraphNode<T>* nextPos) {
+        _nextPos = nextPos;
+    }
+
+    void setPrevPos(GraphNode<T>* prevPos) {
+        _prevPos = prevPos;
+    }
+
 private:
     bool _softDeleted = false;
     int _links = 0;
     int _id = -1;
+    GraphNode<T>* _nextPos;
+    GraphNode<T>* _prevPos;
 };
 
 
