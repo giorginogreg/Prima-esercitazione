@@ -57,8 +57,8 @@ public:
     }
 
     bool operator==(const GraphNode &rhs) const {
-        auto n = static_cast<Node<T>>(*this);
-        auto n2 = static_cast<Node<T>>(rhs);
+        auto n = static_cast<Node<T> >(*this);
+        auto n2 = static_cast<Node<T> >(rhs);
         return
             n == n2 &&
            _softDeleted == rhs._softDeleted &&

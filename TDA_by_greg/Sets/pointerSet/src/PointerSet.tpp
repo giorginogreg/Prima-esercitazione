@@ -12,7 +12,7 @@ using namespace std;
 template<class T, class NodeType>
 void PointerSet<T, NodeType>::create(int nElems) {
     this->max_elems_inside = nElems;
-    p = new PointerList<T>(nElems);
+    p = new PointerList<T, NodeType>(nElems);
 }
 
 template<class T, class NodeType>
@@ -41,7 +41,7 @@ Set <T, typename PointerSet<T, NodeType>::PositionType>*
 
             // alloco memoria con un costruttore di copia per la lista a puntatore del pointerSet
             PointerSet<T, NodeType>* unified_set = new PointerSet<T, NodeType>();
-            unified_set->p = new PointerList<T>(*(pointerSet->p));
+            unified_set->p = new PointerList<T, NodeType>(*(pointerSet->p));
             // Scandisco tutti gli elementi del secondo vettore
             NodeType* temp_pos = p->getHead();
 

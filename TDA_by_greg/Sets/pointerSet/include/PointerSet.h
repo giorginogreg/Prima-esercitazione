@@ -6,7 +6,8 @@
 #define POINTERSET_H
 
 #include <ostream>
-#include "../../include/Set.h"
+//#include "../../include/Set.h"
+#include "Set.h"
 
 #include "Node.h"
 #include "PointerList.h"
